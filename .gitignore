@@ -1,0 +1,13 @@
+# Node modules
+Front-End/restaurant-app/node_modules/
+
+# Build outputs
+Front-End/restaurant-app/dist/
+Front-End/restaurant-app/out-tsc/
+
+# IDE / OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
