@@ -124,14 +124,3 @@ Ahmed Mohamed
 GitHub Repository:
 https://github.com/AhmedMohamed852/restaurant-management-system
 
-
----
-
-## ✅ الخطوة الأخيرة (مهم)
-
-بعد ما تضيف الملف:
-
-```bash
-git add README.md
-git commit -m "Add README documentation"
-git push
