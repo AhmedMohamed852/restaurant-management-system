@@ -1,0 +1,63 @@
+<div class="user-details-wrapper">
+
+  <!-- رسالة الخطأ -->
+  <div class="msg-box" *ngIf="messageAr || messageEn">
+    <p class="msg-ar">{{ messageAr }}</p>
+    <p class="msg-en">{{ messageEn }}</p>
+    <button routerLink="/userDetails">Update</button>
+  </div>
+
+  <!-- الفورم -->
+  <form #detailsForm="ngForm"
+        (ngSubmit)="updateUserDetails(detailsForm.value)"
+        class="details-form">
+
+    <h2>Update Your Details</h2>
+
+    <div class="form-group">
+      <label>Username</label>
+      <input
+        type="text"
+        name="username"
+        ngModel
+        required
+        placeholder="Enter your username">
+    </div>
+
+    <div class="form-group">
+      <label>Age</label>
+      <input
+        type="number"
+        name="age"
+        ngModel
+        required
+        min="10"
+        placeholder="Enter your age">
+    </div>
+
+    <div class="form-group">
+      <label>Phone Number</label>
+      <input
+        type="text"
+        name="phoneNumber"
+        ngModel
+        required
+        placeholder="Enter your phone number">
+    </div>
+
+    <div class="form-group">
+      <label>Address</label>
+      <textarea
+        name="address"
+        ngModel
+        required
+        placeholder="Enter your address"></textarea>
+    </div>
+
+    <button class="submit-btn" type="submit"
+            [disabled]="detailsForm.invalid">
+      Save Changes
+    </button>
+
+  </form>
+</div>

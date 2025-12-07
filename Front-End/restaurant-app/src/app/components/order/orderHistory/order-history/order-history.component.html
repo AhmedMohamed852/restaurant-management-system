@@ -1,0 +1,76 @@
+<div class="order-history-container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+
+      <div class="d-flex justify-content-start mb-4 wow fadeInUp">
+        <button (click)="goToProducts()" class="btn btn-sm btn-history shadow-sm">
+          Back to Menu
+        </button>
+      </div>
+
+      <h2 class="text-center mb-5 display-5 fw-bold history-title wow fadeInUp">Your Order History</h2>
+
+      <div *ngIf="allOrders.length === 0" class="alert alert-info text-center shadow-sm wow fadeIn">
+        <h4 class="mb-0">You haven't placed any orders yet. Start exploring our delicious menu!</h4>
+        <button (click)="goToProducts()" class="btn primary-bg-btn mt-3">Browse Menu</button>
+      </div>
+
+      <div *ngIf="allOrders.length > 0" class="row g-4">
+        <div *ngFor="let order of allOrders" class="col-12 wow fadeInUp">
+          <div class="order-card shadow-sm rounded-3 p-4">
+
+            <div class="d-flex justify-content-between align-items-center mb-3 order-header">
+              <div>
+                <span class="order-label me-2">Order #</span>
+                <span class="order-code primary-color fw-bold">{{ order.code }}</span>
+              </div>
+              <div class="text-end">
+                <span class="order-label d-block">Order Date:</span>
+                <span class="order-date">{{ order.orderDate | date:'mediumDate' }}</span>
+              </div>
+            </div>
+
+            <div class="order-summary-grid mb-4">
+              <div class="summary-item">
+                <span class="summary-label">Total Items</span>
+                <span class="summary-value">{{ order.totalNumber }}</span>
+              </div>
+              <div class="summary-item total-summary-item">
+                <span class="summary-label">Grand Total</span>
+                <span class="summary-total-value">${{ order.totalPrice | number:'1.2-2' }}</span>
+              </div>
+            </div>
+
+            <h4 class="fw-bold mt-4 mb-3 items-list-title">Items in this Order:</h4>
+
+            <div class="row g-3">
+              <div *ngFor="let item of order.orderItems" class="col-12">
+                <div class="menu-item-card d-flex align-items-center bg-light rounded shadow-sm p-3">
+
+                  <img class="flex-shrink-0 rounded-circle me-3 product-thumb-lg"
+                       src="assets/img/{{item.product.imagePath}}"
+                       alt="{{item.product.name}}">
+
+                  <div class="w-100 d-flex flex-column text-start ps-2">
+                    <h5 class="d-flex justify-content-between">
+                      <span class="text-dark fw-medium">{{ item.product.name }}</span>
+                      <span class="text-muted fw-bold ms-3">x {{ item.quantity }}</span>
+                    </h5>
+
+                    <small class="fst-italic text-muted mb-2">{{ item.product.description | slice:0:80 }}...</small>
+
+                    <div class="d-flex justify-content-end align-items-center pt-2 border-top">
+                      <span class="order-label me-2">Subtotal:</span>
+                      <span class="price-tag fw-bolder">${{ item.priceThisItem | number:'1.2-2' }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+/* تنسيقات الكروت والصور */
+.product-img {
+  height: 180px;
+  object-fit: cover;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.product-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.card-body {
+  text-align: center;
+}
+body {
+  padding-top: 90px !important; /* لو لسه متغطية خليه 100 */
+}
+/* تقليل المسافة بين الكاتيجوري والمنتجات */
+.page-content {
+  margin-top: 10px !important;
+  padding-top: 10px !important;
+}
+
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+}

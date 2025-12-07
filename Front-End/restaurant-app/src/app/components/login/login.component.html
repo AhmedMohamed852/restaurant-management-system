@@ -1,0 +1,31 @@
+<main class="container d-flex justify-content-center mt-5">
+  <body>
+
+  <div class="container login-box">
+
+    <!-- 🔔 صندوق الرسائل -->
+    <div class="msg-box" *ngIf="messageAr || messageEn">
+      <p class="msg-ar">{{ messageAr }}</p>
+      <p class="msg-en">{{ messageEn }}</p>
+    </div>
+
+    <h2>Login</h2>
+
+
+      <label>Username</label>
+      <input type="text" placeholder="Enter username" #userName>
+
+      <label>Password</label>
+      <input type="password" placeholder="Enter password" #pass>
+
+      <button type="submit" (click)="login(userName.value ,pass.value)" >Sign In</button>
+
+      <p class="text">
+        Don't have an account?
+        <a routerLink="/signup">Sign Up</a>
+      </p>
+
+  </div>
+ </body>
+</main>
+

@@ -1,0 +1,89 @@
+.add-product-container {
+  max-width: 500px;
+  margin: 50px auto;
+  background-color: #212529; /* اسود غامق */
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+}
+
+.add-product-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #FEA116; /* برتقالي/ذهبي */
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #FEA116;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  box-shadow: 0 0 10px #FEA116;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.add-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #FEA116, #ff8c00);
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(254,161,22,0.6);
+}
+/* الرسائل */
+/* الرسائل */
+.msg-box {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #343a40;
+  border-radius: 5px;
+
+  /* إضافة لتوسيط المحتوى */
+  display: flex;
+  flex-direction: column; /* لو فيه أكثر من رسالة */
+  align-items: center;    /* توسيط أفقياً */
+  justify-content: center; /* توسيط عمودياً */
+  text-align: center;      /* توسيط النص داخل كل رسالة */
+}
+
+/* الرسائل العربية والإنجليزية */
+.msg-ar, .msg-en {
+  margin: 2px 0;
+  font-size: 14px;
+  color: #ffffff; /* نص أبيض ليكون واضح على الخلفية الداكنة */
+}
+

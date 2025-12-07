@@ -1,0 +1,53 @@
+/* خلي المحتوى كله ينزل تحت الهيدر */
+body, html {
+  padding-top: 90px;
+}
+
+/* خلي الكاتيجوري دايمًا منفصل */
+.category-wrapper {
+  margin-top: 20px;
+}
+
+/* مسافة ثابتة فوق المحتوى في جميع الصفحات */
+.page-content {
+  margin-top: 40px;
+  padding-bottom: 80px;
+}
+
+/* منع أي عنصر يغطي على التاني */
+.container-xxl {
+  position: relative;
+  z-index: 1;
+}
+/* شيل أي مساحة فوق الهيدر */
+body, html {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* خلي المحتوى ما يخشش تحت الهيدر */
+.page-content {
+  padding-top: 100px;   /* تعديل مضبوط */
+  padding-bottom: 60px;
+}
+
+/* إصلاح الكاتيجوري */
+.category-wrapper {
+  margin-top: 20px;
+}
+
+/* الهيدر يكون فوق كل العناصر */
+app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+}
+.container-xxl {
+  padding-top: 0 !important;
+}
+
+.page-content {
+  margin-top: 20px !important;
+}

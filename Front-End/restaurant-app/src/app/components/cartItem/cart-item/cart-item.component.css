@@ -1,0 +1,135 @@
+/* تنسيق عام لضمان تباعد جيد */
+.container {
+  padding-top: 50px;
+}
+
+/* تنسيق بطاقة المنتج وتأثير الزوم */
+.menu-item-card {
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  border: 1px solid #dee2e6;
+  height: 100%; /* لضمان تساوي الارتفاع في grid */
+}
+
+.menu-item-card:hover {
+  transform: scale(1.05); /* تكبير العنصر بنسبة 5% */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
+  background-color: #ffffff !important;
+}
+
+/* تنسيق السعر باللون البرتقالي */
+.price-tag {
+  color: #FEA116 !important;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+/* تنسيق أزرار التحكم بالكمية */
+.quantity-controls button {
+  transition: background-color 0.2s;
+}
+
+.quantity-controls .btn-primary {
+  background-color: #FEA116 !important;
+  border-color: #FEA116 !important;
+}
+
+.quantity-controls .btn-primary:hover {
+  background-color: #d6870e !important; /* لون أغمق عند التمرير */
+}
+
+/* تنسيق زر تأكيد الطلب */
+.order-summary .btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+  transition: background-color 0.3s;
+}
+
+.order-summary .btn-success:hover {
+  background-color: #1e7e34;
+  border-color: #1e7e34;
+}
+
+/* مثال للتعريفات المطلوبة في ملف CSS هذا المكون */
+:root {
+  --primary-color: #FEA116;
+  --secondary-color: #2c3e50;
+  --background-light: #f4f6f9;
+  --card-bg: #ffffff;
+  --border-color: #e0e6ed;
+  --shadow-subtle: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* ⭐️⭐️ ستايل زر عرض تاريخ الطلبات ⭐️⭐️ */
+.btn-history {
+  background-color: #212529 !important;
+  border: 2px solid #343a40 !important;
+  color: #f8f9fa !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+.btn-history:hover {
+  background-color: #343a40 !important;
+  border-color: #495057 !important;
+  color: #fff !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.25) !important;
+}
+
+/* styles.css أو component-specific CSS */
+.msg-box {
+  background: linear-gradient(135deg, rgba(33,37,41,0.95), rgba(52,58,64,0.95));
+  color: #fff;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+  max-width: 360px;
+  margin: 12px auto;
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.msg-box .msg-ar {
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin: 0 0 6px 0;
+  color: #ffd166; /* لون دافئ للعنوان */
+}
+
+.msg-box .msg-en {
+  font-size: 0.9rem;
+  margin: 0 0 12px 0;
+  color: #e9ecef;
+  opacity: 0.95;
+}
+
+/* زر التحديث */
+.msg-box button {
+  background: linear-gradient(90deg, #ffb703, #ff8f00);
+  border: none;
+  color: #212529;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 6px 12px rgba(255,151,0,0.18);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  text-decoration: none;
+}
+
+.msg-box button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255,151,0,0.22);
+}
+
+/* responsiveness صغير */
+@media (max-width: 480px) {
+  .msg-box { padding: 12px; max-width: 95%; }
+  .msg-box .msg-ar { font-size: 1rem; }
+  .msg-box button { padding: 8px 12px; }
+}

@@ -1,0 +1,30 @@
+<body>
+
+<div class="container">
+  <h2>SignUp</h2>
+
+  <!-- 🔔 صندوق الرسائل -->
+  <div class="msg-box" *ngIf="messageAr || messageEn">
+    <p class="msg-ar">{{ messageAr }}</p>
+    <p class="msg-en">{{ messageEn }}</p>
+  </div>
+
+  <label>Username</label>
+  <input type="text" placeholder="Enter username" #userName>
+
+  <label>Password</label>
+  <input type="password" placeholder="Enter Password" #pass>
+
+  <label>Confirm Password</label>
+  <input type="password" placeholder="Confirm Password" #confirmPass>
+
+  <button type="button" (click)="createAccount(userName.value, pass.value, confirmPass.value)">
+    Create Account
+  </button>
+
+  <p class="text">
+    Already have an account?
+    <a routerLink="/login">Login</a>
+  </p>
+</div>
+</body>

@@ -1,0 +1,40 @@
+<div class="add-product-container">
+
+
+
+
+  <div class="msg-box" *ngIf="messageAr || messageEn">
+    <p class="msg-ar">{{ messageAr }}</p>
+    <p class="msg-en">{{ messageEn }}</p>
+  </div>
+  <h2>Add New Product</h2>
+
+
+    <div class="form-group">
+      <label for="name">Product Name</label>
+      <input type="text"  #name>
+    </div>
+
+    <div class="form-group">
+      <label for="imagePath">Image URL</label>
+      <input type="text"  #image >
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input type="text"  #description >
+    </div>
+
+    <div class="form-group">
+      <label for="categoryName">Category Name</label>
+      <input type="text"  #category >
+    </div>
+
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input type="number" #price  >
+    </div>
+
+    <button type="submit" class="add-btn" (click)="addProduct(name.value ,image.value ,description.value ,category.value ,+price.value)">Add Product</button>
+
+</div>

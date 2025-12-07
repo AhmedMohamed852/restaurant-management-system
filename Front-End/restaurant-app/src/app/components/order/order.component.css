@@ -1,0 +1,215 @@
+/* Main Colors and Variables - Modern Update */
+:root {
+  --primary-color: #FEA116; /* Retained as the Accent/Highlight Color */
+  --secondary-color: #2c3e50; /* Dark, professional text/icon color */
+  --success-green: #28a745; /* A vibrant green for success */
+  --background-light: #f4f6f9; /* Light gray background */
+  --card-bg: #ffffff;
+  --shadow-subtle: 0 2px 4px rgba(0, 0, 0, 0.05); /* Very light, modern shadow */
+  --shadow-hover: 0 6px 15px rgba(0, 0, 0, 0.1);
+  --border-color: #e0e6ed; /* Light, thin border */
+}
+
+/* ------------------ Global & Utility Classes ------------------ */
+
+.primary-color {
+  color: var(--primary-color) !important;
+}
+
+.primary-bg-btn {
+  background-color: var(--primary-color) !important;
+  border: 1px solid var(--primary-color) !important;
+  color: var(--card-bg); /* Use white/light background color for contrast */
+  font-weight: 600; /* Medium bold font */
+  border-radius: 8px; /* Slightly rounded corners */
+  transition: all 0.3s ease;
+}
+
+.primary-bg-btn:hover {
+  background-color: #e09015 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(254, 161, 22, 0.4); /* Accent color shadow on hover */
+}
+
+/* ⭐️⭐️ ستايل زر عرض تاريخ الطلبات الجديد (Secondary Button) ⭐️⭐️ */
+.btn-history {
+  background-color: var(--card-bg);
+  border: 2px solid var(--border-color);
+  color: var(--secondary-color);
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-history:hover {
+  background-color: var(--background-light);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-subtle) !important;
+}
+
+/* ------------------ Main Summary Design ------------------ */
+
+.order-container {
+  background-color: var(--background-light);
+  min-height: 100vh;
+  padding: 40px 0;
+}
+
+.order-summary-card {
+  background-color: var(--card-bg);
+  border: none;
+  border-radius: 12px;
+  box-shadow: var(--shadow-subtle);
+  padding: 30px;
+}
+
+/* New Success Header Styling */
+.success-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 25px;
+  margin-bottom: 30px !important;
+}
+
+.success-icon {
+  font-size: 4rem; /* Larger icon */
+  color: var(--success-green); /* Green for success */
+  animation: bounceIn 0.8s ease-out; /* Simple entry animation */
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.order-title {
+  color: var(--secondary-color);
+  font-size: 2.5rem; /* Larger title */
+  font-weight: 700;
+  margin-top: 15px; /* Spacing from icon */
+  margin-bottom: 10px !important;
+  line-height: 1.2;
+}
+
+.main-order-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  padding: 0;
+}
+
+.detail-item-new {
+  background-color: var(--background-light); /* Lighter background for details */
+  border-radius: 8px;
+  padding: 20px 15px;
+  text-align: center;
+  box-shadow: var(--shadow-subtle);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.detail-label {
+  font-size: 0.9rem;
+  color: #6c757d; /* Muted color for labels */
+  font-weight: 500;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detail-value {
+  font-size: 1.8rem;
+  color: var(--secondary-color);
+  font-weight: 700;
+}
+
+.total-price-item-new {
+  background-color: var(--primary-color); /* Highlight total with accent color */
+  color: var(--card-bg);
+  padding: 25px 15px;
+  grid-column: 1 / -1;
+}
+
+.total-price-item-new .detail-label {
+  color: rgba(255, 255, 255, 0.8); /* Lighter label for contrast */
+}
+
+.price-value-new {
+  color: var(--card-bg);
+  font-size: 3rem; /* Even larger for total */
+  font-weight: 800;
+  line-height: 1;
+}
+
+
+/* ------------------ Order Items List Title ------------------ */
+h3 {
+  color: var(--secondary-color);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-top: 50px !important;
+  margin-bottom: 25px !important;
+}
+
+/* ------------------ Order Items Design ------------------ */
+
+.product-item-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: var(--shadow-subtle);
+  transition: all 0.3s ease;
+}
+
+.product-item-card:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+.product-info {
+  font-size: 1.1rem;
+  color: var(--secondary-color);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.product-thumb {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 15px;
+  border: 1px solid var(--border-color);
+}
+
+.product-pricing {
+  font-size: 0.95rem;
+}
+
+.product-pricing span.fw-bold {
+  color: #555;
+}
+
+.item-price {
+  font-size: 1.1rem;
+  color: #1abc9c;
+  font-weight: 700;
+}

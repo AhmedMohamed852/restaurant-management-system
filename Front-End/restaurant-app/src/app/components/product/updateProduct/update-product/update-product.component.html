@@ -1,0 +1,64 @@
+<div class="update-container">
+
+  <div class="msg-box" *ngIf="messageAr || messageEn">
+    <p class="msg-ar">{{ messageAr }}</p>
+    <p class="msg-en">{{ messageEn }}</p>
+  </div>
+
+  <h2 class="title">
+    <i class="fa-solid fa-pen-to-square"></i>
+    Update Product
+  </h2>
+
+  <form #updateForm="ngForm" (ngSubmit)="updateProduct()" class="product-form" *ngIf="product">
+
+    <div class="input-box">
+      <label>Product Name</label>
+      <input type="text"
+             name="name"
+             [(ngModel)]="product.name"
+             required />
+    </div>
+
+    <div class="input-box">
+      <label>Description</label>
+      <input type="text"
+             name="description"
+             [(ngModel)]="product.description"
+             required />
+    </div>
+
+    <div class="input-box">
+      <label>Price</label>
+      <input type="number"
+             name="price"
+             [(ngModel)]="product.price"
+             required />
+    </div>
+
+    <div class="input-box">
+      <label>Category</label>
+      <input type="text"
+             name="category"
+             [(ngModel)]="product.categoryName"
+             required />
+    </div>
+
+    <div class="input-box">
+      <label>Image URL</label>
+      <input type="text"
+             name="imagePath"
+             [(ngModel)]="product.imagePath"
+             required />
+    </div>
+
+    <button class="update-btn" type="submit" [disabled]="updateForm.invalid">
+      Update Product
+    </button>
+
+  </form>
+
+  <div *ngIf="!product" class="text-white mt-3">
+    Loading product data...
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="delete-container">
+
+  <div class="msg-box" *ngIf="messageAr || messageEn">
+    <p class="msg-ar">{{ messageAr }}</p>
+    <p class="msg-en">{{ messageEn }}</p>
+  </div>
+  <h2 class="title">
+    <i class="fa-solid fa-trash-can"></i>
+    Delete Product
+  </h2>
+
+  <p class="desc">Enter the Product Name to delete it permanently.</p>
+
+  <div class="input-box">
+    <label>Product Name</label>
+    <input type="text" placeholder="Enter product Name..." #productName>
+  </div>
+
+  <button class="delete-btn" (click)="deleteProduct(productName.value)">
+    remove Product
+  </button>
+</div>

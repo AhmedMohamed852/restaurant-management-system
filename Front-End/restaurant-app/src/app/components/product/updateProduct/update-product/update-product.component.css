@@ -1,0 +1,96 @@
+/* ---------- Main Container ---------- */
+.update-container {
+  width: 450px;
+  margin: 80px auto;
+  background: #212529;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  color: white;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ---------- Title ---------- */
+.update-container .title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #FEA116;
+  margin-bottom: 25px;
+}
+
+.update-container .title i {
+  margin-right: 10px;
+  color: #FEA116;
+}
+
+/* ---------- Input Group ---------- */
+.input-box {
+  text-align: left;
+  margin-bottom: 18px;
+}
+
+.input-box label {
+  font-size: 15px;
+  margin-bottom: 5px;
+  display: block;
+  font-weight: 500;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #343a40;
+  background: #2c2f33;
+  border-radius: 8px;
+  color: white;
+  font-size: 15px;
+  transition: 0.2s;
+}
+
+.input-box input:focus {
+  border-color: #FEA116;
+  outline: none;
+  box-shadow: 0 0 6px rgba(254,161,22,0.7);
+}
+
+/* ---------- Update Button ---------- */
+.update-btn {
+  width: 100%;
+  background: #FEA116;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  color: #212529;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.update-btn:hover {
+  background: #ffb647;
+  box-shadow: 0 0 12px rgba(254,161,22,0.9);
+  transform: translateY(-2px);
+}
+/* الرسائل */
+.msg-box {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #343a40;
+  border-radius: 5px;
+
+  /* إضافة لتوسيط المحتوى */
+  display: flex;
+  flex-direction: column; /* لو فيه أكثر من رسالة */
+  align-items: center;    /* توسيط أفقياً */
+  justify-content: center; /* توسيط عمودياً */
+  text-align: center;      /* توسيط النص داخل كل رسالة */
+}
+
+/* الرسائل العربية والإنجليزية */
+.msg-ar, .msg-en {
+  margin: 2px 0;
+  font-size: 14px;
+  color: #ffffff; /* نص أبيض ليكون واضح على الخلفية الداكنة */
+}

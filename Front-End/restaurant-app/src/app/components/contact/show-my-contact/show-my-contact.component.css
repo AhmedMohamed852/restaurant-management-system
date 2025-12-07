@@ -1,0 +1,73 @@
+.contact-container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #ffb347, #ffcc33);
+  min-height: 90vh;
+}
+
+.contact-card {
+  background: rgba(33, 37, 41, 0.95);
+  padding: 3rem;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 600px;
+  color: #fff;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+  text-align: left;
+}
+
+.contact-card h2 {
+  color: #ffc107;
+  margin-bottom: 0.5rem;
+}
+
+.contact-card p {
+  margin-bottom: 1.5rem;
+  color: #eee;
+}
+
+.msg-box {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #343a40;
+  border-radius: 5px;
+}
+
+.msg-ar, .msg-en {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* =================== User Messages =================== */
+.user-message {
+  background-color: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  margin-bottom: 15px;
+  padding: 15px;
+  transition: all 0.3s ease;
+}
+
+.user-message:hover {
+  background-color: rgba(255,255,255,0.1);
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.message-header.unread {
+  color: #ff4757; /* أحمر للرسائل الجديدة */
+}
+
+.message-header.replied {
+  color: #2ed573; /* أخضر للرسائل المردود عليها */
+}
+
+.message-body p {
+  margin: 5px 0;
+}

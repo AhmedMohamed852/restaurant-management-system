@@ -1,0 +1,58 @@
+.footer {
+  background: #1b1f24;
+  color: #dbe4ec;
+  padding: 40px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid #30363d;
+}
+
+/* Glow on top border */
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #ff9800, #ffc107, #ff9800);
+  box-shadow: 0 0 12px #ffb74d;
+  animation: shine 4s infinite linear;
+}
+
+/* subtle moving shine */
+@keyframes shine {
+  0% { opacity: .4; }
+  50% { opacity: 1; }
+  100% { opacity: .4; }
+}
+
+.brand-text {
+  color: #ffb74d;
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+
+.social-icons a {
+  color: #ffffff;
+  margin: 0 10px;
+  font-size: 20px;
+  transition: .3s;
+}
+
+.social-icons a:hover {
+  color: #ff9800;
+  text-shadow: 0 0 8px #ffb74d;
+}
+
+.copy-text {
+  color: #b0bec5;
+  margin-top: 15px;
+  font-size: 13px;
+}
+
+/* Smooth glow on hover for footer */
+.footer:hover {
+  box-shadow: 0 -4px 20px rgba(255, 152, 0, 0.3);
+}

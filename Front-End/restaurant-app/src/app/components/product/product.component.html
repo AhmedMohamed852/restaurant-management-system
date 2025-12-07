@@ -1,0 +1,63 @@
+<div class="container py-5 mt-4">
+
+  <h2 *ngIf="products && products.length !== 0" class="text-center mb-5 text-warning">Our Menu</h2>
+
+  <div class="row row-cols-1 row-cols-md-2 g-3">
+
+    <div class="msg-box" *ngIf="messageAr || messageEn">
+      <p class="msg-ar">{{ messageAr }}</p>
+      <p class="msg-en">{{ messageEn }}</p>
+    </div>
+
+    <div *ngFor="let pro of products" class="col d-flex">
+      <div class="card flex-fill card-focus">
+        <div class="d-flex">
+          <img src="../../../assets/img/{{pro.imagePath}}"
+               class="img-fluid"
+               alt="Product Image"
+               style="width:150px; height:150px; object-fit:cover;">
+          <div class="card-body d-flex flex-column ms-3">
+            <h5 class="card-title">{{pro.name}}</h5>
+            <p class="card-text">{{pro.description}}</p>
+            <p class="fw-bold mt-auto">${{pro.price}}</p>
+            <button class="btn btn-warning mt-2" (click)="addToCart(pro)">Add to Cart</button>
+            <button *ngIf="isAdmin()" class="custom-dark-btn mt-2" (click)="updateProduct(pro)">Update Product</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div *ngIf="products && products.length !== 0" class="mt-4">
+
+    <!-- ⭐⭐⭐ Pagination Section ⭐⭐⭐ -->
+    <div class="pagination-wrapper">
+      <button class="pagination-prev-next prev" (click)="previousPage()">Prev</button>
+
+      <ngb-pagination
+        [page]="page"
+        [pageSize]="pageLength"
+        [collectionSize]="collectionSize"
+        (pageChange)="doPagination($event)"
+        [maxSize]="5">
+      </ngb-pagination>
+
+      <button class="pagination-prev-next next" (click)="nextPage()">Next</button>
+    </div>
+
+    <div class="text-center mt-3">
+      <span class="sel">
+        <select (change)="changeSize($event)">
+          <option selected>10</option>
+          <option>2</option>
+          <option>4</option>
+          <option>6</option>
+          <option>8</option>
+        </select>
+      </span>
+    </div>
+
+  </div>
+
+</div>

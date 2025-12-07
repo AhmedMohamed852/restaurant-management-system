@@ -1,0 +1,39 @@
+<div class="contact-container">
+  <div class="contact-card">
+
+    <!-- زر الإشعارات أعلى اليمين -->
+    <button class="btn-notification" (click)="goToNotifications()">
+      Notifications
+<!--
+      <span class="badge" *ngIf="unreadCount > 0">{{ unreadCount }}</span>
+-->
+    </button>
+
+    <h2>Contact Us</h2>
+    <p>Send us a message, we'd love to hear from you!</p>
+
+    <!-- رسالة النظام -->
+    <div class="msg-box" *ngIf="messageAr || messageEn">
+      <p class="msg-ar">{{ messageAr }}</p>
+      <p class="msg-en">{{ messageEn }}</p>
+    </div>
+
+    <!-- نموذج الرسالة -->
+    <div class="form-group">
+      <input type="text" placeholder="Your Name" #name>
+    </div>
+    <div class="form-group">
+      <input type="text" placeholder="Subject" #subject>
+    </div>
+    <div class="form-group">
+      <input type="email" placeholder="Your Email" #email>
+    </div>
+    <div class="form-group">
+      <textarea placeholder="Your Message" #message></textarea>
+    </div>
+    <button type="submit" class="btn-submit"
+            (click)="addContactInfo(name.value, email.value, subject.value, message.value)">
+      Save Details
+    </button>
+  </div>
+</div>

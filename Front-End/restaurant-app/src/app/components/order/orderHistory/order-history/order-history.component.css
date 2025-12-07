@@ -1,0 +1,180 @@
+/* ===============================
+   RESTAURANT PREMIUM THEME (PRO)
+   =============================== */
+
+:root {
+  --primary-color: #FEA116;       /* برتقالي/ذهبي */
+  --secondary-color: #212529;     /* أسود مطاعم */
+  --text-light: #ffffff;
+  --text-dark: #343a40;
+  --background-main: #f5f5f5;
+  --card-bg: #ffffff;
+  --border-light: #dfdfdf;
+  --shadow-base: 0 8px 25px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 20px 45px rgba(0, 0, 0, 0.18);
+}
+
+/* ------------------ Page Container ------------------ */
+
+.order-history-container {
+  background: linear-gradient(to bottom, #ffffff, #f7f7f7);
+  min-height: 100vh;
+  padding: 60px 0;
+}
+
+/* ------------------ Title ------------------ */
+
+.history-title {
+  color: var(--secondary-color);
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 50px !important;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  position: relative;
+}
+
+.history-title::after {
+  content: "";
+  width: 120px;
+  height: 5px;
+  background-color: var(--primary-color);
+  display: block;
+  margin: 15px auto 0 auto;
+  border-radius: 3px;
+}
+
+/* ------------------ Order Card ------------------ */
+
+.order-card {
+  background-color: var(--card-bg);
+  border: none;
+  border-radius: 18px;
+  box-shadow: var(--shadow-base);
+  padding: 35px;
+  margin-bottom: 40px;
+  transition: all 0.3s ease;
+}
+
+.order-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
+}
+
+/* ------------------ Summary Boxes ------------------ */
+
+.summary-item {
+  background: linear-gradient(135deg, #2a2d31, #1c1e22);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.3);
+}
+
+.summary-label {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.9rem;
+  letter-spacing: 0.3px;
+}
+
+.summary-value {
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-top: 5px;
+}
+
+/* إجمالي الطلب */
+.total-summary-item {
+  background: linear-gradient(135deg, #fea116, #ffb74a);
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.15);
+}
+
+.summary-total-value {
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 900;
+}
+
+/* ------------------ Items List ------------------ */
+
+.items-list-title {
+  color: var(--secondary-color);
+  font-weight: 800;
+  border-bottom: 3px solid var(--primary-color);
+  padding-bottom: 12px;
+  margin-bottom: 25px !important;
+  font-size: 1.4rem;
+}
+
+/* ------------------ Menu Item Card ------------------ */
+
+.menu-item-card {
+  background-color: #ffffff !important;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  padding: 18px;
+}
+
+.menu-item-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15) !important;
+  border-color: var(--primary-color);
+}
+
+/* صورة المنتج */
+.product-thumb-lg {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 12px !important;
+  border: 3px solid var(--primary-color);
+}
+
+/* السعر */
+.price-tag {
+  color: var(--primary-color);
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+/* ------------------ Buttons ------------------ */
+
+.btn-history {
+  background-color: var(--secondary-color) !important;
+  border: 2px solid var(--secondary-color) !important;
+  color: var(--text-light) !important;
+  font-weight: 700 !important;
+  border-radius: 10px !important;
+  padding: 0.55rem 1.2rem;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.btn-history:hover {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: #fff !important;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* زر العودة لقائمة الطعام */
+.primary-bg-btn {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: #fff !important;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 0.5rem 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.primary-bg-btn:hover {
+  background-color: #ffb347 !important;
+  border-color: #ffb347 !important;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}

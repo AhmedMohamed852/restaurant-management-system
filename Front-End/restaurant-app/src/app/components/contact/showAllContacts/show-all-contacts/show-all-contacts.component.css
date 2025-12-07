@@ -1,0 +1,91 @@
+.contacts-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* =================== Contact Cards =================== */
+.contact-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  padding: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contact-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+/* Pending vs Replied */
+.contact-card.pending { border-left: 6px solid #FEA116; }
+.contact-card.replied { border-left: 6px solid #28a745; background-color: #f8f9fa; }
+
+/* Status Labels */
+.status {
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+}
+.pending-status {
+  background-color: #FEA116;
+  color: #fff;
+}
+.replied-status {
+  background-color: #28a745;
+  color: #fff;
+}
+
+/* Load Button */
+button.btn-warning {
+  background-color: #FEA116;
+  border-color: #FEA116;
+  color: #fff;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+button.btn-warning:hover {
+  background-color: #e69515;
+}
+
+/* Reply Input */
+.contact-card input.form-control {
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  transition: all 0.3s ease;
+}
+.contact-card input.form-control:focus {
+  border-color: #FEA116;
+  box-shadow: 0 2px 6px rgba(254,161,22,0.3);
+}
+.contact-card button.btn-primary {
+  background-color: #FEA116;
+  border-color: #FEA116;
+  color: #fff;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.contact-card button.btn-primary:hover {
+  background-color: #e69515;
+  transform: scale(1.05);
+}
+
+/* Restaurant Message Box */
+.restaurant-msg {
+  width: 80%;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px 25px;
+  background: #343a40;
+  border-left: 6px solid #FEA116;
+  border-radius: 12px;
+  color: #FEA116;
+  font-weight: 500;
+  font-size: 1rem;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(254, 161, 22, 0.5);
+  transition: transform 0.3s, box-shadow 0.3s;
+  animation: fadeInGlow 0.5s ease-out;
+}

@@ -1,0 +1,21 @@
+<ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
+
+  <li *ngFor="let cat of categories" class="nav-item">
+    <a
+      [routerLink]="cat.name === 'ALL' ? '/products' : '/products/category/' + cat.id"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="d-flex align-items-center text-start mx-3 ms-0 pb-3"
+    >
+      <i class="fa {{cat.logo}} fa-2x" style="color: #FEA116"></i>
+
+      <div class="ps-3">
+        <small class="text-body">{{cat.flag}}</small>
+        <h6 class="mt-n1 mb-0 text-black">{{cat.name}}</h6>
+      </div>
+    </a>
+
+
+  </li>
+
+</ul>

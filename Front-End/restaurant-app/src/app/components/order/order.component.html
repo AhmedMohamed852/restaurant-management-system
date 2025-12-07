@@ -1,0 +1,69 @@
+<div class="order-container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+
+      <div *ngIf="!orderResponseData" class="alert alert-info text-center shadow-sm">
+        <h4 class="mb-0">No recent order data to display.</h4>
+      </div>
+
+      <div *ngIf="orderResponseData" class="order-summary-card shadow-lg rounded-3 p-4 mb-4 wow fadeInUp text-center">
+
+        <div class="success-header mb-4">
+          <i class="fas fa-check-circle success-icon mb-3"></i>
+          <h2 class="display-5 fw-bold order-title">Order Confirmed Successfully!</h2>
+          <p class="lead text-muted">Your order has been placed and is being prepared.</p>
+        </div>
+
+        <div class="main-order-details-grid mb-5">
+          <div class="detail-item-new">
+            <span class="detail-label">Order Number</span>
+            <span class="detail-value">{{ orderResponseData.code }}</span>
+          </div>
+          <div class="detail-item-new">
+            <span class="detail-label">Total Items</span>
+            <span class="detail-value">{{ orderResponseData.totalNumber }}</span>
+          </div>
+          <div class="detail-item-new total-price-item-new">
+            <span class="detail-label">Grand Total</span>
+            <span class="price-value-new">${{ orderResponseData.totalPrice | number:'1.2-2' }}</span>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="fw-bold mb-3 mt-5 text-center text-uppercase primary-color wow fadeInUp">Order Items List</h3>
+
+      <div *ngIf="orderResponseData" class="row g-3">
+        <div *ngFor="let item of orderResponseData.orderItems" class="col-12 wow fadeInUp">
+          <div class="product-item-card bg-light rounded-3 p-3 shadow-sm d-flex justify-content-between align-items-center">
+            <div class="product-info d-flex align-items-center">
+              <img class="product-thumb me-3" src="assets/img/{{item.product.imagePath}}" alt="{{item.product.name}}">
+              <span class="fw-medium">{{ item.product.name }}</span>
+            </div>
+            <div class="product-pricing text-end">
+              <div class="mb-1">
+                <span class="fw-bold">Quantity: </span>
+                <span class="badge bg-secondary">{{ item.quantity }}</span>
+              </div>
+              <div>
+                <span class="fw-bold text-dark">Unit Price: </span>
+                <span class="item-price primary-color">${{ item.product.price | number:'1.2-2' }}</span>
+              </div>
+              <div class="mt-1">
+                <span class="fw-bold text-dark">Item Subtotal: </span>
+                <span class="item-price fw-bolder">${{ item.priceThisItem | number:'1.2-2' }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-5">
+
+        <button (click)="action()" class="btn btn-lg primary-bg-btn shadow-sm">
+          Back to Products
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

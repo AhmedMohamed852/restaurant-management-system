@@ -1,0 +1,66 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3 shadow-sm fixed-top">
+  <div class="container">
+
+    <!-- Logo -->
+    <a  class="navbar-brand d-flex align-items-center fs-3" (click)="search('')">
+      <h1 class="m-0">
+        <i class="fa fa-utensils text-warning me-2"></i>
+        <span class="text-warning" style="color: #FEA116">Restoran</span>
+      </h1>
+    </a>
+
+    <!-- Mobile Button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navigation -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!--<li *ngIf="isUserLogin()" class="nav-item"><a class="nav-link" href="#"><h5>Category</h5></a></li>-->
+        <li *ngIf="isUserLogin() && !isAdmin() " class="nav-item"><a class="nav-link" routerLink="/contact"><h5>My Contact</h5></a></li>
+        <li *ngIf="isUserLogin()" class="nav-item"><a class="nav-link" routerLink="/team"><h5>Team</h5></a></li>
+        <li *ngIf="!isUserLogin()" class="nav-item"><a class="nav-link" routerLink="/login"><h5>Login</h5></a></li>
+        <li *ngIf="!isUserLogin()" class="nav-item"><a class="nav-link" routerLink="/signup"><h5>SignUp</h5></a></li>
+        <li *ngIf="isUserLogin()" class="nav-item"><a class="nav-link" (click)="logout()"><h5>LogOut</h5></a></li>
+        <li *ngIf="isAdmin()" class="nav-item dropdown-hover">
+          <a class="nav-link"><h5>Manager Details</h5></a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" (click)="addProduct()">Add Product</a></li>
+            <li><a class="dropdown-item" (click)="removeProduct()">Remove Product</a></li>
+            <li><a class="dropdown-item" (click)="showAllContacts()">Show All Contacts</a></li>
+          </ul>
+        </li>
+
+      </ul>
+
+      <!-- Search -->
+      <input *ngIf="isUserLogin()"
+        type="text"
+        class="form-control w-25 me-3"
+        placeholder="Search..."
+        (input)="search(searchInput.value)"
+        #searchInput
+      >
+
+      <!-- Cart Info -->
+      <div *ngIf="isUserLogin()" class="d-flex align-items-center text-warning fw-bold fs-5">
+        <i
+          class="fa-solid fa-cart-shopping"
+          style="color: #ffc107; font-size: 32px; cursor: pointer;"
+          routerLink="/cart">
+        </i>
+
+        <span class="ms-2">
+    {{ totalPrice | currency:'USD':'symbol' }}
+          |
+          {{ totalQuantity }}
+  </span>
+      </div>
+
+
+    </div>
+
+  </div>
+</nav>

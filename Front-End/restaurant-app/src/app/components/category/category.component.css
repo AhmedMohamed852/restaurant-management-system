@@ -1,0 +1,16 @@
+.nav-item a {
+  text-decoration: none !important;
+}
+
+.nav-item a:hover {
+  text-decoration: none !important;
+}
+
+ul.nav {
+  margin-top: 110px; /* تحت الهيدر */
+}
+.nav-pills .nav-link.active {
+  border-bottom: 3px solid #FEA116;
+  border-radius: 0;
+  transition: all 0.3s ease;
+}

@@ -1,0 +1,141 @@
+.contact-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  background: linear-gradient(135deg, #ffb347, #ffcc33);
+  padding: 2rem;
+}
+
+.contact-card {
+  background: rgba(33, 37, 41, 0.95);
+  padding: 3rem;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+  text-align: center;
+  color: #fff;
+  position: relative;
+  transition: transform 0.5s, box-shadow 0.5s;
+  backdrop-filter: blur(6px);
+}
+
+.contact-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 20px 50px rgba(255, 215, 0, 0.6);
+}
+
+/* زر الإشعارات أعلى اليمين */
+.btn-notification {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: #FEA116;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  z-index: 10;
+}
+
+.btn-notification:hover {
+  background-color: #e69515;
+}
+
+/* العلامة الصغيرة لعدد الرسائل غير المقروءة */
+.btn-notification .badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: red;
+  color: #fff;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* العناوين والنصوص */
+.contact-card h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #ffc107;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+}
+
+.contact-card p {
+  color: #eee;
+  margin-bottom: 2rem;
+}
+
+/* نموذج الرسالة */
+.form-group {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 15px 20px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #ffd966;
+}
+
+.form-group input:hover,
+.form-group textarea:hover,
+.form-group input:focus,
+.form-group textarea:focus {
+  background: rgba(255,255,255,0.2);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+textarea {
+  resize: none;
+  min-height: 120px;
+}
+
+/* زر الإرسال */
+.btn-submit {
+  padding: 12px 30px;
+  background: linear-gradient(135deg, #ffc107, #ffb347);
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #212529;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.btn-submit:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(255, 215, 0, 0.7);
+}
+
+/* رسالة النظام */
+.msg-box {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #343a40;
+  border-radius: 5px;
+}
+
+.msg-ar, .msg-en {
+  margin: 0;
+  font-size: 14px;
+}

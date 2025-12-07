@@ -1,0 +1,58 @@
+<div class="container py-4">
+
+  <!-- عنوان الصفحة -->
+  <div class="text-center mb-4">
+    <h2 class="fw-bold text-uppercase" style="color: #FEA116;">All Contacts</h2>
+  </div>
+
+  <!-- رسائل النظام -->
+  <div *ngIf="messageAr || messageEn" class="restaurant-msg">
+    <p *ngIf="messageAr">{{ messageAr }}</p>
+    <p *ngIf="messageEn">{{ messageEn }}</p>
+  </div>
+
+  <!-- زر تحميل جميع جهات الاتصال -->
+  <div class="d-flex justify-content-center mb-4">
+    <button class="btn btn-warning shadow-sm" (click)="showAllContacts()">Load All Contacts</button>
+  </div>
+
+  <!-- قائمة جهات الاتصال في عمود واحد -->
+  <div class="contacts-column">
+
+    <!-- الرسائل التي لم يتم الرد عليها -->
+    <div *ngFor="let contact of pendingContacts" class="contact-card pending">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h5 class="fw-bold mb-0">{{ contact.name }}</h5>
+        <span class="status pending-status">✉️ Unreplied</span>
+      </div>
+      <p class="mb-1"><strong>Email:</strong> {{ contact.email }}</p>
+      <p class="mb-1"><strong>Subject:</strong> {{ contact.subject }}</p>
+      <p class="mb-1"><strong>Message:</strong> {{ contact.message }}</p>
+
+      <!-- حقل الرد يظهر فقط إذا لم يتم الرد -->
+      <div *ngIf="!contact.replyMessage" class="mt-3 d-flex gap-2">
+        <input type="text" [(ngModel)]="contact.replyMessageTemp" placeholder="Please reply on the message" class="form-control">
+        <button class="btn btn-primary" (click)="replyMessage(contact)">Reply</button>
+      </div>
+    </div>
+
+    <!-- الرسائل التي تم الرد عليها -->
+    <div *ngFor="let contact of repliedContacts" class="contact-card replied">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h5 class="fw-bold mb-0">{{ contact.name }}</h5>
+        <span class="status replied-status">✅ Replied</span>
+      </div>
+      <p class="mb-1"><strong>Email:</strong> {{ contact.email }}</p>
+      <p class="mb-1"><strong>Subject:</strong> {{ contact.subject }}</p>
+      <p class="mb-1"><strong>Message:</strong> {{ contact.message }}</p>
+      <p class="mb-0"><strong>Reply:</strong> {{ contact.replyMessage }}</p>
+    </div>
+
+  </div>
+
+  <!-- رسالة إذا لا توجد بيانات -->
+  <div *ngIf="allContacts.length === 0" class="text-center mt-4 text-muted">
+    <p>No contacts to display.</p>
+  </div>
+
+</div>

@@ -1,0 +1,34 @@
+<div class="contact-container">
+  <div class="contact-card">
+
+    <h2>My Messages</h2>
+    <p>Here are all your messages and replies</p>
+
+
+    <div class="msg-box" *ngIf="messageAr || messageEn">
+      <p class="msg-ar">{{ messageAr }}</p>
+      <p class="msg-en">{{ messageEn }}</p>
+    </div>
+
+
+    <div class="user-message" *ngFor="let contact of myContact">
+      <div class="message-header" [ngClass]="{'unread': !contact.replyMessage, 'replied': contact.replyMessage}">
+        <span>{{ contact.subject }}</span>
+        <span class="status">
+          <ng-container *ngIf="!contact.replyMessage">● New</ng-container>
+          <ng-container *ngIf="contact.replyMessage">✔ Replied</ng-container>
+        </span>
+      </div>
+      <div class="message-body">
+        <p><strong>Message:</strong> {{ contact.message }}</p>
+        <p *ngIf="contact.replyMessage"><strong>Reply:</strong> {{ contact.replyMessage }}</p>
+      </div>
+    </div>
+
+
+    <div *ngIf="myContact.length === 0" class="text-center mt-4 text-muted">
+      <p>No messages to display.</p>
+    </div>
+
+  </div>
+</div>

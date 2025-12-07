@@ -1,0 +1,92 @@
+/* خلي الهيدر فوق كل العناصر */
+nav.navbar {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999 !important;
+  background-color: #212529 !important; /* لون الهيدر */
+}
+
+/* تعديل شكل اللينكات */
+.navbar .nav-link h5 {
+  margin: 0;
+  padding: 0;
+  color: white !important;
+  font-weight: 500;
+}
+
+.navbar .nav-link:hover h5 {
+  color: #FEA116 !important;
+}
+
+/* إصلاح مشكلة الاختفاء وراء الهيدر */
+body {
+  padding-top: 90px !important; /* عشان المحتوى ينزل تحت الهيدر */
+}
+/* اخفاء القائمة افتراضياً */
+.dropdown-hover .dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ==============================
+   DropDown (Admin - Manage Products)
+============================== */
+
+/* اخفاء القائمة افتراضياً */
+.dropdown-hover .dropdown-menu {
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  background-color: #212529; /* نفس لون الهيدر */
+  border-radius: 10px;
+  padding: 8px 0;
+  min-width: 180px;
+  transition: all 0.25s ease-in-out;
+  transform: translateY(10px); /* تبدأ نازلة شوية */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  border: 1px solid #FEA116;
+}
+
+/* عند الوقوف بالماوس */
+.dropdown-hover:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0); /* تطلع لفوق بانيميشن */
+}
+
+/* عناصر القائمة */
+.dropdown-hover .dropdown-item {
+  padding: 10px 18px;
+  font-size: 16px;
+  color: white;
+  display: block;
+  transition: 0.2s;
+}
+
+/* Hover على العناصر */
+.dropdown-hover .dropdown-item:hover {
+  background-color: #FEA116;
+  color: #212529;
+  font-weight: 600;
+}
+
+/* تنسيق العنوان (Manage Products) */
+.dropdown-hover > a h5 {
+  color: #FEA116 !important;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.dropdown-hover:hover > a h5 {
+  color: white !important;
+}
+
+

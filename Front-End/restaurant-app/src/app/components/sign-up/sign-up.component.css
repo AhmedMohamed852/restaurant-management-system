@@ -1,0 +1,91 @@
+/* Body background */
+body {
+  background-color: #f8f9fa; /* خلفية الصفحة */
+  font-family: Arial, sans-serif;
+
+  display: flex;
+  justify-content: center; /* تمركز أفقياً */
+  align-items: center;     /* تمركز عمودياً */
+  height: 100vh;           /* كامل ارتفاع الصفحة */
+  margin: 0;               /* إزالة أي هوامش افتراضية */
+}
+
+/* صندوق التسجيل */
+.container {
+  width: 320px;
+  padding: 25px;
+  background-color: #212529; /* خلفية الصندوق */
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  color: white; /* نص أبيض */
+  text-align: center;
+  margin: 50px auto; /* مركز الصفحة */
+}
+
+/* عنوان */
+.container h2 {
+  margin-bottom: 20px;
+  color: #FEA116; /* لون العنوان */
+}
+
+/* الرسائل */
+.msg-box {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #343a40;
+  border-radius: 5px;
+}
+
+.msg-ar, .msg-en {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* التسميات */
+.container label {
+  display: block;
+  text-align: left;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+/* الحقول */
+.container input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* الأزرار */
+.container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #FEA116;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.container button:hover {
+  background-color: #e6950b;
+}
+
+/* رابط تسجيل الدخول */
+.container .text {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.container .text a {
+  color: #FEA116;
+  text-decoration: none;
+}
+
+.container .text a:hover {
+  text-decoration: underline;
+}

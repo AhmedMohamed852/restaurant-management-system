@@ -1,0 +1,72 @@
+<!-- Hero Header Start -->
+<div class="container-xxl position-relative p-0">
+  <div class="container-xxl py-5 bg-dark hero-header mb-5">
+    <div class="container text-center my-5 pt-5 pb-4">
+      <h1 class="display-3 text-white mb-3">Our Team</h1>
+      <p class="text-white lead">Meet our amazing chefs and staff!</p>
+    </div>
+  </div>
+</div>
+<!-- Hero Header End -->
+
+<div class="container">
+  <!-- Row 1 -->
+  <div class="row g-4 mb-3">
+    <div class="col-12 col-sm-6 col-md-3" *ngFor="let member of teams">
+      <div class="team-card position-relative rounded shadow-sm">
+        <div class="team-image-container">
+          <img src="../../../assets/img/{{member.logoPath}}"
+               alt="{{member.name}}"
+               class="w-100 team-img">
+          <div class="overlay d-flex justify-content-center align-items-end">
+            <div class="social d-flex gap-2 mb-2">
+              <a [href]="member.faceLink" target="_blank" class="btn btn-sm btn-light btn-icon">
+                <i class="fa-brands fa-facebook"></i>
+              </a>
+              <a [href]="member.tweLink" target="_blank" class="btn btn-sm btn-light btn-icon">
+                <i class="fa-brands fa-twitter"></i>
+              </a>
+              <a [href]="member.instaLink" target="_blank" class="btn btn-sm btn-light btn-icon">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="text-center py-2">
+          <h5 class="mb-0">{{member.name}}</h5>
+          <small class="text-muted">{{member.spec}}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2 (Duplicate) -->
+  <div class="row g-4">
+    <div class="col-12 col-sm-6 col-md-3" *ngFor="let member of teams">
+      <div class="team-card position-relative rounded shadow-sm">
+        <div class="team-image-container">
+          <img src="../../../assets/img/{{member.logoPath}}"
+               alt="{{member.name}}"
+               class="w-100 team-img">
+          <div class="overlay d-flex justify-content-center align-items-end">
+            <div class="social d-flex gap-2 mb-2">
+              <a [href]="member.faceLink" target="_blank" class="btn btn-sm btn-light btn-icon">
+                <i class="fa-brands fa-facebook"></i>
+              </a>
+              <a [href]="member.tweLink" target="_blank" class="btn btn-sm btn-light btn-icon">
+                <i class="fa-brands fa-twitter"></i>
+              </a>
+              <a [href]="member.instaLink" target="_blank" class="btn btn-sm btn-light btn-icon">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="text-center py-2">
+          <h5 class="mb-0">{{member.name}}</h5>
+          <small class="text-muted">{{member.spec}}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: restaurant Management System
+  messages:
+    basename: i18n/messages
+
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@//localhost:1521/orclpdb
+    username: hr
+    password: hr
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+
+token :
+  secret: fnkwfkteFgswffe5e64f78fej#&$*)#Hpdffe7efEERedsR
+  time: 24h
+
+server:
+  port: 8081
