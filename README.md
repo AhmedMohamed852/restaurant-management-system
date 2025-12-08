@@ -56,7 +56,7 @@ restaurant-management-system/
 4. اضغط Run
 5. السيرفر سيعمل على:
 
-http://localhost:8080  
+http://localhost:8081  
 
 
 افتح Terminal داخل مجلد الباك إند:
