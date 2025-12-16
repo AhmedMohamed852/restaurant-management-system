@@ -19,17 +19,18 @@ public class contactInfoController {
     private contactInfoService contactInfoService;
 
     @Autowired
-    public contactInfoController(contactInfoService contactInfoService) {
+    public contactInfoController(contactInfoService contactInfoService)
+    {
         this.contactInfoService = contactInfoService;
     }
 
-//TODO ____________________IMPLEMENTATION___________________________
-//TODO _____________________________________________________________
+//TODO ____________________IMPLEMENTATION_______________________________
+//TODO _________________________________________________________________
 
 
 
-//TODO ____________________saveContactInfo___________________________
-//TODO ______________________________________________________________
+//TODO ____________________ save Contact Info ___________________________
+//TODO __________________________________________________________________
     @PreAuthorize("hasAnyRole('USER' ,'ADMIN')")
     @PostMapping("/save")
     public ResponseEntity<Void> saveContactInfo(@RequestBody @Valid ContactInfoDto contactInfoDto) throws URISyntaxException
@@ -38,8 +39,8 @@ public class contactInfoController {
         return  ResponseEntity.created(new URI("/saveContactInfo")).build();
     }
 
-//TODO ____________________getAllContactInfo___________________________
-//TODO ________________________________________________________________
+//TODO ____________________ get All Contact Info ___________________________
+//TODO _____________________________________________________________________
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/getAll")
     public ResponseEntity<List<ContactInfoDto>> getAll()
@@ -47,8 +48,10 @@ public class contactInfoController {
         return ResponseEntity.ok().body(contactInfoService.getContactInfo());
     }
 
-//TODO ____________________getContactInfoById___________________________
-//TODO ________________________________________________________________
+
+
+//TODO ____________________ get Contact Info By Id_____________________________
+//TODO ________________________________________________________________________
     @PreAuthorize("hasRole('USER')")
     @GetMapping("/getById")
     public ResponseEntity<List<ContactInfoDto>> getById()
@@ -56,8 +59,10 @@ public class contactInfoController {
         return ResponseEntity.ok().body(contactInfoService.getContactInfoById());
     }
 
-//TODO ____________________getContactInfoById___________________________
-//TODO ________________________________________________________________
+
+
+//TODO ____________________ get ContactInfo By Id_________________________________
+//TODO ___________________________________________________________________________
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/reply")
     public ResponseEntity<Void> reply(@RequestBody ContactInfoDto contactInfoDto)
@@ -69,6 +74,8 @@ public class contactInfoController {
 
 
 
+//TODO ____________________________ FINISHED _________________________________________
+//TODo _______________________________________________________________________________
 
 
 

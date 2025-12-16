@@ -15,4 +15,5 @@ public interface ContactInfoMapper {
    ContactInfoDto toDto(ContactInfo contactInfo);
 
    List<ContactInfoDto> toDtoList(List<ContactInfo> contactInfoList);
+   List<ContactInfo> toEntityList(List<ContactInfoDto> contactInfoList);
 }

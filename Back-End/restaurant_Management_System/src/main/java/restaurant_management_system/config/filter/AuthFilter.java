@@ -28,10 +28,16 @@ public class AuthFilter extends OncePerRequestFilter {
 
 
     @Override
-    protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException
-    {
-        return request.getRequestURI().contains("/api/auth");
+    protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
+
+        String uri = request.getRequestURI();
+
+        return uri.startsWith("/api/auth")
+                || uri.startsWith("/swagger-ui")
+                || uri.startsWith("/v3/api-docs")
+                || uri.startsWith("/swagger-ui.html");
     }
+
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {

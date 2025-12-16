@@ -28,7 +28,7 @@ public class UserController {
 
 
 
-//TODO _________________addUserDetail________________________________
+//TODO _________________ add User Detail ________________________________
 //TODO ______________________________________________________________
 
     @GetMapping("/isUserHasDetails")
@@ -38,7 +38,8 @@ public class UserController {
         return ResponseEntity.ok(userDetailService.isUserHasDetails());
     }
 
-//TODO _________________updateUserDetail_____________________________
+
+//TODO _________________ update User Detail _____________________________
 //TODO ______________________________________________________________
 
     @PostMapping("/addUserDetail")
@@ -48,5 +49,9 @@ public class UserController {
         userDetailService.addUserDetail(userDetailsDto);
         return ResponseEntity.noContent().build();
     }
+
+
+//TODO ____________________________FINISHED________________________________________________
+//TODo ____________________________________________________________________________________
 
 }

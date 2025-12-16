@@ -11,7 +11,6 @@ import restaurant_management_system.model.ContactInfo;
 import restaurant_management_system.model.Users;
 import restaurant_management_system.repo.ContactInfoRepo;
 import restaurant_management_system.repo.UserRepo;
-import restaurant_management_system.service.AuthService;
 import restaurant_management_system.service.UserService;
 import restaurant_management_system.service.contactInfoService;
 
@@ -111,6 +110,28 @@ public class contactInfoImpl implements contactInfoService {
         List<ContactInfoDto> contactInfoDto = contactInfoMapper.toDtoList(contactInfos.get());
 
         contactInfoDto.forEach(contactInfoDto1 -> contactInfoDto1.setUser(contactInfoDto1.getUsers()));
+
+        return contactInfoDto;
+    }
+
+
+
+//TODO ____________________getContactInfoById___________________________
+//TODO ______________________________________________________________
+    @Override
+    public ContactInfoDto getMyContactInfoById()
+    {
+
+
+        Optional<ContactInfo> contactInfos = contactInfoRepo.findById(getUserId());
+
+        if(contactInfos.isEmpty())
+        {
+            throw new RuntimeException("No.ContactInfo.Found");
+        }
+
+        ContactInfoDto contactInfoDto = contactInfoMapper.toDto(contactInfos.get());
+        contactInfoDto.setUser(null);
 
         return contactInfoDto;
     }

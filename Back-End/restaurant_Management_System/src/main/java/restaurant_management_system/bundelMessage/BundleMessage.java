@@ -1,6 +1,5 @@
 package restaurant_management_system.bundelMessage;
 
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.ResourceBundleMessageSource;

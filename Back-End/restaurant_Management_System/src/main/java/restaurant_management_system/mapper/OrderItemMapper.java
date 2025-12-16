@@ -1,12 +1,13 @@
 package restaurant_management_system.mapper;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.ReportingPolicy;
 import restaurant_management_system.dto.OrderItemDto;
 import restaurant_management_system.model.OrderItem;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface OrderItemMapper {
 
    OrderItem toEntity(OrderItemDto orderItemDto);

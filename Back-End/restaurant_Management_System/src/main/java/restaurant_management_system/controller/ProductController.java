@@ -1,10 +1,16 @@
 package restaurant_management_system.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import restaurant_management_system.dto.ProductDto;
+import restaurant_management_system.helper.MessageResponse;
 import restaurant_management_system.service.ProductService;
 import restaurant_management_system.vm.ProductsResponseVm;
 
@@ -15,6 +21,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/products")
+@Tag( name = "Product Controller" , description = "API For Manage Products")
 public class ProductController {
 
     private final ProductService productService;
@@ -27,8 +34,30 @@ public class ProductController {
 //TODO ____________________IMPLEMENTATION___________________________
 //TODO _____________________________________________________________
 
+
+
+
+
 //TODO _________________getAllProductsByCategoryId___________________
 //TODO ______________________________________________________________
+
+// TODO -----------> SWAGGER {
+    @Operation(
+            summary = "Get All Products By Category Id",
+            description = "Get All Products Py Category Id" ,
+
+            responses = {
+                @ApiResponse( responseCode = "200", description = "Http Status Success" ,
+                              content = @Content(schema = @Schema(implementation = MessageResponse.class))
+                            ) ,
+
+                @ApiResponse(responseCode = "500" ,description = "Http Status Products Not Found" ,
+                            content = @Content(schema = @Schema(implementation = MessageResponse.class))
+                            )
+
+                        }
+        )
+// TODO               SWAGGER }     <---------------------
 
     @PreAuthorize("hasAnyRole('USER' ,'ADMIN')")
     @GetMapping("/getAllProdByCatId/{categoryId}/{pageNumber}/{pageSize}")
@@ -36,6 +65,7 @@ public class ProductController {
     {
         return ResponseEntity.ok().body(productService.getAllProductsByCategoryId( pageNumber ,pageSize,categoryId));
     }
+
 
 
 //TODO _________________getAllProducts_______________________________
@@ -49,7 +79,7 @@ public class ProductController {
 
 
 
-//TODO _________________saveProduct__________________________________
+//TODO _________________ save Product __________________________________
 //TODO ______________________________________________________________
    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/saveProduct")
@@ -59,7 +89,8 @@ public class ProductController {
     }
 
 
-//TODO _________________saveListOfProducts___________________________
+
+//TODO _________________ saveListOfProducts ___________________________
 //TODO ______________________________________________________________
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/saveListOfProducts")
@@ -68,7 +99,9 @@ public class ProductController {
         return ResponseEntity.created(new URI("/saveListOfProducts")).body(productService.saveListOfProducts(productDtoList));
     }
 
-//TODO _________________updateProduct________________________________
+
+
+//TODO _________________ update Product ________________________________
 //TODO ______________________________________________________________
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/updateProduct")
@@ -79,7 +112,7 @@ public class ProductController {
 
 
 
-//TODO _________________updateListOfProducts___________________________
+//TODO _________________ update List Of Products ___________________________
 //TODO ________________________________________________________________
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/updateListOfProducts")
@@ -89,7 +122,7 @@ public class ProductController {
     }
 
 
-//TODO _________________deleteProduct__________________________________
+//TODO _________________ deleteProduct __________________________________
 //TODO ________________________________________________________________
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/deleteProduct")
@@ -100,7 +133,7 @@ public class ProductController {
     }
 
 
-//TODO _________________deleteListOfProducts___________________________
+//TODO _________________ deleteListOfProducts ___________________________
 //TODO ________________________________________________________________
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/deleteListOfProducts")
@@ -112,7 +145,7 @@ public class ProductController {
 
 
 
-//TODO _________________searchProducts_________________________________
+//TODO _________________ searchProducts _________________________________
 //TODO ________________________________________________________________
     @PreAuthorize("hasAnyRole('USER' ,'ADMIN')")
     @GetMapping("/searchProducts")

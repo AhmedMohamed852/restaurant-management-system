@@ -11,6 +11,7 @@ public interface contactInfoService {
     List<ContactInfoDto> getContactInfo();
 
     List<ContactInfoDto> getContactInfoById();
+   ContactInfoDto getMyContactInfoById();
 
     void updateReplyMessage(ContactInfoDto contactInfoDto);
 }

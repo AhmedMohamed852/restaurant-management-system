@@ -2,6 +2,7 @@ package restaurant_management_system.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -21,13 +22,38 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
+
+// TODO -----------> SWAGGER {
+@Schema(
+        name = "USER DTO" ,
+        description = "This Class Contain --> [ id ,username ,password ]"
+)
+// TODO               SWAGGER  } <---------------------
+
 public class UsersDto {
 
     private Long id;
 
+
+    // TODO -----------> SWAGGER {
+        @Schema(
+                name = "userName" ,
+                description = "email Or username Of User" ,
+                example = "Ahmed Mohamed"
+                )
+// TODO               SWAGGER  } <---------------------
+
     @NotBlank(message = "username.Must.Not.Be.Blank")
     @NotNull(message = "username.Must.Not.Be.Null")
     private String username ;
+
+    // TODO -----------> SWAGGER {
+    @Schema(
+            name = "password" ,
+            description = "password Of Account" ,
+            example = "Ahmed@123"
+    )
+// TODO               SWAGGER  } <---------------------
     @NotBlank(message = "password.Must.Not.Be.Blank")
     @Pattern(
         regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$",
@@ -35,6 +61,8 @@ public class UsersDto {
     )
     private String password;
 
+
+    @Schema(hidden = true)
     private RolesEnum role;
 
 

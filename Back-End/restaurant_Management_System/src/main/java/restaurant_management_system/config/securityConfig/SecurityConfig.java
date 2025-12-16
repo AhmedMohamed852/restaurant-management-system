@@ -26,13 +26,15 @@ public class SecurityConfig {
 
     private AuthFilter authFilter;
     @Autowired
-    public void setAuthFilter(@Lazy AuthFilter authFilter) {
+    public void setAuthFilter(@Lazy AuthFilter authFilter)
+    {
         this.authFilter = authFilter;
     }
 
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    public PasswordEncoder passwordEncoder()
+    {
         return new BCryptPasswordEncoder();
     }
 
@@ -41,28 +43,28 @@ public class SecurityConfig {
 
         http
                 .csrf(csrf -> csrf.disable())
-                .cors(cors -> cors.configurationSource(corsConfigurationSource())) // ⚡️ تفعيل CORS هنا
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/swagger-ui/**").permitAll()
+                        .requestMatchers("/v3/api-docs/**").permitAll()
                         .anyRequest().authenticated()
                 )
-                .httpBasic(httpBasic -> httpBasic.disable())
-                .formLogin(form -> form.disable())
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 );
 
-
-        http.addFilterBefore(authFilter , UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
+
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource()
     {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of("http://localhost:4200"));
+        config.setAllowedOrigins(List.of("http://localhost:4200" , "http://localhost:8081"));
 
          config.setAllowedHeaders(List.of("*"));
 

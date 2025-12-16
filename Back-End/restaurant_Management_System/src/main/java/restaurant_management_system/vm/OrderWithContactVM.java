@@ -1,21 +1,22 @@
-package restaurant_management_system.dto;
+package restaurant_management_system.vm;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import restaurant_management_system.dto.OrderItemDto;
 import restaurant_management_system.eNum.OrderStatus;
+import restaurant_management_system.model.ContactInfo;
+import restaurant_management_system.model.Orders;
 
 import java.util.List;
-
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrdersDto {
-
+public class OrderWithContactVM {
 
     private Long code;
 
@@ -27,11 +28,13 @@ public class OrdersDto {
 
     String message;
 
-    @NotNull(message = "Product.Ids.Must.Not.Be.Null")
     List<OrderItemDto> orderItems;
 
+    private String username;
 
+    private int age;
 
-//_______________________relation__________________
+    private String phoneNumber;
 
+    private String address;
 }

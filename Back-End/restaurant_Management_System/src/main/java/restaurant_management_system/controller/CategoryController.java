@@ -30,9 +30,8 @@ public class CategoryController {
 
 
 
-//TODO _________________get All Categories___________________________
+//TODO _________________ get All Categories ___________________________
 //TODO ______________________________________________________________
-
     @PreAuthorize("hasAnyRole('USER' ,'ADMIN')")
     @GetMapping("/getAll")
     public ResponseEntity<List<CategoryDto>>  getAllCategories()
@@ -42,7 +41,7 @@ public class CategoryController {
 
 
 
-//TODO _________________save Category______________________________
+//TODO _________________ save Category ______________________________
 //TODo ____________________________________________________________
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/saveCategory")
@@ -53,7 +52,7 @@ public class CategoryController {
 
 
 
-//TODo _________________save List of Categories___________________________
+//TODo _________________ save List of Categories ___________________________
 //TODo ___________________________________________________________________
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/saveListOfCategories")
@@ -63,7 +62,7 @@ public class CategoryController {
     }
 
 
-//TODO _________________update Category____________________________
+//TODO _________________ update Category ____________________________
 //TODo ____________________________________________________________
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/updateCategory")
@@ -74,7 +73,7 @@ public class CategoryController {
     }
 
 
-//TODO __________________updateListOfCategories________________________
+//TODO __________________ updateListOfCategories ________________________
 //TODo ________________________________________________________________
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/updateListOfCategories")
@@ -85,7 +84,7 @@ public class CategoryController {
 
 
 
-//TODO __________________deleteListOfCategories________________________
+//TODO __________________ deleteListOfCategories ________________________
 //TODo ________________________________________________________________
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/deleteListOfCategories")
@@ -96,7 +95,8 @@ public class CategoryController {
     }
 
 
-//TODO __________________deleteCategory________________________________
+
+//TODO __________________ deleteCategory ________________________________
 //TODo ________________________________________________________________
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/deleteCategory")
@@ -106,6 +106,7 @@ public class CategoryController {
         return ResponseEntity.noContent().build();
     }
 
-//TODO __________________FINISHED______________________________________
-//TODo ________________________________________________________________
+//TODO ____________________________FINISHED________________________________________________
+//TODo ____________________________________________________________________________________
+
 }

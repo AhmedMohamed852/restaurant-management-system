@@ -5,8 +5,7 @@ import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
-import org.apache.catalina.Role;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Component;
 import restaurant_management_system.dto.UsersDto;
 import restaurant_management_system.helper.JwtToken;

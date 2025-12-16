@@ -5,15 +5,13 @@ import org.springframework.stereotype.Repository;
 import restaurant_management_system.eNum.RolesEnum;
 
 import restaurant_management_system.model.Role;
-import restaurant_management_system.model.Users;
 
-import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface RoleRepo extends JpaRepository<Role, Long> {
+public interface RoleRepo extends JpaRepository<Role, Long>
+{
 
     Optional<Role> findByCode(RolesEnum code);
 
-  //  List<Role> findByUsers(Users user);
 }

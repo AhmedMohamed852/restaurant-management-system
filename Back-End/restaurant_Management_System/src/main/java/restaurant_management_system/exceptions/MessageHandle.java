@@ -16,19 +16,21 @@ public class MessageHandle {
 
     private BundleMessageService  bundleMessageService;
     @Autowired
-    public MessageHandle(BundleMessageService bundleMessageService) {
+    public MessageHandle(BundleMessageService bundleMessageService)
+    {
         this.bundleMessageService = bundleMessageService;
     }
 
 
     @ExceptionHandler
-    public ResponseEntity<MessageResponse> messageHandle(Exception e){
+    public ResponseEntity<MessageResponse> messageHandle(Exception e)
+    {
         return ResponseEntity.badRequest().body(bundleMessageService.getMessage(e.getMessage()));
     }
 
 
 
-    @ExceptionHandler
+    @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<List<MessageResponse>> handelRunTimeException(MethodArgumentNotValidException exception)
     {
 

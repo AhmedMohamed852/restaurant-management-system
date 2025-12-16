@@ -28,7 +28,7 @@ public class ChefController {
 
 
 
-//TODO ____________________saveChef_________________________________
+//TODO ____________________ save Chef _________________________________
 //TODO _____________________________________________________________
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/saveChef")
@@ -37,7 +37,9 @@ public class ChefController {
         return ResponseEntity.created(new URI("/saveChef")).body(chefService.saveChef(chefDto));
     }
 
-//TODO ____________________getAllChefs_________________________________
+
+
+//TODO ____________________ get All Chefs _________________________________
 //TODO _____________________________________________________________
     @PreAuthorize("hasAnyRole('USER' ,'ADMIN')")
     @GetMapping("/getAll")
@@ -47,5 +49,6 @@ public class ChefController {
     }
 
 
-
+//TODO ____________________________FINISHED________________________________________________
+//TODo ____________________________________________________________________________________
 }

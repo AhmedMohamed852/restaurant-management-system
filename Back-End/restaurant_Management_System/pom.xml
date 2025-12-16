@@ -23,7 +23,9 @@
 
     <properties>
         <java.version>17</java.version>
+        <maven.javadoc.skip>true</maven.javadoc.skip>
     </properties>
+
 
     <packaging>jar</packaging>
 
@@ -71,6 +73,7 @@
             <artifactId>mapstruct</artifactId>
             <version>1.5.2.Final</version> <!-- Use the latest version -->
         </dependency>
+
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct-processor</artifactId>
@@ -91,6 +94,22 @@
             <version>0.11.5</version>
         </dependency>
 
+
+
+        <!--
+        ===========> SWAGGER  <==============
+            http://localhost:8081/v3/api-docs
+            http://localhost:8081/swagger-ui/index.html
+          -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.8.1</version>
+        </dependency>
+
+
+
+
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-impl</artifactId>
@@ -106,9 +125,8 @@
         </dependency>
 
 
-
-
     </dependencies>
+
 
 
 </project>
