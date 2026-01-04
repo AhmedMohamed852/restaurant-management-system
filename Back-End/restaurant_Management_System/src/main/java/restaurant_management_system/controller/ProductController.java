@@ -48,7 +48,7 @@ public class ProductController {
 
             responses = {
                 @ApiResponse( responseCode = "200", description = "Http Status Success" ,
-                              content = @Content(schema = @Schema(implementation = MessageResponse.class))
+                              content = @Content(schema = @Schema(implementation = ProductsResponseVm.class))
                             ) ,
 
                 @ApiResponse(responseCode = "500" ,description = "Http Status Products Not Found" ,
@@ -70,6 +70,25 @@ public class ProductController {
 
 //TODO _________________getAllProducts_______________________________
 //TODO ______________________________________________________________
+
+// TODO -----------> SWAGGER {
+    @Operation(
+            summary = "Get All Products" ,
+            description = "Get All Products" ,
+
+            responses = {
+                        @ApiResponse( responseCode = "200" ,description = "Http Status Success" ,
+                                      content = @Content(schema = @Schema(implementation = ProductsResponseVm.class))
+                                      ) ,
+
+                        @ApiResponse( responseCode = "500" ,description = "Http Status Products Not Found" ,
+                                      content = @Content(schema = @Schema(implementation = MessageResponse.class))
+                                     )
+                       }
+
+         )
+// TODO               SWAGGER }     <---------------------
+
     @PreAuthorize("hasAnyRole('USER' ,'ADMIN')")
     @GetMapping("/getAllProducts")
     public ResponseEntity<ProductsResponseVm> getAllProducts(@RequestParam int pageNumber , @RequestParam int pageSize)
@@ -81,6 +100,25 @@ public class ProductController {
 
 //TODO _________________ save Product __________________________________
 //TODO ______________________________________________________________
+
+    // TODO -----------> SWAGGER {
+    @Operation(
+            summary = "Save Product",
+            description = "API To Save Product",
+
+            responses = {
+                    @ApiResponse( responseCode = "200" ,description = "Http Status Success" ,
+                            content = @Content(schema = @Schema(implementation = ProductDto.class))
+                    ) ,
+
+                    @ApiResponse( responseCode = "500" ,description = "Http Status Product Already Exists" ,
+                            content = @Content(schema = @Schema(implementation = MessageResponse.class))
+                    )
+            }
+
+    )
+// TODO               SWAGGER }     <---------------------
+
    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/saveProduct")
     public ResponseEntity<ProductDto> saveProduct (@RequestBody @Valid ProductDto productDto ) throws URISyntaxException
@@ -92,6 +130,25 @@ public class ProductController {
 
 //TODO _________________ saveListOfProducts ___________________________
 //TODO ______________________________________________________________
+
+    // TODO -----------> SWAGGER {
+    @Operation(
+            summary = "Save List Of Products",
+            description = "API To Save List Of Products",
+
+            responses = {
+                    @ApiResponse( responseCode = "200" ,description = "Http Status Success" ,
+                            content = @Content(schema = @Schema(implementation = ProductDto.class))
+                    ) ,
+
+                    @ApiResponse( responseCode = "500" ,description = "Http Status Product Already Exists" ,
+                            content = @Content(schema = @Schema(implementation = MessageResponse.class))
+                    )
+            }
+
+    )
+// TODO               SWAGGER }     <---------------------
+
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/saveListOfProducts")
     public  ResponseEntity<List<ProductDto>> saveListOfProducts(@RequestBody @Valid List<ProductDto> productDtoList) throws URISyntaxException
@@ -103,6 +160,26 @@ public class ProductController {
 
 //TODO _________________ update Product ________________________________
 //TODO ______________________________________________________________
+
+
+    // TODO -----------> SWAGGER {
+    @Operation(
+            summary = "Update Product",
+            description = "API To Update Product",
+
+            responses = {
+                    @ApiResponse( responseCode = "200" ,description = "Http Status Success" ,
+                            content = @Content(schema = @Schema(implementation = ProductDto.class))
+                    ) ,
+
+                    @ApiResponse( responseCode = "500" ,description = "Http Status Product Not Found" ,
+                            content = @Content(schema = @Schema(implementation = MessageResponse.class))
+                    )
+            }
+
+    )
+// TODO               SWAGGER }     <---------------------
+
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/updateProduct")
     public   ResponseEntity<ProductDto> updateProduct(@RequestBody @Valid ProductDto productDto)
@@ -114,6 +191,26 @@ public class ProductController {
 
 //TODO _________________ update List Of Products ___________________________
 //TODO ________________________________________________________________
+
+
+    // TODO -----------> SWAGGER {
+    @Operation(
+            summary = "Update List Of Products",
+            description = "API To Update List Of Products" ,
+
+            responses = {
+                    @ApiResponse( responseCode = "200" ,description = "Http Status Success" ,
+                            content = @Content(schema = @Schema(implementation = ProductDto.class))
+                    ) ,
+
+                    @ApiResponse( responseCode = "500" ,description = "Http Status Product Not Found" ,
+                            content = @Content(schema = @Schema(implementation = MessageResponse.class))
+                    )
+            }
+
+    )
+// TODO               SWAGGER }     <---------------------
+
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/updateListOfProducts")
     public ResponseEntity<List<ProductDto>> updateListOfProducts(@RequestBody @Valid List<ProductDto> productDtoList)
@@ -124,6 +221,24 @@ public class ProductController {
 
 //TODO _________________ deleteProduct __________________________________
 //TODO ________________________________________________________________
+
+
+    // TODO -----------> SWAGGER {
+    @Operation(
+            summary = "Delete Product" ,
+            description = "API To Delete Product",
+
+            responses = {
+                    @ApiResponse( responseCode = "200" ,description = "Http Status Success" ),
+
+                    @ApiResponse( responseCode = "500" ,description = "Http Status Product Not Found" ,
+                            content = @Content(schema = @Schema(implementation = MessageResponse.class))
+                    )
+            }
+
+    )
+// TODO               SWAGGER }     <---------------------
+
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/deleteProduct")
     public ResponseEntity<Void> deleteProduct(@RequestParam String productName)
@@ -135,6 +250,23 @@ public class ProductController {
 
 //TODO _________________ deleteListOfProducts ___________________________
 //TODO ________________________________________________________________
+
+    // TODO -----------> SWAGGER {
+    @Operation(
+            summary = "Delete List Of Products",
+            description = "API To Delete List Of Products",
+
+            responses = {
+                    @ApiResponse( responseCode = "200" ,description = "Http Status Success") ,
+
+                    @ApiResponse( responseCode = "500" ,description = "Http Status Product Not Found" ,
+                            content = @Content(schema = @Schema(implementation = MessageResponse.class))
+                    )
+            }
+
+    )
+// TODO               SWAGGER }     <---------------------
+
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/deleteListOfProducts")
     public ResponseEntity<Void> deleteListOfProducts(@RequestParam List<String> productNames)
@@ -147,6 +279,25 @@ public class ProductController {
 
 //TODO _________________ searchProducts _________________________________
 //TODO ________________________________________________________________
+
+    // TODO -----------> SWAGGER {
+    @Operation(
+            summary = "Search Products",
+            description = "API To Search Products By Key Word",
+
+            responses = {
+                    @ApiResponse( responseCode = "200" ,description = "Http Status Success" ,
+                            content = @Content(schema = @Schema(implementation = ProductsResponseVm.class))
+                    ) ,
+
+                    @ApiResponse( responseCode = "500" ,description = "Http Status Product Not Found" ,
+                            content = @Content(schema = @Schema(implementation = MessageResponse.class))
+                    )
+            }
+
+    )
+// TODO               SWAGGER }     <---------------------
+
     @PreAuthorize("hasAnyRole('USER' ,'ADMIN')")
     @GetMapping("/searchProducts")
     public ResponseEntity<ProductsResponseVm> searchProducts(@RequestParam String key , @RequestParam int pageNumber , @RequestParam int pageSize)
@@ -156,6 +307,24 @@ public class ProductController {
 
 //TODO _________________getProductById_________________________________
 //TODO ________________________________________________________________
+
+    // TODO -----------> SWAGGER {
+    @Operation(
+            summary = "Get Product By Id" ,
+            description  = "API To Get Product By Id",
+
+            responses = {
+                    @ApiResponse( responseCode = "200" ,description = "Http Status Success" ,
+                            content = @Content(schema = @Schema(implementation = ProductDto.class))
+                    ) ,
+
+                    @ApiResponse( responseCode = "500" ,description = "Http Status Product Not Found" ,
+                            content = @Content(schema = @Schema(implementation = MessageResponse.class))
+                    )
+            }
+
+    )
+// TODO               SWAGGER }     <---------------------
     @PreAuthorize("hasAnyRole('USER' ,'ADMIN')")
     @GetMapping("getById")
     public ResponseEntity<ProductDto> getProductById(@RequestParam Long id )

@@ -1,18 +1,29 @@
 package restaurant_management_system.service;
 
 import restaurant_management_system.dto.OrdersDto;
+import restaurant_management_system.vm.MyOrderHistoryVm;
 import restaurant_management_system.vm.OrderWithContactVM;
-import restaurant_management_system.vm.OrdersResponseVm;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface OrdersService {
 
     OrdersDto saveOrder(OrdersDto ordersDto);
 
-    List<OrdersDto> getMyOrders();
+    MyOrderHistoryVm getMyOrders(int  pageNUmber , int pageSize );
+    MyOrderHistoryVm getMyOrdersSorted(int  pageNUmber , int pageSize ,String typeSorted );
 
-    List<OrdersDto> getAllOrders(/*int pageNumber , int pageSize*/);
+    MyOrderHistoryVm getMyOrdersFromDateToDateSorted(int  pageNUmber , int pageSize , LocalDate FromDate, LocalDate ToDate,String typeSorted );
+
+
+    MyOrderHistoryVm getAllOrders(int pageNumber , int pageSize);
+    MyOrderHistoryVm getAllOrdersSorted(int pageNumber , int pageSize , String typeSorted);
+
+
+    MyOrderHistoryVm FilterAllOrdersFromDateToDate(int pageNumber , int pageSize, LocalDate FromDate, LocalDate ToDate ,String typeSorted);
+
 
     List<OrdersDto> getMyApproval();
 
@@ -24,4 +35,6 @@ public interface OrdersService {
     void rejectedOrder(Long orderId ,String message );
 
     List<OrderWithContactVM> getAllOrderPending();
+
+
 }

@@ -19,27 +19,12 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @EntityListeners(org.springframework.data.jpa.domain.support.AuditingEntityListener.class)
-public class OrderItem {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class OrderItem extends  BaseEntity {
+
 
     private Long quantity;
 
     double PriceThisItem;
-
-
-    @CreatedDate
-    private LocalDateTime createdDate ;
-
-    @LastModifiedDate
-    private LocalDateTime LastModified ;
-
-    @CreatedBy
-    private String createdBy;
-
-    @LastModifiedBy
-    private String updatedBy;
 
 //____________________relation___________________________
 

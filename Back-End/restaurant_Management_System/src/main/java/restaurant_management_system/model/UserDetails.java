@@ -19,10 +19,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @EntityListeners(org.springframework.data.jpa.domain.support.AuditingEntityListener.class)
-public class UserDetails {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class UserDetails extends BaseEntity {
+
 
     @Column(nullable = false)
     private int age;
@@ -34,17 +32,6 @@ public class UserDetails {
     private String address;
 
 
-    @CreatedDate
-    private LocalDateTime createdDate ;
-
-    @LastModifiedDate
-    private LocalDateTime LastModified ;
-
-    @CreatedBy
-    private String createdBy;
-
-    @LastModifiedBy
-    private String updatedBy;
 
 //____________________relation___________________________
     @OneToOne

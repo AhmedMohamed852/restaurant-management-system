@@ -2,19 +2,27 @@ package restaurant_management_system.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import org.springframework.stereotype.Service;
 import restaurant_management_system.dto.*;
-import restaurant_management_system.eNum.OrderStatus;
+import restaurant_management_system.enums.OrderStatus;
+import restaurant_management_system.enums.SortedType;
 import restaurant_management_system.mapper.*;
 
 import restaurant_management_system.model.*;
 import restaurant_management_system.repo.OrderItemRepo;
 import restaurant_management_system.repo.OrdersRepo;
 import restaurant_management_system.service.*;
+import restaurant_management_system.vm.MyOrderHistoryVm;
 import restaurant_management_system.vm.OrderWithContactVM;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -152,18 +160,97 @@ public class OrdersImpl implements OrdersService {
 //TODO _______________________________________________________________________
 
     @Override
-    public List<OrdersDto> getMyOrders()
+    public MyOrderHistoryVm getMyOrders(int  pageNUmber , int pageSize )
     {
 
-        Optional<List<Orders>> orders = ordersRepo.findByUsers_IdAndStatusAndMessageIsNotNull(getUserId() , OrderStatus.CONFIRMED);
+        validatePageNumberAndSize(pageNUmber, pageSize);
+
+        Pageable pageable = PageRequest.of(pageNUmber - 1, pageSize);
+
+
+        Page<Orders> orders = ordersRepo.findByUsers_IdAndStatusAndMessageIsNotNull(getUserId(), OrderStatus.CONFIRMED  ,pageable);
 
         if(orders.isEmpty())
         {
             throw new RuntimeException("No.Orders.Found");
         }
 
+        return new MyOrderHistoryVm(ordersMapper.toDtoList(orders.getContent()),orders.getTotalElements());
 
-        return ordersMapper.toDtoList(orders.get());
+    }
+
+
+
+//TODO ____________________ get My Orders Sorted ___________________________
+//TODO _______________________________________________________________________
+
+    @Override
+    public MyOrderHistoryVm getMyOrdersSorted(int pageNUmber, int pageSize ,String typeSorted )
+    {
+        validatePageNumberAndSize(pageNUmber, pageSize);
+
+        Pageable pageable = PageRequest.of(pageNUmber - 1, pageSize);
+
+
+        Page<Orders> orders;
+
+        if(typeSorted.equals(SortedType.ASC.toString()))
+        {
+            orders = ordersRepo.findByUsers_IdAndStatusOrderByCreatedDateAsc(getUserId(), OrderStatus.CONFIRMED  ,pageable);
+        } else if(typeSorted.equals(SortedType.DESC.toString()))
+        {
+            orders = ordersRepo.findByUsers_IdAndStatusOrderByCreatedDateDesc(getUserId(), OrderStatus.CONFIRMED  ,pageable);
+        }
+        else{
+            throw new RuntimeException("Unknown.type");
+        }
+
+        if(orders.isEmpty())
+        {
+            throw new RuntimeException("No.Orders.Found");
+        }
+
+        return new MyOrderHistoryVm(ordersMapper.toDtoList(orders.getContent()),orders.getTotalElements());
+    }
+
+
+
+
+//TODO ____________________ get My Orders From Date To Date Sorted  __________________
+//TODO __________________________________________________________________________________
+
+    @Override
+    public MyOrderHistoryVm getMyOrdersFromDateToDateSorted(int pageNUmber, int pageSize, LocalDate FromDate, LocalDate ToDate ,String typeSorted)
+    {
+        validatePageNumberAndSize(pageNUmber, pageSize);
+
+        Pageable pageable = PageRequest.of(pageNUmber - 1, pageSize);
+
+
+        Page<Orders> orders ;
+        LocalDateTime fromDateTime = FromDate.atStartOfDay();
+        LocalDateTime toDateTime = ToDate.atTime(LocalTime.MAX);
+
+
+        if(typeSorted.equals(SortedType.ASC.toString()))
+        {
+            orders = ordersRepo.findByUsers_IdAndStatusAndCreatedDateBetweenOrderByCreatedDateAsc(
+                    getUserId(), OrderStatus.CONFIRMED  , fromDateTime , toDateTime ,pageable);
+        } else if(typeSorted.equals(SortedType.DESC.toString()))
+        {
+            orders =ordersRepo.findByUsers_IdAndStatusAndCreatedDateBetweenOrderByCreatedDateDesc(
+                    getUserId(), OrderStatus.CONFIRMED  , fromDateTime , toDateTime ,pageable);
+        }
+        else{
+            throw new RuntimeException("Unknown.type");
+        }
+
+        if(orders.isEmpty() || orders.getContent().isEmpty())
+        {
+            throw new RuntimeException("No.Orders.Found");
+        }
+
+        return new MyOrderHistoryVm(ordersMapper.toDtoList(orders.getContent()),orders.getTotalElements());
     }
 
 
@@ -262,7 +349,7 @@ public class OrdersImpl implements OrdersService {
 */
 
 
-//TODO _________________ approveOrder ______________________
+//TODO _________________ approve Order ______________________
 //TODO ______________________________________________________
     @Override
     public void approveOrder(Long orderId)
@@ -303,23 +390,91 @@ public class OrdersImpl implements OrdersService {
 //TODO ____________________get All Orders____________________________________
 //TODO _______________________________________________________________________
     @Override
-    public List<OrdersDto> getAllOrders(/*int pageNumber , int pageSize*/)
+    public MyOrderHistoryVm getAllOrders(int pageNumber , int pageSize)
     {
-        /*validatePageNumberAndSize(pageNumber, pageSize);
+        validatePageNumberAndSize(pageNumber, pageSize);
 
         Pageable pageable = PageRequest.of(pageNumber - 1, pageSize);
 
 
-        Page<Orders> orders = ordersRepo.findAll(pageable);*/
+        Page<Orders> orders = ordersRepo.findAll(pageable);
 
-        List<Orders> orders = ordersRepo.findAll();
 
         if(orders.isEmpty() || orders == null)
         {
             throw new RuntimeException("No.Orders.Found");
         }
 
-        return ordersMapper.toDtoList(orders);
+        return new MyOrderHistoryVm(ordersMapper.toDtoList(orders.getContent()),orders.getTotalElements());
+    }
+
+
+
+//TODO ____________________ get All Orders Sorted  _________________________
+//TODO _______________________________________________________________________
+
+    @Override
+    public MyOrderHistoryVm getAllOrdersSorted(int pageNumber, int pageSize , String typeSorted) {
+        validatePageNumberAndSize(pageNumber, pageSize);
+
+        Pageable pageable = PageRequest.of(pageNumber - 1, pageSize);
+
+        Page<Orders> orders ;
+
+
+        if(typeSorted.equals(SortedType.ASC.toString()))
+        {
+            orders = ordersRepo.findAllByOrderByCreatedDateAsc(pageable);
+        } else if(typeSorted.equals(SortedType.DESC.toString()))
+        {
+            orders = ordersRepo.findAllByOrderByCreatedDateDesc( pageable);
+        }
+        else{
+            throw new RuntimeException("Unknown.type");
+        }
+
+        if(orders.isEmpty() || orders == null)
+        {
+            throw new RuntimeException("No.Orders.Found");
+        }
+
+        return new MyOrderHistoryVm(ordersMapper.toDtoList(orders.getContent()),orders.getTotalElements());
+    }
+
+
+//TODO ____________________Filter All Orders From Date To Date ______________
+//TODO _______________________________________________________________________
+
+    @Override
+    public MyOrderHistoryVm FilterAllOrdersFromDateToDate(int pageNumber, int pageSize, LocalDate FromDate, LocalDate ToDate, String typeSorted)
+    {
+        validatePageNumberAndSize(pageNumber, pageSize);
+
+        Pageable pageable = PageRequest.of(pageNumber - 1, pageSize);
+
+       Page<Orders> orders;
+
+        LocalDateTime fromDateTime = FromDate.atStartOfDay();
+        LocalDateTime toDateTime = ToDate.atTime(LocalTime.MAX);
+
+       if(typeSorted.equals(SortedType.ASC.toString()))
+       {
+            orders = ordersRepo.findByCreatedDateBetweenOrderByCreatedDateDesc(fromDateTime , toDateTime , pageable);
+       } else if(typeSorted.equals(SortedType.DESC.toString()))
+       {
+           orders = ordersRepo.findByCreatedDateBetweenOrderByCreatedDateAsc(fromDateTime , toDateTime , pageable);
+       }
+       else{
+           throw new RuntimeException("Unknown.type");
+       }
+
+
+        if(orders.isEmpty() || orders == null)
+        {
+            throw new RuntimeException("No.Orders.Found");
+        }
+
+        return new MyOrderHistoryVm(ordersMapper.toDtoList(orders.getContent()),orders.getTotalElements());
     }
 
 

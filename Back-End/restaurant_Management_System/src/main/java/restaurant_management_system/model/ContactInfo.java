@@ -19,10 +19,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @EntityListeners(org.springframework.data.jpa.domain.support.AuditingEntityListener.class)
-public class ContactInfo {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class ContactInfo extends BaseEntity {
 
     private String name ;
 
@@ -32,19 +29,6 @@ public class ContactInfo {
 
     private String message ;
 
-
-
-    @CreatedDate
-    private LocalDateTime createdDate ;
-
-    @LastModifiedDate
-    private LocalDateTime LastModified ;
-
-    @CreatedBy
-    private String createdBy;
-
-    @LastModifiedBy
-    private String updatedBy;
 
     private String replyMessage;
 

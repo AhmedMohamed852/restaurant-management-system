@@ -10,7 +10,7 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
-import restaurant_management_system.eNum.OrderStatus;
+import restaurant_management_system.enums.OrderStatus;
 
 
 import java.time.LocalDateTime;
@@ -23,10 +23,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @EntityListeners(org.springframework.data.jpa.domain.support.AuditingEntityListener.class)
-public class Orders {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Orders extends BaseEntity {
+
 
     private Long code;
 
@@ -40,17 +38,6 @@ public class Orders {
     @Column(name = "message", nullable = true, columnDefinition = "VARCHAR(255)")
     private String message;
 
-    @CreatedDate
-    private LocalDateTime createdDate ;
-
-    @LastModifiedDate
-    private LocalDateTime LastModified ;
-
-    @CreatedBy
-    private String createdBy;
-
-    @LastModifiedBy
-    private String updatedBy;
 
 
 //_______________________relation__________________

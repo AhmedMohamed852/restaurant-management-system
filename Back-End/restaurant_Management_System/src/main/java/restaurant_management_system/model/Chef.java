@@ -18,10 +18,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @EntityListeners(org.springframework.data.jpa.domain.support.AuditingEntityListener.class)
-public class Chef {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Chef extends  BaseEntity{
 
     private String name ;
     private String spec ;
@@ -30,18 +27,6 @@ public class Chef {
     private String tweLink ;
     private String instaLink ;
 
-
-    @CreatedDate
-    private LocalDateTime createdDate ;
-
-    @LastModifiedDate
-    private LocalDateTime LastModified ;
-
-    @CreatedBy
-    private String createdBy;
-
-    @LastModifiedBy
-    private String updatedBy;
 
 //____________________relation___________________________
 

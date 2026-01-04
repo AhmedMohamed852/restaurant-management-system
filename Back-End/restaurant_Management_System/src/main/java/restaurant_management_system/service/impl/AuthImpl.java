@@ -5,16 +5,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import restaurant_management_system.config.tokenHandler.TokenHandler;
 import restaurant_management_system.dto.UsersDto;
-import restaurant_management_system.eNum.RolesEnum;
 import restaurant_management_system.mapper.UsersMapper;
-import restaurant_management_system.model.Role;
 import restaurant_management_system.repo.RoleRepo;
 import restaurant_management_system.service.AuthService;
 import restaurant_management_system.service.UserService;
 import restaurant_management_system.vm.LoginRequestVm;
 import restaurant_management_system.vm.LoginResponseVm;
-
-import java.util.List;
 
 @Service
 public class AuthImpl implements AuthService {

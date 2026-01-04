@@ -3,7 +3,7 @@ package restaurant_management_system.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import restaurant_management_system.dto.RoleDto;
-import restaurant_management_system.eNum.RolesEnum;
+import restaurant_management_system.enums.RolesEnum;
 import restaurant_management_system.mapper.RoleMapper;
 import restaurant_management_system.repo.RoleRepo;
 import restaurant_management_system.service.RoleService;

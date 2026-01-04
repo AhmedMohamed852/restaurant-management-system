@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import restaurant_management_system.eNum.RolesEnum;
+import restaurant_management_system.enums.RolesEnum;
 import restaurant_management_system.model.Users;
 
 import java.util.List;

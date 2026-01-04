@@ -1,4 +1,4 @@
-package restaurant_management_system.eNum;
+package restaurant_management_system.enums;
 
 public enum OrderStatus {
     PENDING,
