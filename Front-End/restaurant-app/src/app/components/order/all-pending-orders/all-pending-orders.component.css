@@ -1,0 +1,171 @@
+/* ===== Header ===== */
+.admin-header h2 {
+  font-weight: 800;
+  color: #0d6efd;
+}
+.admin-header p {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+/* ===== Empty State ===== */
+.no-orders {
+  background: #f8f9fa;
+  padding: 60px;
+  text-align: center;
+  border-radius: 14px;
+  color: #6c757d;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* ===== Order Card ===== */
+.order-card-new {
+  background: #ffffff;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  display: flex;
+  overflow: hidden;
+}
+
+/* ===== Status Pillar ===== */
+.status-pillar {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 10px;
+  text-align: center;
+  color: white;
+  font-weight: 700;
+}
+
+.status-pillar .order-code {
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.status-pillar .order-status {
+  padding: 8px 18px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.status-pillar.pending-bg { background: #ffc107; }
+.status-pillar.approved-bg { background: #198754; }
+.status-pillar.rejected-bg { background: #dc3545; }
+
+/* ===== Content ===== */
+.order-content-new {
+  flex-grow: 1;
+  padding: 20px 25px;
+}
+
+/* ===== User Info ===== */
+.user-info-box {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 20px;
+  background: #f8f9fa;
+  padding: 14px 18px;
+  border-radius: 14px;
+  margin-bottom: 16px;
+}
+
+.user-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+}
+
+.user-row .label {
+  color: #6c757d;
+  font-weight: 600;
+}
+
+.user-row .value {
+  color: #212529;
+  font-weight: 700;
+}
+
+/* ===== Info + Actions ===== */
+.info-actions-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.order-info-new {
+  display: flex;
+  gap: 30px;
+}
+
+.order-info-new strong {
+  font-size: 1.2rem;
+  color: #343a40;
+}
+
+.order-info-new small {
+  display: block;
+  font-size: 0.75rem;
+  color: #6c757d;
+}
+
+/* ===== Actions ===== */
+.order-actions-wide {
+  display: flex;
+  gap: 10px;
+}
+
+/* ===== Reject Box ===== */
+.reject-box-wide {
+  background: #fff5f5;
+  border: 1px solid #f5c2c7;
+  padding: 12px;
+  border-radius: 12px;
+  margin-top: 15px;
+}
+
+.reject-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+/* ===== Messages ===== */
+.order-msg-wide {
+  margin-top: 15px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.order-msg-wide.success {
+  background: #e6fffa;
+  color: #0f5132;
+}
+
+.order-msg-wide.error {
+  background: #fdecea;
+  color: #842029;
+}
+
+/* ===== Items ===== */
+.order-items-wide {
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px dashed #dee2e6;
+}
+
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  padding: 6px 0;
+}

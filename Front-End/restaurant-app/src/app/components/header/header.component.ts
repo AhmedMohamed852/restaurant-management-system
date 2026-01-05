@@ -80,4 +80,9 @@ export class HeaderComponent implements OnInit {
   {
     this.router.navigateByUrl("/showAllContacts");
   }
+
+  protected showAllPendingOrders()
+  {
+    this.router.navigateByUrl("/allPendingOrders");
+  }
 }

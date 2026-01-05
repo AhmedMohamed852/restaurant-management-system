@@ -1,0 +1,65 @@
+<div class="container py-5">
+
+  <!-- ===== Page Title ===== -->
+  <div class="text-center mb-5">
+    <h1 class="page-title">Pending Orders</h1>
+    <p class="page-subtitle">
+      Orders awaiting administrative approval
+    </p>
+  </div>
+
+  <!-- ===== Error Message Box ===== -->
+  <div class="msg-box error" *ngIf="messageEn || messageAr">
+    <p class="msg-ar">{{ messageAr }}</p>
+    <p class="msg-en">{{ messageEn }}</p>
+  </div>
+
+  <!-- ===== No Pending Orders ===== -->
+  <div class="empty-box" *ngIf="myApproval.length === 0">
+    <p>No pending approval orders found.</p>
+  </div>
+
+  <!-- ===== Pending Orders List ===== -->
+  <div class="row g-4" *ngIf="myApproval.length > 0">
+
+    <div class="col-lg-6" *ngFor="let order of myApproval">
+
+      <div class="order-card shadow-sm">
+
+        <!-- Header -->
+        <div class="order-header">
+          <span class="order-code">Order #{{ order.code }}</span>
+          <span class="status pending">{{ order.status }}</span>
+        </div>
+
+        <!-- Info -->
+        <div class="order-info">
+          <p><strong>Total Price:</strong> ${{ order.totalPrice }}</p>
+          <p><strong>Total Items:</strong> {{ order.totalNumber }}</p>
+        </div>
+
+        <!-- Message -->
+        <div class="approval-message">
+          <p>{{ order.displayMessage }}</p>
+          <small *ngIf="order.message === null">
+            الطلب معلق حاليًا وسيتم الرد عليك في أقرب وقت بعد مراجعة الإدارة.
+          </small>
+        </div>
+
+
+        <!-- Order Items -->
+        <div class="order-items">
+          <h6>Items</h6>
+
+          <div class="item-row" *ngFor="let item of order.orderItems">
+            <span>{{ item.product.name }}</span>
+            <span>x{{ item.quantity }}</span>
+            <span>${{ item.priceThisItem }}</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

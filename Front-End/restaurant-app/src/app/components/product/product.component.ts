@@ -33,6 +33,7 @@ export class ProductComponent implements OnInit  {
       this.roles = this.userService.getRoles();
       this.activatedRoute.paramMap.subscribe(params =>
      {
+
        this.getAllProducts()
      });
 

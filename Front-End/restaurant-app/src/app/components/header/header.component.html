@@ -18,8 +18,8 @@
     <div class="collapse navbar-collapse" id="navbarNav">
 
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <!--<li *ngIf="isUserLogin()" class="nav-item"><a class="nav-link" href="#"><h5>Category</h5></a></li>-->
         <li *ngIf="isUserLogin() && !isAdmin() " class="nav-item"><a class="nav-link" routerLink="/contact"><h5>My Contact</h5></a></li>
+        <li *ngIf="isUserLogin() && !isAdmin() " class="nav-item"><a class="nav-link" routerLink="/PendingOrders"><h5>My Approval</h5></a></li>
         <li *ngIf="isUserLogin()" class="nav-item"><a class="nav-link" routerLink="/team"><h5>Team</h5></a></li>
         <li *ngIf="!isUserLogin()" class="nav-item"><a class="nav-link" routerLink="/login"><h5>Login</h5></a></li>
         <li *ngIf="!isUserLogin()" class="nav-item"><a class="nav-link" routerLink="/signup"><h5>SignUp</h5></a></li>
@@ -30,6 +30,7 @@
             <li><a class="dropdown-item" (click)="addProduct()">Add Product</a></li>
             <li><a class="dropdown-item" (click)="removeProduct()">Remove Product</a></li>
             <li><a class="dropdown-item" (click)="showAllContacts()">Show All Contacts</a></li>
+            <li><a class="dropdown-item" (click)="showAllPendingOrders()">Order Approval</a></li>
           </ul>
         </li>
 

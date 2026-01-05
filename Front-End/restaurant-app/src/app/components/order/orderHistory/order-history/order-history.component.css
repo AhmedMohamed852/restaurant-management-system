@@ -178,3 +178,503 @@
   transform: translateY(-2px);
   box-shadow: var(--shadow-hover);
 }
+/* =================== Pagination =================== */
+
+.pagination-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-top: 40px;
+}
+
+/* Prev / Next Buttons */
+.pagination-prev-next {
+  background-color: var(--secondary-color);
+  border: 2px solid var(--secondary-color);
+  color: #fff;
+  font-weight: 700;
+  padding: 8px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.4px;
+}
+
+.pagination-prev-next:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Disable style (optional) */
+.pagination-prev-next:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ngb-pagination container */
+::ng-deep ngb-pagination ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* ================= Pagination Section ================= */
+
+.pagination-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Prev & Next buttons */
+.pagination-prev-next {
+  background-color: #212529;
+  border: 2px solid #212529;
+  color: #ffffff;
+  font-weight: 700;
+  padding: 8px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination-prev-next:hover {
+  background-color: #fea116;
+  border-color: #fea116;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(254, 161, 22, 0.45);
+}
+
+/* ngb-pagination list reset */
+::ng-deep ngb-pagination ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Pagination item */
+::ng-deep ngb-pagination li a {
+  color: #212529;
+  font-weight: 700;
+  border-radius: 10px;
+  margin: 0 4px;
+  border: 2px solid transparent;
+  padding: 6px 12px;
+  transition: all 0.3s ease;
+}
+
+/* Hover state */
+::ng-deep ngb-pagination li a:hover {
+  background-color: rgba(254, 161, 22, 0.15);
+  border-color: #fea116;
+}
+
+/* Active page */
+::ng-deep ngb-pagination li.active a {
+  background-color: #fea116;
+  border-color: #fea116;
+  color: #ffffff;
+  box-shadow: 0 6px 16px rgba(254, 161, 22, 0.5);
+}
+
+/* Disabled page */
+::ng-deep ngb-pagination li.disabled a {
+  color: #aaa;
+  background-color: #f1f1f1;
+  cursor: not-allowed;
+}
+
+/* Page size select */
+.sel select {
+  background-color: #ffffff;
+  border: 2px solid #fea116;
+  border-radius: 10px;
+  padding: 6px 14px;
+  font-weight: 700;
+  color: #212529;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sel select:hover {
+  background-color: rgba(254, 161, 22, 0.1);
+}
+
+.sel select:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(254, 161, 22, 0.25);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .pagination-wrapper {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
+
+
+/* ===============================
+   BETTER VISIBILITY OVERRIDE
+   =============================== */
+
+:root {
+  --primary-color: #e58e00;     /* برتقالي أغمق */
+  --secondary-color: #1f2933;   /* كحلي غامق */
+  --text-light: #ffffff;
+  --text-dark: #111827;
+  --background-main: #f9fafb;
+  --card-bg: #ffffff;
+  --border-light: #d1d5db;
+}
+
+/* Page background */
+.order-history-container {
+  background: #f9fafb;
+}
+
+/* Titles */
+.history-title {
+  color: #111827;
+}
+
+.history-title::after {
+  background-color: var(--primary-color);
+}
+
+/* Order Card */
+.order-card {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Order header text */
+.order-label {
+  color: #6b7280;
+}
+
+.order-code {
+  color: var(--primary-color);
+}
+
+.order-date {
+  color: #374151;
+  font-weight: 600;
+}
+
+/* Summary boxes */
+.summary-item {
+  background: #1f2933;
+}
+
+.summary-label {
+  color: #d1d5db;
+}
+
+.summary-value {
+  color: #ffffff;
+}
+
+.total-summary-item {
+  background: linear-gradient(135deg, #e58e00, #fbbf24);
+}
+
+.summary-total-value {
+  color: #ffffff;
+}
+
+/* Items list title */
+.items-list-title {
+  color: #111827;
+  border-color: var(--primary-color);
+}
+
+/* Menu item card */
+.menu-item-card {
+  background-color: #ffffff !important;
+  border: 1px solid #e5e7eb;
+}
+
+.menu-item-card:hover {
+  border-color: var(--primary-color);
+}
+
+/* Product image */
+.product-thumb-lg {
+  border-color: var(--primary-color);
+}
+
+/* Price */
+.price-tag {
+  color: var(--primary-color);
+}
+
+/* Buttons */
+.btn-history {
+  background-color: #1f2933 !important;
+  border-color: #1f2933 !important;
+  color: #ffffff !important;
+}
+
+.btn-history:hover {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+/* Primary action */
+.primary-bg-btn {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+.primary-bg-btn:hover {
+  background-color: #fbbf24 !important;
+  border-color: #fbbf24 !important;
+}
+
+/* ================= Sort Box ================= */
+
+.sort-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sort-box select {
+  background-color: #ffffff;
+  border: 2px solid #9ca3af;
+  color: #111827;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 10px;
+}
+
+.sort-box select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(229, 142, 0, 0.25);
+}
+
+.sort-btn {
+  background-color: var(--primary-color);
+  border: none;
+  color: #111827;
+  font-weight: 700;
+  padding: 7px 18px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.sort-btn:hover {
+  background-color: #fbbf24;
+}
+
+/* ================= Pagination ================= */
+
+.pagination-wrapper {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+}
+
+.pagination-prev-next {
+  background-color: #1f2933;
+  border-color: #1f2933;
+  color: #ffffff;
+}
+
+.pagination-prev-next:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+/* ngb pagination */
+::ng-deep ngb-pagination li a {
+  color: #111827;
+  background-color: #ffffff;
+  border: 2px solid #e5e7eb;
+}
+
+::ng-deep ngb-pagination li a:hover {
+  background-color: rgba(229, 142, 0, 0.15);
+  border-color: var(--primary-color);
+}
+
+::ng-deep ngb-pagination li.active a {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #ffffff;
+}
+
+/* Page size select */
+.sel select {
+  background-color: #ffffff;
+  border: 2px solid var(--primary-color);
+  color: #111827;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .sort-box {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+}
+
+/* Fixed Sort Field Box (Creation Date) */
+.sort-field-box {
+  background-color: #ffffff;
+  border: 2px solid #9ca3af;
+  color: #111827;
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: 10px;
+  min-width: 160px;
+  text-align: center;
+  cursor: default;
+  user-select: none;
+}
+
+/* نفس إحساس الـ focus بتاع select */
+.sort-field-box:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(229, 142, 0, 0.2);
+}
+/* ===== Message Box ===== */
+.msg-box {
+  background: #fff8e6;
+  border-left: 5px solid #ff9f1c;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.msg-ar {
+  color: #a65b00;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.msg-en {
+  color: #555;
+  font-size: 14px;
+}
+
+/* ===== Filter Bar ===== */
+.filter-bar {
+  display: flex;
+  gap: 15px;
+  align-items: flex-end;
+  background: #ffffff;
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.filter-item {
+  min-width: 170px;
+}
+
+.filter-item label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #555;
+}
+
+.filter-item input,
+.filter-item select {
+  width: 100%;
+  padding: 7px 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+/* ===== Message Box ===== */
+.msg-box {
+  background: #fff8e6;
+  border-left: 5px solid #ff9f1c;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.msg-ar {
+  color: #a65b00;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.msg-en {
+  color: #555;
+  font-size: 14px;
+}
+
+/* ===== Filter Bar ===== */
+.filter-bar {
+  display: flex;
+  gap: 15px;
+  align-items: flex-end;
+  background: #ffffff;
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.filter-item {
+  min-width: 170px;
+}
+
+.filter-item label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #555;
+}
+
+.filter-item input,
+.filter-item select {
+  width: 100%;
+  padding: 7px 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+/* ===== Filter Button ===== */
+.filter-btn {
+  background: linear-gradient(135deg, #ff7a18, #ff9f1c);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 8px 18px;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .filter-bar {
+    flex-direction: column;
+  }
+
+  .filter-item {
+    width: 100%;
+  }
+}

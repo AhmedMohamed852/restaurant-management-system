@@ -144,7 +144,7 @@ mvn spring-boot:run
 
 بعد تشغيل الـ Back-End، تقدر تشوف كل الـ APIs موثقة من خلال Swagger:
 
-http://localhost:8081/swagger-ui.html
+http://localhost:8081/v3/api-docs
 
 
 أو:

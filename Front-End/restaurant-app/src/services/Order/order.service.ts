@@ -5,8 +5,6 @@ import {map, Observable} from "rxjs";
 import {OrderItem} from "../../models/order-item";
 import {OrderRequest} from "../../models/order-request";
 import {UserIdService} from "../user-id.service";
-import {Product} from "../../models/product";
-
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +14,6 @@ export class OrderService {
 
   baseUrl = "http://localhost:8081/api/orders/";
 
-  // @ts-ignore
   submitOrder():Observable<any>
   {
     const cartItems = this.cartService.getCartItems();
@@ -35,17 +32,65 @@ export class OrderService {
   }
 
 
-  viewHistory():Observable<any>
+  viewHistory(pageNumber: number , pageSize : number):Observable<any>
   {
-    const userId = this.userIdService.getCurrentUserId();
-    return this.http.get(this.baseUrl +"getAllOrdersByUserId/" + userId).pipe(map(response => response))
+    return this.http.get(this.baseUrl +"getMyOrders/" + pageNumber + "/" + pageSize)
+      .pipe(map(response => response))
+  }
+
+  viewHistorySorted(pageNumber: number , pageSize : number , typeSorted: string):Observable<any>
+  {
+    return this.http.get(this.baseUrl +"getMyOrdersSorted/" + pageNumber + "/" + pageSize + "/" + typeSorted)
+      .pipe(map(response => response))
   }
 
 
-  viewAllHistory():Observable<any>
+  viewMyApproval():Observable<any>
   {
-    return this.http.get<any>(this.baseUrl + "getAllOrders" )
+    return this.http.get(this.baseUrl +"getMyApproval").pipe(map(response => response))
+  }
+
+
+  allPendingOrders():Observable<any>
+  {
+    return this.http.get(this.baseUrl +"getAllOrdersPending").pipe(map(response => response))
+  }
+
+  approveOrder(id: number):Observable<any>
+  {
+    return this.http.put(this.baseUrl +"approveOrder/" + id ,null).pipe(map(response => response))
+  }
+
+  rejectedOrder(id: number , message: string):Observable<any>
+  {
+    return this.http.put(this.baseUrl +"rejectedOrder/" + id + "/" + message,null).pipe(map(response => response))
+  }
+
+
+  viewAllHistory(pageNumber: number , pageSize : number):Observable<any>
+  {
+    return this.http.get<any>(this.baseUrl + "getAllOrders/" + pageNumber + "/" + pageSize)
       .pipe(map(response => response));
   }
+
+  viewAllHistorySorted(pageNumber: number , pageSize : number , typeSorted: string):Observable<any>
+  {
+    return this.http.get<any>(this.baseUrl + "getAllOrdersSorted/" + pageNumber + "/" + pageSize + "/" + typeSorted).
+    pipe(map(response => response));
+  }
+
+  filterMyOrdersHistoryFromDateToDate(pageNumber: number , pageSize : number , fromDate: string , toDate: string ,typeSorted: string):Observable<any>
+  {
+    return this.http.get<any>(this.baseUrl + "filterMyOrdersFromDateToDate/" + pageNumber + "/" + pageSize +"/" + fromDate + "/" + toDate + "/" + typeSorted )
+      .pipe(map(response => response));
+  }
+
+
+  FilterAllOrdersHistoryFromDateToDate(pageNumber: number , pageSize : number , fromDate: string , toDate: string ,typeSorted : string)
+  {
+    return this.http.get<any>(this.baseUrl + "FilterAllOrdersFromDateToDate/" + pageNumber + "/" + pageSize +"/" + fromDate + "/" + toDate + "/" + typeSorted )
+      .pipe(map(response => response));
+  }
+
 
 }

@@ -1,0 +1,141 @@
+<div class="container-fluid py-4">
+
+  <div class="admin-header mb-4">
+    <h2>Pending Orders</h2>
+    <p>Orders waiting for admin approval</p>
+  </div>
+
+  <div class="no-orders"
+       *ngIf="myApproval.length === 0">
+    <p>🚫 لا توجد طلبات معلّقة حالياً</p>
+  </div>
+
+  <div *ngFor="let order of myApproval" class="order-card-new">
+
+    <!-- ===== Status Pillar ===== -->
+    <div class="status-pillar"
+         [ngClass]="{
+           'pending-bg': !order.approved && !order.rejected,
+           'approved-bg': order.approved,
+           'rejected-bg': order.rejected
+         }">
+
+      <span class="order-code">ORDER #{{ order.code }}</span>
+
+      <span class="order-status">
+        {{ order.status }}
+      </span>
+    </div>
+
+    <!-- ===== Content ===== -->
+    <div class="order-content-new">
+
+      <!-- ===== User Info ===== -->
+      <div class="user-info-box">
+        <div class="user-row">
+          <span class="label">User</span>
+          <span class="value">{{ order.username }}</span>
+        </div>
+
+        <div class="user-row">
+          <span class="label">Age</span>
+          <span class="value">{{ order.age }}</span>
+        </div>
+
+        <div class="user-row">
+          <span class="label">Phone</span>
+          <span class="value">{{ order.phoneNumber }}</span>
+        </div>
+
+        <div class="user-row">
+          <span class="label">Address</span>
+          <span class="value">{{ order.address }}</span>
+        </div>
+      </div>
+
+      <!-- ===== Info + Actions ===== -->
+      <div class="info-actions-row">
+
+        <div class="order-info-new">
+          <div>
+            <small>Total Price</small>
+            <strong>${{ order.totalPrice }}</strong>
+          </div>
+
+          <div>
+            <small>Total Items</small>
+            <strong>{{ order.totalNumber }}</strong>
+          </div>
+        </div>
+
+        <div class="order-actions-wide">
+
+          <button class="btn btn-success btn-sm"
+                  *ngIf="!order.approved && !order.rejected && !order.showRejectBox"
+                  (click)="approveOrder(order.code)">
+            Approve
+          </button>
+
+          <button class="btn btn-danger btn-sm"
+                  *ngIf="!order.approved && !order.rejected && !order.showRejectBox"
+                  (click)="order.showRejectBox = true">
+            Reject
+          </button>
+
+          <button class="btn btn-outline-primary btn-sm"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  [attr.data-bs-target]="'#order-items-' + order.code">
+            View Items
+          </button>
+
+        </div>
+      </div>
+
+      <!-- ===== Reject Box ===== -->
+      <div *ngIf="order.showRejectBox" class="reject-box-wide">
+        <textarea class="form-control"
+                  rows="2"
+                  placeholder="اكتب سبب رفض الطلب"
+                  [(ngModel)]="order.rejectionMessage">
+        </textarea>
+
+        <div class="reject-actions">
+          <button class="btn btn-danger btn-sm"
+                  (click)="confirmReject(order)">
+            Confirm
+          </button>
+
+          <button class="btn btn-secondary btn-sm"
+                  (click)="cancelReject(order)">
+            Cancel
+          </button>
+        </div>
+      </div>
+
+      <!-- ===== Messages ===== -->
+      <div *ngIf="order.approvalMessage || order.rejectionMessageSent"
+           class="order-msg-wide"
+           [ngClass]="{
+             'success': order.approvalMessage,
+             'error': order.rejectionMessageSent
+           }">
+        {{ order.approvalMessage || order.rejectionMessageSent }}
+      </div>
+
+      <!-- ===== Items ===== -->
+      <div class="collapse order-items-wide"
+           [id]="'order-items-' + order.code">
+
+        <div class="item-row"
+             *ngFor="let item of order.orderItems">
+          <span>{{ item.product.name }}</span>
+          <span>x{{ item.quantity }}</span>
+          <span>${{ item.priceThisItem }}</span>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

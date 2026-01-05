@@ -2,34 +2,102 @@
   <div class="row justify-content-center">
     <div class="col-lg-10">
 
-      <div class="d-flex justify-content-start mb-4 wow fadeInUp">
+      <!-- ===== Message Box ===== -->
+      <div class="msg-box" *ngIf="messageAr || messageEn">
+        <p class="msg-ar">{{ messageAr }}</p>
+        <p class="msg-en">{{ messageEn }}</p>
+      </div>
+
+      <!-- ===== Filter Bar ===== -->
+      <div class="filter-bar mb-4">
+
+        <div class="filter-item">
+          <label>Sort</label>
+          <select [(ngModel)]="sortDirection">
+            <option value="DESC">Newest First</option>
+            <option value="ASC">Oldest First</option>
+          </select>
+        </div>
+
+        <div class="filter-item">
+          <label>From Date</label>
+          <input type="date" [(ngModel)]="fromDate">
+        </div>
+
+        <div class="filter-item">
+          <label>To Date</label>
+          <input type="date" [(ngModel)]="toDate" [min]="fromDate" [disabled]="!fromDate" />
+        </div>
+
+        <div class="filter-item">
+          <button class="btn filter-btn" (click)="applyFilter()">Filter</button>
+        </div>
+
+      </div>
+
+      <!-- ===== Top Actions (Back + Sort) ===== -->
+      <div class="d-flex justify-content-between align-items-center mb-4 wow fadeInUp">
+
         <button (click)="goToProducts()" class="btn btn-sm btn-history shadow-sm">
           Back to Menu
         </button>
+
+        <!-- 🔽 Sort Controls -->
+        <div class="sort-box">
+
+          <div class="sort-field-box">
+            Creation Date
+          </div>
+
+          <select [(ngModel)]="sortDirection">
+            <option value="DESC">Newest First</option>
+            <option value="ASC">Oldest First</option>
+          </select>
+
+          <button class="btn sort-btn" (click)="applySorting()">Sort</button>
+
+        </div>
+
       </div>
 
-      <h2 class="text-center mb-5 display-5 fw-bold history-title wow fadeInUp">Your Order History</h2>
+      <!-- ===== Title ===== -->
+      <h2 class="text-center mb-5 display-5 fw-bold history-title wow fadeInUp">
+        Your Order History
+      </h2>
 
-      <div *ngIf="allOrders.length === 0" class="alert alert-info text-center shadow-sm wow fadeIn">
-        <h4 class="mb-0">You haven't placed any orders yet. Start exploring our delicious menu!</h4>
-        <button (click)="goToProducts()" class="btn primary-bg-btn mt-3">Browse Menu</button>
+      <!-- ===== Empty State ===== -->
+      <div *ngIf="allOrders.length === 0 && !messageEn"
+           class="alert alert-info text-center shadow-sm wow fadeIn">
+        <h4 class="mb-0">
+          You haven't placed any orders yet. Start exploring our delicious menu!
+        </h4>
+        <button (click)="goToProducts()" class="btn primary-bg-btn mt-3">
+          Browse Menu
+        </button>
       </div>
 
+      <!-- ===== Orders List ===== -->
       <div *ngIf="allOrders.length > 0" class="row g-4">
         <div *ngFor="let order of allOrders" class="col-12 wow fadeInUp">
           <div class="order-card shadow-sm rounded-3 p-4">
 
+            <!-- Header -->
             <div class="d-flex justify-content-between align-items-center mb-3 order-header">
               <div>
                 <span class="order-label me-2">Order #</span>
-                <span class="order-code primary-color fw-bold">{{ order.code }}</span>
+                <span class="order-code primary-color fw-bold">
+                  {{ order.code }}
+                </span>
               </div>
               <div class="text-end">
                 <span class="order-label d-block">Order Date:</span>
-                <span class="order-date">{{ order.orderDate | date:'mediumDate' }}</span>
+                <span class="order-date">
+                  {{ order.orderDate | date:'mediumDate' }}
+                </span>
               </div>
             </div>
 
+            <!-- Summary -->
             <div class="order-summary-grid mb-4">
               <div class="summary-item">
                 <span class="summary-label">Total Items</span>
@@ -37,11 +105,16 @@
               </div>
               <div class="summary-item total-summary-item">
                 <span class="summary-label">Grand Total</span>
-                <span class="summary-total-value">${{ order.totalPrice | number:'1.2-2' }}</span>
+                <span class="summary-total-value">
+                  ${{ order.totalPrice | number:'1.2-2' }}
+                </span>
               </div>
             </div>
 
-            <h4 class="fw-bold mt-4 mb-3 items-list-title">Items in this Order:</h4>
+            <!-- Items -->
+            <h4 class="fw-bold mt-4 mb-3 items-list-title">
+              Items in this Order:
+            </h4>
 
             <div class="row g-3">
               <div *ngFor="let item of order.orderItems" class="col-12">
@@ -57,13 +130,18 @@
                       <span class="text-muted fw-bold ms-3">x {{ item.quantity }}</span>
                     </h5>
 
-                    <small class="fst-italic text-muted mb-2">{{ item.product.description | slice:0:80 }}...</small>
+                    <small class="fst-italic text-muted mb-2">
+                      {{ item.product.description | slice:0:80 }}...
+                    </small>
 
                     <div class="d-flex justify-content-end align-items-center pt-2 border-top">
                       <span class="order-label me-2">Subtotal:</span>
-                      <span class="price-tag fw-bolder">${{ item.priceThisItem | number:'1.2-2' }}</span>
+                      <span class="price-tag fw-bolder">
+                        ${{ item.priceThisItem | number:'1.2-2' }}
+                      </span>
                     </div>
                   </div>
+
                 </div>
               </div>
             </div>
@@ -71,6 +149,38 @@
           </div>
         </div>
       </div>
+
     </div>
+  </div>
+
+  <!-- ===== Pagination ===== -->
+  <div *ngIf="allOrders && allOrders.length !== 0" class="mt-4">
+
+    <div class="pagination-wrapper">
+      <button class="pagination-prev-next prev" (click)="previousPage()">Prev</button>
+
+      <ngb-pagination [page]="page"
+                      [pageSize]="pageLength"
+                      [collectionSize]="collectionSize"
+                      (pageChange)="doPagination($event)"
+                      [maxSize]="5">
+      </ngb-pagination>
+
+      <button class="pagination-prev-next next" (click)="nextPage()">Next</button>
+    </div>
+
+    <div class="text-center mt-3">
+      <span class="sel">
+        <select (change)="changeSize($event)">
+          <option selected>2</option>
+          <option>1</option>
+          <option>4</option>
+          <option>6</option>
+          <option>8</option>
+          <option>10</option>
+        </select>
+      </span>
+    </div>
+
   </div>
 </div>

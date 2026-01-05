@@ -14,156 +14,136 @@ import {UserDetailsService} from "../../../../services/userDetails/user-details.
 })
 export class CartItemComponent implements OnInit {
 
-  constructor(private cartService: CartItemService ,private activatedRoute: ActivatedRoute , private router: Router ,
-              private orderService: OrderService ,private orderDataService: OrderDataService ,private userService: UserIdService ,
-              private userDetail:UserDetailsService) {}
+  constructor(
+    private cartService: CartItemService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private orderService: OrderService,
+    private orderDataService: OrderDataService,
+    private userService: UserIdService,
+    private userDetail: UserDetailsService
+  ) {}
 
+  messageEn: string = "";
+  messageAr: string = "";
 
-  messageEn:string = "";
-  messageAr:string = "";
+  showMessage: boolean = false;
 
   roles: string[] = [];
-
   userHasDetails: boolean = false;
 
-
-
-  cartItems: CartItem[] =[];
+  cartItems: CartItem[] = [];
   cartItemHelper: CartItem[] = [];
 
-  page: number = 1
+  page: number = 1;
   pageLength: number = 4;
   collectionSize: number = 0;
 
-
-
-  ngOnInit(): void
-  {
-
-
+  ngOnInit(): void {
     this.roles = this.userService.getRoles();
 
-        this.activatedRoute.paramMap.subscribe(param =>
-        {
-          this.cartService.cartItems$.subscribe(items =>
-          {
-            this.cartItems = items;
+    this.activatedRoute.paramMap.subscribe(() => {
+      this.cartService.cartItems$.subscribe(items => {
+        this.cartItems = items;
+        this.collectionSize = this.cartItems.length;
+        this.applyPaginationSlice();
+      });
+    });
+  }
 
-            this.collectionSize = this.cartItems.length;
+  applyPaginationSlice(): void {
+    const startIndex = (this.page - 1) * this.pageLength;
+    const endIndex = startIndex + this.pageLength;
+    this.cartItemHelper = [...this.cartItems.slice(startIndex, endIndex)];
+  }
 
-            this.applyPaginationSlice();
-
-          });
-
-        })
-
-    }
-
-
-
-    applyPaginationSlice(): void
-    {
-      const startIndex = (this.page -1 ) * this.pageLength;
-      const endIndex = startIndex + this.pageLength;
-
-      const slicedItems = this.cartItems.slice(startIndex, endIndex);
-
-
-      this.cartItemHelper = [...slicedItems];
-
-    }
-
-  protected viewHistory()
-  {
+  protected viewHistory() {
     this.router.navigateByUrl('/orderHistory');
   }
 
-
-  doPagination(newPage: number)
-  {
-    this.page = newPage ;
-    this.applyPaginationSlice()
+  doPagination(newPage: number) {
+    this.page = newPage;
+    this.applyPaginationSlice();
   }
 
-  changeSize(event: Event)
-  {
-    this.pageLength = +(<HTMLSelectElement>event.target).value ;
+  changeSize(event: Event) {
+    this.pageLength = +(<HTMLSelectElement>event.target).value;
     this.page = 1;
-    this.applyPaginationSlice()
+    this.applyPaginationSlice();
   }
 
-  increaseQuantity(item: CartItem)
-  {
-    this.cartService.addToCart(item)
+  increaseQuantity(item: CartItem) {
+    this.cartService.addToCart(item);
   }
 
-  decreaseQuantity(item: CartItem)
-  {
+  decreaseQuantity(item: CartItem) {
     this.cartService.decreaseQuantity(item);
   }
 
-
-  protected async confirmOrder()
-  {
-
+  protected async confirmOrder() {
 
     const value = await this.userDetail.isUserHaseDetails().toPromise();
     this.userHasDetails = !value;
 
-    if (this.userHasDetails)
-    {
+    if (this.userHasDetails) {
       this.messageEn = "must update Your Details";
       this.messageAr = "يجب تحديث البيانات";
-      setTimeout(()=>
-      {
-        this.messageAr ="";
-        this.messageEn ="";
-      } ,5000)
+      this.showMessage = true;
+      await this.timeOut();
+      this.showMessage = false;
       return;
-
-
     }
 
+    this.orderService.submitOrder().subscribe({
+      next: async (response) => {
 
-        this.orderService.submitOrder().subscribe
-        ({
-          next: (response) =>
-          {
+        this.orderDataService.setOrderData(response);
+        this.cartService.clearCartItems();
 
-            this.orderDataService.setOrderData(response);
-            this.cartService.clearCartItems();
+        if (response.totalPrice > 2000) {
 
-            this.router.navigateByUrl("/order");
-          },
-          error:  (errorResponse) =>
-          {
-              this.messageEn = errorResponse.error.message_en || "An unknown error occurred.";
-              this.messageAr = errorResponse.error.message_ar || "حدث خطأ غير معروف.";
+          this.messageEn =
+            'Your order is on hold as the total amount exceeds $2000 and is awaiting admin approval.';
+          this.messageAr =
+            'طلبك معلق حاليًا بسبب تجاوز قيمة الطلب 2000 دولار، وفي انتظار موافقة الإدارة.';
 
-              setTimeout (()=>
-              {
-                this.messageEn ="" ;
-                  this.messageAr =""
-              } ,5000)
-          }
+          this.showMessage = true;
+          await this.timeOut();
+          this.showMessage = false;
 
-        })
+          await this.router.navigateByUrl('/PendingOrders');
+          this.orderDataService.clearAllOrderData()
+          return;
+        }
+
+        this.router.navigateByUrl("/order");
+      },
+
+      error: async (errorResponse) => {
+        this.messageEn = errorResponse.error.message_en || "An unknown error occurred.";
+        this.messageAr = errorResponse.error.message_ar || "حدث خطأ غير معروف.";
+        this.showMessage = true;
+        await this.timeOut();
+        this.showMessage = false;
+      }
+    });
   }
 
-  protected viewAllHistory()
-  {
+  protected viewAllHistory() {
     this.router.navigateByUrl('/allOrderHistory');
   }
 
-
-
-
-  isAdmin()
-  {
+  isAdmin() {
     return this.roles.includes("ADMIN");
   }
 
-
-
-
+  timeOut(): Promise<void> {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        this.messageAr = "";
+        this.messageEn = "";
+        resolve();
+      }, 5000);
+    });
+  }
 }

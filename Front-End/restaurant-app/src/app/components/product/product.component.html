@@ -30,34 +30,34 @@
   </div>
 
   <div *ngIf="products && products.length !== 0" class="mt-4">
+      <!-- ⭐⭐⭐ Pagination Section ⭐⭐⭐ -->
+      <div class="pagination-wrapper">
+        <button class="pagination-prev-next prev" (click)="previousPage()">Prev</button>
 
-    <!-- ⭐⭐⭐ Pagination Section ⭐⭐⭐ -->
-    <div class="pagination-wrapper">
-      <button class="pagination-prev-next prev" (click)="previousPage()">Prev</button>
+        <ngb-pagination
+          [page]="page"
+          [pageSize]="pageLength"
+          [collectionSize]="collectionSize"
+          (pageChange)="doPagination($event)"
+          [maxSize]="5">
+        </ngb-pagination>
 
-      <ngb-pagination
-        [page]="page"
-        [pageSize]="pageLength"
-        [collectionSize]="collectionSize"
-        (pageChange)="doPagination($event)"
-        [maxSize]="5">
-      </ngb-pagination>
+        <button class="pagination-prev-next next" (click)="nextPage()">Next</button>
+      </div>
 
-      <button class="pagination-prev-next next" (click)="nextPage()">Next</button>
-    </div>
-
-    <div class="text-center mt-3">
+      <div class="text-center mt-3">
       <span class="sel">
         <select (change)="changeSize($event)">
-          <option selected>10</option>
-          <option>2</option>
+          <option selected>2</option>
+          <option>1</option>
           <option>4</option>
           <option>6</option>
           <option>8</option>
+          <option>10</option>
         </select>
       </span>
-    </div>
+      </div>
 
-  </div>
+    </div>
 
 </div>

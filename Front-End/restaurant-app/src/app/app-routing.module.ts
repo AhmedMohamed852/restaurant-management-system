@@ -20,6 +20,8 @@ import {
   ShowAllContactsComponent
 } from "./components/contact/showAllContacts/show-all-contacts/show-all-contacts.component";
 import {ShowMyContactComponent} from "./components/contact/show-my-contact/show-my-contact.component";
+import {PendingOrdersComponent} from "./components/order/My_pending-orders/pending-orders.component";
+import {AllPendingOrdersComponent} from "./components/order/all-pending-orders/all-pending-orders.component";
 
 const routes: Routes = [
   // 1. المسارات المحمية بـ AuthGuard
@@ -35,6 +37,8 @@ const routes: Routes = [
   { path: 'allOrderHistory', component: AllOrdersHistoryComponent, canActivate: [AuthGuard], runGuardsAndResolvers: 'always' },
   { path: 'cart', component: CartItemComponent, canActivate: [AuthGuard], runGuardsAndResolvers: 'always' },
   { path: 'order', component: OrderComponent, canActivate: [AuthGuard], runGuardsAndResolvers: 'always' },
+  { path: 'PendingOrders', component: PendingOrdersComponent, canActivate: [AuthGuard], runGuardsAndResolvers: 'always' },
+  { path: 'allPendingOrders', component: AllPendingOrdersComponent, canActivate: [AuthGuard], runGuardsAndResolvers: 'always' },
   { path: 'products/category/:id', component: ProductComponent, canActivate: [AuthGuard], runGuardsAndResolvers: 'always' },
   { path: 'team', component: TeamComponent, canActivate: [AuthGuard], runGuardsAndResolvers: 'always' },
   { path: 'search/:key', component: ProductComponent, canActivate: [AuthGuard], runGuardsAndResolvers: 'always' },

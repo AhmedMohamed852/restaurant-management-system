@@ -8,7 +8,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProductComponent } from './components/product/product.component';
 import { CategoryComponent } from './components/category/category.component';
-import {RouterModule} from "@angular/router";
 import { TeamComponent } from './components/team/team/team.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
@@ -26,6 +25,8 @@ import { AllOrdersHistoryComponent } from './components/order/all-orders-history
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { ShowAllContactsComponent } from './components/contact/showAllContacts/show-all-contacts/show-all-contacts.component';
 import { ShowMyContactComponent } from './components/contact/show-my-contact/show-my-contact.component';
+import { PendingOrdersComponent } from './components/order/My_pending-orders/pending-orders.component';
+import { AllPendingOrdersComponent } from './components/order/all-pending-orders/all-pending-orders.component';
 
 
 @NgModule({
@@ -48,7 +49,9 @@ import { ShowMyContactComponent } from './components/contact/show-my-contact/sho
     AllOrdersHistoryComponent,
     UserDetailsComponent,
     ShowAllContactsComponent,
-    ShowMyContactComponent
+    ShowMyContactComponent,
+    PendingOrdersComponent,
+    AllPendingOrdersComponent
   ],
   imports: [
     BrowserModule,
