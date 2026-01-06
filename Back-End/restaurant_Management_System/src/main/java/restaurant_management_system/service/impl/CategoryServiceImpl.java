@@ -1,6 +1,9 @@
 package restaurant_management_system.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import restaurant_management_system.dto.CategoryDto;
 import restaurant_management_system.mapper.CategoryMapper;
@@ -8,6 +11,7 @@ import restaurant_management_system.model.Category;
 import restaurant_management_system.repo.CategoryRepo;
 import restaurant_management_system.service.CategoryService;
 
+import java.security.Key;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -39,6 +43,7 @@ public class CategoryServiceImpl implements CategoryService {
 //TODO ______________________________________________________________
 
     @Override
+    @Cacheable(value = "Categories", key = "'all'")
     public List<CategoryDto> getAllCategories()
     {
 
@@ -52,10 +57,12 @@ public class CategoryServiceImpl implements CategoryService {
 
 
 
+
 //TODO _________________save Category______________________________
 //TODo ____________________________________________________________
 
     @Override
+    @CacheEvict(value = "Categories" ,allEntries = true)
     public CategoryDto saveCategory(CategoryDto categoryDto)
     {
         if(Objects.nonNull(categoryDto.getId()))
@@ -79,6 +86,7 @@ public class CategoryServiceImpl implements CategoryService {
 //TODo ___________________________________________________________________
 
     @Override
+    @CacheEvict(value = "Categories" ,allEntries = true)
     public List<CategoryDto> saveListOfCategories(List<CategoryDto> categoryDtoList) {
 
         List<String> names = categoryRepo.findAll().stream().map(Category::getName).toList();
@@ -108,6 +116,8 @@ public class CategoryServiceImpl implements CategoryService {
 //TODo ____________________________________________________________
 
     @Override
+    @CacheEvict(value = "Categories" ,allEntries = true)
+    @CachePut(value = "Categories" , key = "'categId' + #categoryDto.id")
     public CategoryDto updateCategory(CategoryDto categoryDto)
     {
         if(Objects.isNull(categoryDto.getId()))
@@ -130,6 +140,7 @@ public class CategoryServiceImpl implements CategoryService {
 //TODo ________________________________________________________________
 
     @Override
+    @CacheEvict(value = "Categories" ,allEntries = true)
     public List<CategoryDto> updateListOfCategories(List<CategoryDto> categoryDtoList)
     {
 
@@ -158,6 +169,7 @@ public class CategoryServiceImpl implements CategoryService {
 //TODo ________________________________________________________________
 
     @Override
+    @CacheEvict(value = "Categories" ,allEntries = true)
     public void deleteListOfCategories(List<String> namesOfCategories)
     {
             namesOfCategories.forEach(name ->{
@@ -177,6 +189,7 @@ public class CategoryServiceImpl implements CategoryService {
 //TODo ________________________________________________________________
 
     @Override
+    @CacheEvict(value = "Categories" ,allEntries = true)
     public void deleteCategory(String categoryName)
     {
         Optional<Category> categoryOptional = categoryRepo.findByName(categoryName);
@@ -195,6 +208,7 @@ public class CategoryServiceImpl implements CategoryService {
 //TODo ________________________________________________________________
 
     @Override
+    @Cacheable(value = "Categories" ,key = "'categName' + #categoryName")
     public CategoryDto getCategoryByName(String categoryName)
     {
         Optional<Category> categoryOptional = categoryRepo.findByName(categoryName);

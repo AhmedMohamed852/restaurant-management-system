@@ -1,6 +1,7 @@
 spring:
   application:
     name: restaurant Management System
+
   messages:
     basename: i18n/messages
 
@@ -10,13 +11,21 @@ spring:
     username: hr
     password: hr
 
+  # الـ data لازم تبدأ من نفس مستوى datasource و messages
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: "123456"
+      client-name: "my-redis-client"
+
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
 
-
-token :
+# إعدادات الـ Token والـ Server زي ما هي
+token:
   secret: fnkwfkteFgswffe5e64f78fej#&$*)#Hpdffe7efEERedsR
   time: 24h
 

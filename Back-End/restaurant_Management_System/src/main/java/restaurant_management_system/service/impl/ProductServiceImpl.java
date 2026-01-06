@@ -1,6 +1,9 @@
 package restaurant_management_system.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -45,6 +48,7 @@ public class ProductServiceImpl implements ProductService {
 //TODO ______________________________________________________________
 
     @Override
+    @Cacheable(value = "products" , key = "'pageNumber' + #pageNumber + 'pageSize' + #pageSize + 'catId' + #categoryId")
     public ProductsResponseVm getAllProductsByCategoryId( int pageNumber , int pageSize, Long categoryId)
     {
 
@@ -70,6 +74,7 @@ public class ProductServiceImpl implements ProductService {
 //TODO ______________________________________________________________
 
     @Override
+    @CacheEvict(value = "products"  , allEntries = true)
     public ProductDto saveProduct(ProductDto productDto)
     {
         if(Objects.nonNull(productDto.getId()))
@@ -98,6 +103,7 @@ public class ProductServiceImpl implements ProductService {
 //TODO _________________saveListOfProducts___________________________
 //TODO ______________________________________________________________
     @Override
+    @CacheEvict(value = "products"  , allEntries = true)
     public List<ProductDto> saveListOfProducts(List<ProductDto> productDtoList)
     {
         List<String> names = productRepo.findAll()
@@ -135,6 +141,8 @@ public class ProductServiceImpl implements ProductService {
 //TODO ______________________________________________________________
 
     @Override
+    @CacheEvict(value = "products", allEntries = true)
+    @CachePut(value = "products"  , key = "'proId'+ #productDto.id")
     public ProductDto updateProduct(ProductDto productDto)
     {
 
@@ -212,6 +220,7 @@ public class ProductServiceImpl implements ProductService {
 //TODO ________________________________________________________________
 
     @Override
+    @CacheEvict(value = "products" , allEntries = true)
     public void deleteProduct(String productName)
     {
         Optional<Product> productOptional = productRepo.findByName(productName);
@@ -230,6 +239,7 @@ public class ProductServiceImpl implements ProductService {
 //TODO ________________________________________________________________
 
     @Override
+    @CacheEvict(value = "products" , allEntries = true)
     public void deleteListOfProducts(List<String> namesOfProducts)
     {
        List<Product> namesFound = productRepo.findAllByNameIn(namesOfProducts);
@@ -255,6 +265,7 @@ public class ProductServiceImpl implements ProductService {
 //TODO ________________________________________________________________
 
     @Override
+    @Cacheable(value = "products"  , key = "'proKey'+ #key + 'pageNum'+#pageNumber + 'pageSize' + #pageSize")
     public ProductsResponseVm searchProducts(int pageNumber , int pageSize , String key)
     {
 
@@ -279,6 +290,7 @@ public class ProductServiceImpl implements ProductService {
 //TODO _________________getAllProducts_________________________________
 //TODO ________________________________________________________________
     @Override
+    @Cacheable(value = "products" , key = "'pageNumber' + #pageNumber + 'pageSize' + #pageSize")
     public ProductsResponseVm getAllProducts(int pageNumber, int pageSize) {
 
         validatePageNumberAndSize(pageNumber, pageSize);
@@ -324,6 +336,7 @@ public class ProductServiceImpl implements ProductService {
 //TODO _________________getProductById________________________________
 //TODO ________________________________________________________________
     @Override
+    @Cacheable(value = "products"  , key = "'proId'+ #id")
     public ProductDto getProductById(Long id)
     {
         if(Objects.isNull(id))

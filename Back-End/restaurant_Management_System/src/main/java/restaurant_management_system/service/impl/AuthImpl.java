@@ -1,6 +1,7 @@
 package restaurant_management_system.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import restaurant_management_system.config.tokenHandler.TokenHandler;
@@ -46,6 +47,7 @@ public class AuthImpl implements AuthService {
 //TODO ____________________userSignUp_________________________________
 //TODO _______________________________________________________________
     @Override
+    //@Cacheable(value = "authsignUp" , key = "'usignUp' + userDto.id")
     public void signUp(UsersDto userDto)
     {
         userService.createUser(userDto);
@@ -55,6 +57,7 @@ public class AuthImpl implements AuthService {
 //TODO ____________________userLogin_________________________________
 //TODO _______________________________________________________________
     @Override
+    //@Cacheable(value = "authLogin" , key = "'uLogin' + userDto.id")
     public LoginResponseVm login(LoginRequestVm loginRequestVm)
     {
         UsersDto usersDto = userService.getUserByUsername(loginRequestVm.getUsername());
