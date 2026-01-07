@@ -48,7 +48,7 @@ public class ProductServiceImpl implements ProductService {
 //TODO ______________________________________________________________
 
     @Override
-    @Cacheable(value = "products" , key = "'pageNumber' + #pageNumber + 'pageSize' + #pageSize + 'catId' + #categoryId")
+    @Cacheable(value = "productsPages" , key = "'pageNumber' + #pageNumber + 'pageSize' + #pageSize + 'categId' + #categoryId")
     public ProductsResponseVm getAllProductsByCategoryId( int pageNumber , int pageSize, Long categoryId)
     {
 
@@ -74,8 +74,17 @@ public class ProductServiceImpl implements ProductService {
 //TODO ______________________________________________________________
 
     @Override
-    @CacheEvict(value = "products"  , allEntries = true)
+    @CacheEvict(value = "productsPages"  , allEntries = true)
     public ProductDto saveProduct(ProductDto productDto)
+    {
+      return helpSaveProduct(productDto);
+    }
+
+
+//TODO _________________help save Product__________________________________
+//TODO ______________________________________________________________
+
+    private ProductDto helpSaveProduct(ProductDto productDto)
     {
         if(Objects.nonNull(productDto.getId()))
         {
@@ -103,36 +112,10 @@ public class ProductServiceImpl implements ProductService {
 //TODO _________________saveListOfProducts___________________________
 //TODO ______________________________________________________________
     @Override
-    @CacheEvict(value = "products"  , allEntries = true)
+    @CacheEvict(value = "productsPages"  , allEntries = true)
     public List<ProductDto> saveListOfProducts(List<ProductDto> productDtoList)
     {
-        List<String> names = productRepo.findAll()
-                            .stream()
-                            .map(Product::getName).toList();
-
-      List<Product> resultValue =  productDtoList.stream().map(productDto -> {
-
-            if(Objects.nonNull(productDto.getId()))
-            {
-                throw new RuntimeException("id.Must.Be.Null");
-            }
-
-            if(names.contains(productDto.getName()))
-            {
-                throw new RuntimeException("Product.Already.Exists");
-            }
-
-            Category category = categoryMapper.toEntity(categoryService.getCategoryByName(productDto.getCategoryName()));
-
-            Product product = productMapper.toEntity(productDto);
-            product.setCategory(category);
-
-           return productRepo.save(product);
-
-
-        }).toList();
-
-        return productMapper.toDtoList(resultValue);
+       return productDtoList.stream().map(this::helpSaveProduct).toList();
     }
 
 
@@ -141,36 +124,39 @@ public class ProductServiceImpl implements ProductService {
 //TODO ______________________________________________________________
 
     @Override
-    @CacheEvict(value = "products", allEntries = true)
+    @CacheEvict(value = "productsPages", allEntries = true)
     @CachePut(value = "products"  , key = "'proId'+ #productDto.id")
     public ProductDto updateProduct(ProductDto productDto)
     {
-
-        // Optional<Product> productDtoFound = productRepo.findByName(productDto.getName());
-
-        if(Objects.isNull(productDto.getId()))
-        {
-            throw new RuntimeException("id.Must.Not.Be.Null");
-        }
-
-        Optional<Product> productOptional = productRepo.findById(productDto.getId());
-        if(productOptional.isEmpty())
-        {
-            throw new RuntimeException("Product.Not.Found");
-        }
-
-
-
-        Product product = productMapper.toEntity(productDto);
-
-        Category category = categoryMapper.toEntity(categoryService.getCategoryByName(productDto.getCategoryName()));
-
-        product.setCategory(category);
-
-        product =  productRepo.save(product);
-
-        return productMapper.toDto(product);
+       return helpUpdatePro2(productDto);
     }
+
+
+//TODO _________________help Update Products ___________________________
+//TODO ________________________________________________________________
+   private ProductDto helpUpdatePro2(ProductDto productDto){
+       if(Objects.isNull(productDto.getId()))
+       {
+           throw new RuntimeException("id.Must.Not.Be.Null");
+       }
+
+       Optional<Product> productOptional = productRepo.findById(productDto.getId());
+       if(productOptional.isEmpty())
+       {
+           throw new RuntimeException("Product.Not.Found");
+       }
+
+
+       Product product = productMapper.toEntity(productDto);
+
+       Category category = categoryMapper.toEntity(categoryService.getCategoryByName(productDto.getCategoryName()));
+
+       product.setCategory(category);
+
+       product =  productRepo.save(product);
+
+       return productMapper.toDto(product);
+   }
 
 
 
@@ -178,40 +164,10 @@ public class ProductServiceImpl implements ProductService {
 //TODO ________________________________________________________________
 
     @Override
+    @CacheEvict(value = "productsPages", allEntries = true)
     public List<ProductDto> updateListOfProducts(List<ProductDto> productDtoList)
     {
-        List<String> names = productRepo.findAll()
-                .stream()
-                .map(Product::getName).toList();
-
-        List<Product> resultValue =  productDtoList.stream().map(productDto -> {
-
-           if(Objects.isNull(productDto.getId()))
-           {
-               throw new RuntimeException("id.Must.Not.Be.Null");
-           }
-
-           Optional<Product> productOptional = productRepo.findById(productDto.getId());
-           if(productOptional.isEmpty())
-           {
-               throw new RuntimeException("Product.Not.Found");
-           }
-
-           if(names.contains(productDto.getName()))
-           {
-               throw new RuntimeException("Product.Already.Exists");
-           }
-
-            Category category = categoryMapper.toEntity(categoryService.getCategoryByName(productDto.getCategoryName()));
-
-            Product product = productMapper.toEntity(productDto);
-            product.setCategory(category);
-
-            return productRepo.save(product);
-
-        }).toList();
-
-        return productMapper.toDtoList(resultValue);
+        return  productDtoList.stream().map(this::helpUpdatePro2).toList();
     }
 
 
@@ -220,7 +176,7 @@ public class ProductServiceImpl implements ProductService {
 //TODO ________________________________________________________________
 
     @Override
-    @CacheEvict(value = "products" , allEntries = true)
+    @CacheEvict(value = {"productsPages" , "products"} , allEntries = true)
     public void deleteProduct(String productName)
     {
         Optional<Product> productOptional = productRepo.findByName(productName);
@@ -239,7 +195,7 @@ public class ProductServiceImpl implements ProductService {
 //TODO ________________________________________________________________
 
     @Override
-    @CacheEvict(value = "products" , allEntries = true)
+    @CacheEvict(value = {"productsPages" , "products"} , allEntries = true)
     public void deleteListOfProducts(List<String> namesOfProducts)
     {
        List<Product> namesFound = productRepo.findAllByNameIn(namesOfProducts);
@@ -265,7 +221,7 @@ public class ProductServiceImpl implements ProductService {
 //TODO ________________________________________________________________
 
     @Override
-    @Cacheable(value = "products"  , key = "'proKey'+ #key + 'pageNum'+#pageNumber + 'pageSize' + #pageSize")
+    @Cacheable(value = "productsPages"  , key = "'proKey'+ #key + 'pageNumber'+#pageNumber + 'pageSize' + #pageSize")
     public ProductsResponseVm searchProducts(int pageNumber , int pageSize , String key)
     {
 
@@ -290,7 +246,7 @@ public class ProductServiceImpl implements ProductService {
 //TODO _________________getAllProducts_________________________________
 //TODO ________________________________________________________________
     @Override
-    @Cacheable(value = "products" , key = "'pageNumber' + #pageNumber + 'pageSize' + #pageSize")
+    @Cacheable(value = "productsPages" , key = "'pageNumber' + #pageNumber + 'pageSize' + #pageSize")
     public ProductsResponseVm getAllProducts(int pageNumber, int pageSize) {
 
         validatePageNumberAndSize(pageNumber, pageSize);

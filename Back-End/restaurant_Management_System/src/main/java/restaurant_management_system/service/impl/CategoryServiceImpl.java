@@ -47,12 +47,13 @@ public class CategoryServiceImpl implements CategoryService {
     public List<CategoryDto> getAllCategories()
     {
 
-        if(categoryRepo.findAll().isEmpty())
+       List<Category> categories = categoryRepo.findAll();
+        if(categories.isEmpty())
         {
             throw new RuntimeException("No.Categories.Found");
         }
 
-        return categoryMapper.toDtoList(categoryRepo.findAll());
+        return categoryMapper.toDtoList(categories);
     }
 
 
@@ -65,19 +66,7 @@ public class CategoryServiceImpl implements CategoryService {
     @CacheEvict(value = "Categories" ,allEntries = true)
     public CategoryDto saveCategory(CategoryDto categoryDto)
     {
-        if(Objects.nonNull(categoryDto.getId()))
-        {
-            throw new RuntimeException("id.Must.Be.Null");
-        }
-
-        if(categoryRepo.findByName(categoryDto.getName()).isPresent())
-        {
-            throw new RuntimeException("Category.Already.Exists");
-        }
-
-         Category category = (categoryRepo.save(categoryMapper.toEntity(categoryDto)));
-        categoryDto.setId(category.getId());
-        return categoryDto;
+      return   helpSaveCategories(categoryDto);
     }
 
 
@@ -89,27 +78,29 @@ public class CategoryServiceImpl implements CategoryService {
     @CacheEvict(value = "Categories" ,allEntries = true)
     public List<CategoryDto> saveListOfCategories(List<CategoryDto> categoryDtoList) {
 
-        List<String> names = categoryRepo.findAll().stream().map(Category::getName).toList();
-
-      List<CategoryDto> resultValue= categoryDtoList.stream().map (categoryDto ->
-        {
-            if(names.contains(categoryDto.getName()))
-            {
-                throw new RuntimeException("Category.Already.Exists");
-            }
-
-            if(Objects.nonNull(categoryDto.getId()))
-            {
-                throw new RuntimeException("id.Must.Be.Null");
-            }
-
-            return  categoryMapper.toDto(categoryRepo.save(categoryMapper.toEntity(categoryDto)));
-
-        }).toList();
-
-        return resultValue;
+     return   categoryDtoList.stream().map(this::helpSaveCategories).toList();
     }
 
+
+//TODo _________________ help Save Categories ___________________________
+//TODo ___________________________________________________________________
+
+    private CategoryDto helpSaveCategories(CategoryDto categoryDto)
+    {
+        if(Objects.nonNull(categoryDto.getId()))
+        {
+            throw new RuntimeException("id.Must.Be.Null");
+        }
+
+        if(categoryRepo.findByName(categoryDto.getName()).isPresent())
+        {
+            throw new RuntimeException("Category.Already.Exists");
+        }
+
+        Category category = (categoryRepo.save(categoryMapper.toEntity(categoryDto)));
+        categoryDto.setId(category.getId());
+        return categoryDto;
+    }
 
 
 //TODO _________________update Category____________________________
@@ -119,6 +110,14 @@ public class CategoryServiceImpl implements CategoryService {
     @CacheEvict(value = "Categories" ,allEntries = true)
     @CachePut(value = "Categories" , key = "'categId' + #categoryDto.id")
     public CategoryDto updateCategory(CategoryDto categoryDto)
+    {
+      return helpUpdateCategories(categoryDto);
+    }
+
+//TODo _________________ help Update Categories ___________________________
+//TODo ___________________________________________________________________
+
+    private CategoryDto helpUpdateCategories(CategoryDto categoryDto)
     {
         if(Objects.isNull(categoryDto.getId()))
         {
@@ -134,8 +133,6 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryMapper.toDto(categoryRepo.save(categoryMapper.toEntity(categoryDto)));
     }
 
-
-
 //TODO __________________updateListOfCategories________________________
 //TODo ________________________________________________________________
 
@@ -143,24 +140,7 @@ public class CategoryServiceImpl implements CategoryService {
     @CacheEvict(value = "Categories" ,allEntries = true)
     public List<CategoryDto> updateListOfCategories(List<CategoryDto> categoryDtoList)
     {
-
-      List<Category>  resultValue =  categoryDtoList.stream().map(categoryDto ->{
-
-            if(Objects.isNull(categoryDto.getId()))
-            {
-                throw new RuntimeException("id.Must.Not.Be.Null");
-            }
-            Optional<Category> categoryOptional = categoryRepo.findById(categoryDto.getId());
-            if(categoryOptional.isEmpty())
-            {
-                throw new RuntimeException("Category.Not.Found");
-            }
-
-          return  categoryRepo.save(categoryMapper.toEntity(categoryDto));
-
-        }).toList();
-
-        return categoryMapper.toDtoList(categoryRepo.saveAll(resultValue));
+       return categoryDtoList.stream().map(this::helpUpdateCategories).toList();
     }
 
 
@@ -172,15 +152,19 @@ public class CategoryServiceImpl implements CategoryService {
     @CacheEvict(value = "Categories" ,allEntries = true)
     public void deleteListOfCategories(List<String> namesOfCategories)
     {
-            namesOfCategories.forEach(name ->{
-                Optional<Category> categoryOptional = categoryRepo.findByName(name);
-                if(categoryOptional.isEmpty())
-                {
-                    throw new RuntimeException("Category.Not.Found");
-                }
+        List<Category> categories = categoryRepo.findAll();
 
-                categoryRepo.deleteById(categoryOptional.get().getId());
-            });
+        List<String>namesExist = categories.stream().map(Category::getName).toList();
+
+        List<String> missingNames = namesOfCategories.stream()
+        .filter(name -> !namesExist.contains(name)).toList();
+
+        if (!missingNames.isEmpty()) {
+            throw new RuntimeException("Category.Not.Found");
+        }
+
+        categoryRepo.deleteAll(categories);
+
     }
 
 

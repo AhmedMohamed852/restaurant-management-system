@@ -17,7 +17,6 @@ public class RedisConfig {
     public RedisCacheConfiguration cacheConfiguration() {
         return RedisCacheConfiguration.defaultCacheConfig()
                 .entryTtl(Duration.ofSeconds(300)) // الداتا تعيش ساعة في الكاش
-                .disableCachingNullValues()
                 .serializeValuesWith(RedisSerializationContext.SerializationPair
                         .fromSerializer(new GenericJackson2JsonRedisSerializer())); // تحويل للـ JSON
     }
