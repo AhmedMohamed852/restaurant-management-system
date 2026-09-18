@@ -309,7 +309,7 @@ public class ProductServiceImpl implements ProductService {
 
 
         ProductDto productDto = productMapper.toDto(productOptional.get());
-        productDto.setCategoryName(productOptional.get().getCategory().getName());
+        productDto.setCategoryName(productOptional.get().getCategory().getName().toString());
         return productDto;
     }
 

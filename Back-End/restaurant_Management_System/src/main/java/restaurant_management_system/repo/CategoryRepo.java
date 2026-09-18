@@ -2,6 +2,7 @@ package restaurant_management_system.repo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import restaurant_management_system.enums.CategoryName;
 import restaurant_management_system.model.Category;
 
 import java.util.Optional;
@@ -11,4 +12,5 @@ public interface CategoryRepo extends JpaRepository<Category, Long> {
     Optional<Category> findByName(String name);
 
 
+    boolean existsByName(CategoryName categoryName);
 }

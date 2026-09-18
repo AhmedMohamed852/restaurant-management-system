@@ -11,6 +11,7 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import restaurant_management_system.enums.CategoryName;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -23,19 +24,23 @@ import java.util.List;
 @EntityListeners(org.springframework.data.jpa.domain.support.AuditingEntityListener.class)
 public class Category extends BaseEntity{
 
-
-    String name ;
+    @Enumerated(EnumType.STRING)
+    CategoryName name ;
 
     String logo;
 
     String flag;
 
 
+    public Category(String logo, CategoryName name, String flag) {
+        this.logo =  logo;
+        this.name =  name;
+        this.flag =  flag;
+    }
 
 //____________________relation___________________________
 
     @OneToMany(mappedBy = "category" , fetch = FetchType.LAZY )
     List<Product> products;
-
 
 }

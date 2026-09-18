@@ -6,6 +6,7 @@ import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import restaurant_management_system.dto.CategoryDto;
+import restaurant_management_system.enums.CategoryName;
 import restaurant_management_system.mapper.CategoryMapper;
 import restaurant_management_system.model.Category;
 import restaurant_management_system.repo.CategoryRepo;
@@ -154,10 +155,10 @@ public class CategoryServiceImpl implements CategoryService {
     {
         List<Category> categories = categoryRepo.findAll();
 
-        List<String>namesExist = categories.stream().map(Category::getName).toList();
+        List<CategoryName>namesExist = categories.stream().map(Category::getName).toList();
 
         List<String> missingNames = namesOfCategories.stream()
-        .filter(name -> !namesExist.contains(name)).toList();
+        .filter(name -> !namesExist.toString().contains(name)).toList();
 
         if (!missingNames.isEmpty()) {
             throw new RuntimeException("Category.Not.Found");

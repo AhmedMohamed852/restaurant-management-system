@@ -14,4 +14,5 @@ public interface RoleRepo extends JpaRepository<Role, Long>
 
     Optional<Role> findByCode(RolesEnum code);
 
+    boolean existsByCode(RolesEnum rolesEnum);
 }

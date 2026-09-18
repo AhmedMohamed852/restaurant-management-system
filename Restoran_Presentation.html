@@ -1,0 +1,644 @@
+<!DOCTYPE html><html lang="ar" dir="rtl" data-theme="dark" style="color-scheme: dark;"><head><!-- frame-runtime --><script>window.__FRAME_PREAMBLE={"v":1,"cred":"cookie","capabilities":{"artifact":"artifact.O-h4mzdy.js","assets":"assets.DOAjpBS9.js","comments":"comments.DrhK3r8W.js","db":"db.DV02l9iB.js","downloads":"downloads.axDW2QAi.js","embed":"embed.DcZf-TSv.js","endpoints":"endpoints.BPfoKaE1.js","mcp":"mcp.C8qKIFvQ.js","network":"network.B5UA9Su4.js","permissions":"permissions.DWFFeHI0.js","room":"room.BF1j0KPr.js","sample":"sample.C7KQQdQj.js","self":"artifact.O-h4mzdy.js","user":"user.CCh6oTS_.js"},"transforms":"_transforms.DeQ5QuJ7.js","comments":"_comments.DUaNQZcg.js","translate":"_translate.DqxC5ek1.js","ldx":"_ldx.CqNtBrkk.js"}                                                                           </script><script>(function(){"use strict";var In=3e5;function rr(t,e){try{const n=t("navigation")[0],o=[n.responseStart,n.redirectEnd-n.redirectStart,n.domContentLoadedEventStart,e()];for(let a=0;a<o.length;a++){if(!(o[a]>=0&&o[a]<=3e5))return;o[a]=o[a]|0}return o}catch{return}}var nr=["light","dark","system"],or=/^[A-Za-z0-9_-]{1,64}$/,wt=/^[a-zA-Z_:][a-zA-Z0-9_:.-]{0,127}$/,ar=new Set(["class","hidden","value","checked","style","title","alt","placeholder","lang","dir","role","tabindex","disabled","readonly","contenteditable","open","colspan","rowspan"]);function sr(t){const e=t.toLowerCase();return e.startsWith("data-")||e.startsWith("aria-")||ar.has(e)}var bt="data-ldx-props";function ir(t,e){if(e.toLowerCase()===bt)return!0;const n=t.getAttribute(bt);if(n===null)return!1;try{const o=JSON.parse(n);if(o===null||typeof o!="object"||Array.isArray(o))return!0;const a=e.toLowerCase();return Object.keys(o).some(s=>s.toLowerCase()===a)}catch{return!0}}var Fn="http://www.w3.org/1999/xhtml",lr="http://www.w3.org/2000/svg",cr=new Set(["script","style","iframe","noscript","noframes","noembed","xmp","plaintext","template","title","textarea","object","embed"]),ur=new Set(["script","style"]);function fr(t){const e=t.localName.toLowerCase();return t.namespaceURI==="http://www.w3.org/1999/xhtml"?!cr.has(e):t.namespaceURI===lr?!ur.has(e):!1}function We(t,e){return t===e||(t===160||t===32)&&(e===160||e===32)}function dr(t,e){const n=t.length,o=e.length;let a=0;for(;a<n&&a<o&&We(t.charCodeAt(a),e.charCodeAt(a));)a++;let s=0;for(;s<n-a&&s<o-a&&We(t.charCodeAt(n-1-s),e.charCodeAt(o-1-s));)s++;return{p:a,s}}function hr(t,e){const n=t.firstChild;if(t.childNodes.length!==1||n===null||n.nodeType!==Node.TEXT_NODE){t.textContent=e;return}const o=n.data,a=o.length,s=e.length,{p:c,s:d}=dr(o,e);c===a&&d===0&&a===s||n.replaceData(c,a-c-d,e.slice(c,s-d));const L=n.data,g=t.ownerDocument.getSelection?.()??null,b=g!==null&&g.rangeCount>0&&(g.anchorNode===n||g.focusNode===n)?{anchor:g.anchorNode,anchorOffset:g.anchorOffset,focus:g.focusNode,focusOffset:g.focusOffset}:null;let m=-1,O=-1;for(let h=0;h<L.length&&h<e.length;h++){const k=L.charCodeAt(h),B=e.charCodeAt(h);k!==B&&We(k,B)&&(m<0&&(m=h),O=h)}const v=m>=0;if(v&&n.replaceData(m,O-m+1,e.slice(m,O+1)),v&&b!==null&&b.anchor!==null&&b.focus!==null)try{g.setBaseAndExtent(b.anchor,b.anchorOffset,b.focus,b.focusOffset)}catch{}}var pr=new Set(["html","head","body","frameset"]);function mr(t){return t.namespaceURI==="http://www.w3.org/1999/xhtml"&&pr.has(t.localName)}function vr(t){if(t===null||typeof t!="object")return!1;const e=t;if(typeof e.target!="string"||!or.test(e.target)||e.text!==void 0&&typeof e.text!="string")return!1;if(e.attrsSet!==void 0){if(e.attrsSet===null||typeof e.attrsSet!="object")return!1;for(const[n,o]of Object.entries(e.attrsSet))if(!wt.test(n)||typeof o!="string")return!1}if(e.attrsRemoved!==void 0){if(!Array.isArray(e.attrsRemoved))return!1;for(const n of e.attrsRemoved)if(typeof n!="string"||!wt.test(n))return!1}return!0}function _r(t,e){if(t===null||typeof t!="object")return!1;const{seq:n,elements:o}=t;if(typeof n!="number"||!Number.isSafeInteger(n)||!Array.isArray(o)||o.length===0||o.length>64)return!1;for(let a=0;a<o.length;a++)if(!e(o[a]))return!1;return!0}function yr(t){return t===null||typeof t!="object"?!1:_r(t.__frame_patch,vr)}function gr(t){if(t===null||typeof t!="object")return!1;const e=t.__frame_init;return e!==null&&typeof e=="object"}function wr(t){return t!==null&&typeof t=="object"&&t.__frame_size_poke===!0}function br(t){if(t===null||typeof t!="object")return!1;const e=t.__frame_host_visible;return e!==null&&typeof e=="object"&&typeof e.visible=="boolean"}function Er(t){if(t===null||typeof t!="object")return!1;const e=t.__frame_theme;if(e===null||typeof e!="object")return!1;const n=e.theme;return typeof n=="string"&&nr.includes(n)}var Sr=["ok","empty","snapshot_error","snapshot_timeout","unclonable","oversize","unavailable","restore_error","withheld"],Ar=["TypeError","RangeError","ReferenceError","SyntaxError","DataCloneError","QuotaExceededError","AbortError","TimeoutError","SecurityError","Error","other"];function Rr(t){return typeof t=="string"&&Ar.includes(t)?t:"other"}var kr=Object.freeze({until:null,now:!1}),Tr="__claude_hot",Lr="__claude_hot_in",Or=/^__claude_hot(?:_in)?(?::|$)/,Et=/^[0-9a-z]{1,32}$/,Ve=t=>t===void 0?Tr:"__claude_hot:"+t,ye=t=>t===void 0?Lr:"__claude_hot_in:"+t;function Mr(t,e){const n=[];for(let o=0;o<t.length;o++){const a=t.key(o);a!==null&&a!==e&&Or.test(a)&&n.push(a)}for(const o of n)t.removeItem(o)}function Pr(t){let e=null;try{e=U(JSON.parse(t)?.hot)}catch{return null}return e===null||typeof e.k!="string"||!Et.test(e.k)?null:ae(e.g)?{k:e.k,g:e.g}:{k:e.k}}var Dn=262144,Nr=3e3,Cr=5e3,St=/^[a-z0-9._:-]{1,64}$/,jr=["none","hot-restart","hard-reload"],Ir=["asset","doc","added","removed"],Fr=1500,Dr=/^[0-9a-f]{64}$/;function U(t){return t!==null&&typeof t=="object"?t:null}function ae(t){return typeof t=="number"&&Number.isInteger(t)&&t>=0&&t<2**31}function At(t){return t===void 0||typeof t=="number"&&Number.isFinite(t)}function xr(t){return t===void 0||typeof t=="string"&&St.test(t)}function Rt(t){const e=U(t);return e!==null&&(e.until===null||typeof e.until=="number"&&Number.isFinite(e.until))&&typeof e.now=="boolean"}function Xe(t){const e=U(t);return e!==null&&typeof e.ver=="string"&&e.ver.length<=128&&At(e.seq)&&typeof e.handoff=="string"&&Sr.includes(e.handoff)&&xr(e.note)}function Hr(t){const e=U(t);return e!==null&&ae(e.gen)&&(e.phase==="final"||e.phase==="pending")&&(e.from===null||Xe(e.from))}function Br(t){const e=U(t);return e!==null&&e.kv===1&&ae(e.gen)&&Xe(e.from)&&Object.hasOwn(e,"data")}function qr(t){const e=U(t);return e!==null&&e.__frame_hot_snapshot===!0&&ae(e.gen)&&typeof e.timeoutMs=="number"&&e.timeoutMs>=0&&e.timeoutMs<=6e4&&(e.handoff===void 0||typeof e.handoff=="boolean")&&(e.deadline===void 0||Rt(e.deadline))&&At(e.seq)&&(e.note===void 0||typeof e.note=="string")&&(e.key===void 0||typeof e.key=="string")}function Ur(t){const e=U(t);return e!==null&&e.__frame_hot_start===!0&&ae(e.gen)&&Xe(e.from)}function Gr(t){return typeof t=="string"&&t.length>=1&&t.length<=128}function kt(t){return U(t)!==null&&!Array.isArray(t)}function zr(t){const e=U(t);return e!==null&&e.__frame_cap_grant===!0&&typeof e.cap=="string"&&Gr(e.ver)&&(e.grant===void 0||kt(e.grant))&&(e.budgets===void 0||kt(e.budgets)&&Object.values(e.budgets).every(Number.isFinite))&&(e.brokerGen===void 0||ae(e.brokerGen))}function Kr(t){const e=U(t);return e!==null&&e.__frame_cap_rewired===!0&&(e.caps===void 0||Array.isArray(e.caps)&&e.caps.every(n=>typeof n=="string"))&&(e.brokerGen===void 0||ae(e.brokerGen))}function Tt(t){const e=U(t);return e!==null&&typeof e.ver=="string"&&e.ver.length<=128&&Number.isFinite(e.seq)}function Lt(t){if(t==null||typeof t=="string")return!0;const e=U(t);return e!==null&&typeof e.doc=="string"&&typeof e.profile=="string"}function $r(t){const e=U(t);return e!==null&&typeof e.path=="string"&&Ir.includes(e.kind)&&Lt(e.from)&&Lt(e.to)}function Wr(t){return t===null?null:Object.freeze(t.filter($r))}function Vr(t){const e=U(t);return e!==null&&e.__frame_hot_update===!0&&Number.isFinite(e.id)&&Tt(e.from)&&Tt(e.to)&&(e.changed===null||Array.isArray(e.changed))&&jr.includes(e.required)&&Rt(e.deadline)&&typeof e.verdictTimeoutMs=="number"&&e.verdictTimeoutMs>=0&&e.verdictTimeoutMs<=6e4&&(e.preflight===void 0||typeof e.preflight=="string"&&Dr.test(e.preflight))}var se=/^[\w.-]+\.js$/;function Xr(t,e,n){return n?"inert":typeof e=="string"&&se.test(e)?t?[e]:"inert":t?"inert":"framed"}var Ot=Object.freeze({[Symbol("claude.hot.restart")]:!0});function Mt(t,e){let n;try{n=t??sessionStorage}catch{return null}const o=Ve(e?.k),a=ye(e?.k);let s=null;try{s=n.getItem(o)}catch{}try{n.removeItem(o)}catch{}try{Mr(n,a)}catch{}let c=null;if(s!==null&&!(e!==null&&e.g===void 0))try{const d=JSON.parse(s);Br(d)&&(e===null||d.gen===e.g)&&(c=d)}catch{}if(c===null)try{n.removeItem(a)}catch{}return c}function Pt(){const t=/^\/_f\/([^/]{1,128})\//.exec(location.pathname);return t?t[1]:""}var Yr=/^[^/\\?#]{1,128}$/,Nt=t=>Yr.test(t)&&t!=="."&&t!=="..";function Ct(t,e,n){const o=new URL(t),a="/_f/"+e+"/";if(!e||!o.pathname.startsWith(a)||!Nt(n))return null;const s=o.search.slice(1).split("&").filter(c=>!/^__frame_t(?:=|$)/.test(c)).join("&");return o.origin+"/_f/"+n+"/"+o.pathname.slice(a.length)+(s?"?"+s:"")+o.hash}var Ce="{}";function ge(t){if(!t)return null;const e={ver:t.ver,handoff:t.handoff};return t.seq!==void 0&&(e.seq=t.seq),t.note!==void 0&&(e.note=t.note),e}function jt(t,e){return t!==null&&t.note===void 0&&e?.note!==void 0?{...t,note:e.note}:t}function It(t){const e=t?.k;return e!==null&&typeof e=="object"?e:void 0}function Jr(t,e,n,o=null){const a=setTimeout,s=clearTimeout,c=queueMicrotask,d=performance.now.bind(performance),L=new TextEncoder;let g=null,b=null;try{g=history,b=g.replaceState.bind(g)}catch{}const m=(...r)=>{try{console.warn(...r)}catch{}};let O=Pt(),v=null;try{v=sessionStorage}catch{}const h={storage:v,fetch:typeof fetch=="function"?fetch.bind(globalThis):null,entry:location.origin+location.pathname+location.search,ver:O,key:o?.k};let k=o?.k;const B=typeof requestAnimationFrame=="function"?requestAnimationFrame:r=>a(()=>r(d()),16);let _=e?.data??{},C=ge(e?.from),T=e?.gen??0,F=e!==null,W=!1,Q=!1,V=null,Se=!1;const Ae=new AbortController;let Re=null,q=null,ke=null,Te=!1,l=()=>{};const p=new Promise(r=>{l=r});let w=!1,D=!1,j=!1,x,P=null,ce=!1,xe=!1,re=!1,Le=!1,ne=!1,de=!1;const oe=r=>{for(const u of[Ve(r),ye(r)])try{v?.removeItem(u)}catch{}},H=(r,u)=>{try{u!==null&&n.post(r,u)}catch{}},he=()=>ne||=re&&(q===null||Le),X=()=>{const r={__frame_hot:!0,ready:q!==null,accept:ke!==null,demand:!0};de=!ne,de&&(r.booting=!0),w&&(r.readData=!0),j&&(r.threw=!0),P?.assess&&(r.preflight=!0),H(r,V)};let Oe=!1,Me=!1,i=!1,E=!1;const y=()=>{Oe||!Se||i||(Oe=!0,H({__frame_reveal_hold:!0},"*"))},N=()=>new Promise(r=>{let u,f=0;const S=I=>{if(u===void 0)u=I;else if(I!==u||++f>=8){r();return}try{B(S)}catch{r()}};try{B(S)}catch{r()}}),Y=()=>{i=!0,H({__frame_reveal_ready:!0},"*")},$=r=>{Me||(Me=!0,r.then(u=>{if(u===!1)return;let f=null;try{f=P?.settle?.()??null}catch{}return(f===null?N():new Promise(S=>{a(S,50),Promise.resolve(f).then(S,S)}).then(N)).then(Y)}))},Pe=()=>{if(E||!i)return;E=!0;const r=()=>{try{P?.afterReveal?.()}catch{}};r(),N().then(()=>{r(),Y()})},He=(r=!1)=>{if(Te||q===null||!F||!Q)return;Te=!0;const u=q,f=_;c(()=>{let S;try{S=u(f)}catch(G){throw l(!1),G}let I=!1;try{I=typeof S?.then=="function"}catch{}if(!I){l(!0);return}Promise.resolve(S).then(()=>l(!0),G=>{l(!1),c(()=>{throw G})})}),$(r?p:n.dcl.then(()=>p))},Be=r=>typeof r=="string"&&St.test(r)?r:void 0,ct=r=>{const u={__frame_hot_restart:!0},f=Be(r?.note);f!==void 0&&(u.note=f),r?.required==="hard-reload"&&(u.required="hard-reload"),H(u,V)},Vt=Object.freeze({get data(){return Q||(D=!0),!F&&!w&&(w=!0,Q&&X()),_},get from(){return C},get gen(){return T},signal:Ae.signal,snapshot(r){typeof r=="function"&&(Re=r)},ready(r){typeof r!="function"||q!==null||(q=r,y(),X(),W&&H({__frame_hot_ready:!0,gen:T},V),He())},accept(r){typeof r=="function"&&(ke=r,X())},restart(r){const u={note:r?.note,required:r?.required};if(Q){ct(u);return}const f=x;x={note:Be(f?.note)??u.note,required:f?.required==="hard-reload"||u.required==="hard-reload"?"hard-reload":void 0}}});let qe=null,Xt=()=>{};const Tn=new Promise(r=>{Xt=r});let Ln=null;const Yt=()=>Ln??=n.dcl.then(()=>{let r=!1;try{r=qe!==null&&qe.expect()}catch{}if(!r)return;const u=qe.maxMs;return new Promise(f=>{Tn.then(f),a(f,u)})}),Jt=()=>{if(!ce||xe||P===null)return;xe=!0;const r=P;Yt().then(()=>{try{i||r.afterStart(It(e),!1)}catch{}})},Zt=r=>{e!==null&&D&&(w=!0),_={},C=null,T=0;try{v?.removeItem(ye(o?.k))}catch{}e!==null&&!r&&$(n.dcl.then(()=>q!==null?p:void 0))},On=()=>{ce=!0,$(Yt().then(()=>q!==null?p:void 0)),Jt()};try{addEventListener("error",()=>{j||q!==null||(j=!0,X())})}catch{}const Qt=()=>{a(()=>{!ne&&he()&&de&&X()},0)};try{re=document.readyState==="complete",re||addEventListener("load",()=>{re=!0,Qt()},{once:!0})}catch{re=!0}he(),p.then(()=>{Le=!0,Qt()});let ue=-1,ut,ft,Ne=!0,dt=!1,ht,Ue=null;const pt=r=>{const u=Ue===null;Ue=Ne&&r[0]!=="withheld"?r:["withheld",r[1],Ce];let f=r[0];if(Ne&&f!=="withheld"){const I={ver:O,handoff:f};ut!==void 0&&(I.seq=ut),ft!==void 0&&(I.note=ft);try{if(v===null)throw new Error("no storage");v.setItem(Ve(k),'{"kv":1,"gen":'+ue+',"from":'+JSON.stringify(I)+(ht!==void 0?',"k":'+JSON.stringify(ht):"")+',"data":'+(f==="ok"?r[2]:Ce)+"}")}catch{f="unavailable"}}else{f="withheld",oe(k);try{P?.release?.()}catch{}}const S={__frame_hot_snapshotted:!0,gen:ue,handoff:f,bytes:r[1]};r[3]!==void 0&&(S.errName=r[3]),H(S,V),u&&(f==="snapshot_error"||f==="unclonable"||f==="oversize")&&m("claude.hot: snapshot",f,r[3])},pe=r=>{try{return Rr(r?.name)}catch{return"other"}},me=(r,u,f=0)=>pt(u===void 0?[r,f,Ce]:[r,f,Ce,pe(u)]),Mn=r=>{if(r.gen<=ue)return;const u=ue>=0;if(ue=r.gen,ut=r.seq,ft=Be(r.note),typeof r.key=="string"&&Et.test(r.key)&&r.key!==k&&(oe(k),k=r.key),Ne&&=r.handoff!==!1,u){Ue!==null?pt(Ue):dt&&H({__frame_hot_held:!0,gen:ue},V);return}Ae.abort();const f=Object.freeze({handoff:Ne,timeoutMs:r.timeoutMs,deadline:r.deadline??kr}),S=Re,I=()=>{if(Ne)try{ht=P?.capture()}catch{}if(S===null){me("empty");return}let R=!1;const z=a(()=>{R||(R=!0,me("snapshot_timeout"))},Math.max(0,f.timeoutMs));Promise.resolve().then(()=>S(f)).then(ve=>{if(R)return;R=!0,s(z);let ee;try{ee=JSON.stringify(ve)}catch(mt){me("unclonable",mt);return}if(typeof ee!="string"){me("unclonable");return}let te=ee.length;try{te=L.encode(ee).length}catch{}if(te>262144){me("oversize",void 0,te);return}pt(["ok",te,ee])},ve=>{R||(R=!0,s(z),me("snapshot_error",ve))})};let G=null;try{G=P?.holdForIme()??null}catch{}if(G===null)I();else{dt=!0,H({__frame_hot_held:!0,gen:ue},V);const R=()=>{dt=!1,I()};G.then(R,R)}},Pn=r=>{if(!W||F||q===null||r.gen!==T)return;let u=null;try{u=Mt(v,o&&{k:o.k,g:r.gen})}catch{}if(u!==null&&u.gen!==r.gen){u=null;try{v?.removeItem(ye(o?.k))}catch{}}_=u?.data??{},C=jt(ge(u?.from??r.from),ge(r.from)),u!==null&&(T=u.gen),F=!0,W=!1;const f=It(u);p.then(S=>{try{S&&P?.afterStart(f,!0)}catch{}}),He(!0)};let Ge=0;const Nn=r=>{const u=ke;if(u===null||r.id<=Ge)return;Ge=r.id;const f=P?.assess;if(r.preflight===void 0||f===void 0){er(r,u);return}let S=!1;const I=z=>{S||(S=!0,s(R),r.id===Ge&&er(r,u,z))},G=()=>I(f.timeout(r)),R=a(G,Fr+100);f.run(r,window).then(I,G)},er=(r,u,f)=>{let S,I=!1,G=!1,R,z,ve=null;const ee=A=>{if(G)return!1;if(R!==void 0&&R!==A)return m(`claude.hot: u.${A}() ignored - u.${R}() was called first`),!1;const Z=R===void 0;return R=A,Z},te=A=>{R="restart",m(`claude.hot: ${A} - restarting`)},mt=()=>{if(!ee("adopt")||r.id!==Ge)return;const A=r.to.ver;if(ze.required!=="none"){te(`u.adopt() needs required 'none', it is '${ze.required}'`);return}if(!Nt(A)){te("u.adopt() cannot address this version");return}if(!O||A===O)return;const Z=O,J=h.entry;let Ke="",_t,_e=null,$e;try{Ke=location.href,_t=g.state,_e=Ct(Ke,Z,A),_e!==null&&(b(_t,"",_e),location.pathname.startsWith("/_f/"+A+"/")?_e=location.href:$e="navigate event canceled")}catch(gt){$e=pe(gt)}if($e!==void 0){z="adopt_failed",te(`adopt_failed ${$e}; URL not changed`);return}_e===null?(z="adopt_skipped",m(`claude.hot: adopt_skipped - page already left /_f/${Z}/; URL not changed, update still applied`)):z="adopted",O=h.ver=A;try{h.entry=Ct(J,Z,A)??J}catch{}const yt=_e;ve=()=>{if(O===A){if(yt!==null)try{if(location.href!==yt)m("claude.hot: adopt_revert_skipped - update not applied; URL left where the page navigated");else{if(b(_t,"",Ke),location.href!==Ke){m("claude.hot: adopt_revert_failed navigate event canceled - URL still at the new version");return}z="adopt_reverted",m("claude.hot: adopt_reverted - adopt() was called but the handler threw; URL restored")}}catch(gt){m(`claude.hot: adopt_revert_failed ${pe(gt)} - URL still at the new version`);return}O=h.ver=Z,h.entry=J,yt===null&&(z=void 0)}}},ze=Object.freeze({from:{ver:r.from.ver,seq:r.from.seq},to:{ver:r.to.ver,seq:r.to.seq},changed:Wr(r.changed),required:r.required,deadline:r.deadline,adopt:mt,defer(){return ee("defer")&&ze.deadline.now&&te("u.defer() past the deadline"),Ot},restart(A){return ee("restart"),R==="restart"&&!G&&(S??=Be(A?.note),I||=A?.required==="hard-reload"),Ot},...f?.update}),Cn=(A,Z)=>{G=!0,A==="threw"?(ve?.(),S??=pe(Z).toLowerCase()):R===void 0&&m(A==="timeout"?"claude.hot: accept handler did not answer in time - restarting":"claude.hot: accept handler settled without defer/restart/adopt - restarting");const J={__frame_hot_verdict:!0,id:r.id};J.verdict=A==="threw"||R===void 0||R==="restart"?"restart":R==="adopt"?"applied":"deferred",J.verdict==="restart"&&(I&&(J.required="hard-reload"),S!==void 0&&(J.note=S)),z!==void 0&&(J.verdict==="applied"||z!=="adopted")&&(J.adopt=z),H(Object.assign(J,f?.verdict),V)};let tr=!1;const vt=(A,Z)=>tr?!1:(tr=!0,s(jn),Cn(A,Z),!0),jn=a(()=>vt("timeout"),r.verdictTimeoutMs);Promise.resolve().then(()=>u(ze)).then(()=>vt("settled"),A=>{!vt("threw",A)&&R==="adopt"&&ct({note:pe(A).toLowerCase()}),m("claude.hot: accept",pe(A))})};try{t.hot===void 0&&Object.defineProperty(t,"hot",{value:Vt,writable:!1,configurable:!1,enumerable:!1})}catch{}return{hot:Vt,boot:h,afterConnect(){Se=!0,(e!==null||q!==null)&&y()},onInit(r,u){V=u,Q=!0;const f=Hr(r)?r:null;f?.phase==="final"&&e!==null&&e.gen===f.gen?(F=!0,C=jt(C,ge(f.from)),On()):(W=f?.phase==="pending",Zt(W),F=!W,T=f?.gen??0,C=ge(f?.from)),X(),de&&a(()=>{ne||(ne=!0,X())},Cr),W&&q!==null&&H({__frame_hot_ready:!0,gen:T},u),x!==void 0&&(ct(x),x=void 0),He()},onNoInit(){Q=!0,Zt(!1),F=!0,He()},onShell(r){return r?.__frame_revealed===!0?(Pe(),!1):qr(r)?(Mn(r),!0):Ur(r)?(Pn(r),!0):Vr(r)?(Nn(r),!0):!1},attachExtras(r){P=r,Jt(),r.assess&&X()},inSlot:()=>ye(k),hydration(r,u){qe??={expect:r,maxMs:u}},hydrated(){Xt()},carried(){return F?_:{}},presented:()=>i}}var xn="frame_ldx_runtime",Zr="frame_ldx_build",Hn="script#an-form",Qr=256;function Ft(t,e,n){for(const o of t)n(o)&&t.delete(o);t.size>=Qr&&!t.has(e)&&t.delete(t.values().next().value),t.add(e)}function Ye(t,e,n){try{const o=t[e];if(typeof o!="function")return;t[e]=function(...a){const s=o.apply(this,a);try{n(this)}catch{}return s}}catch{}}var Je;function en(){if(Je)return Je;const t={media:new Set,contexts:new Set,onStart:null,onPause:null};Je=t;const e=window.HTMLMediaElement?.prototype;e&&(Ye(e,"play",a=>{Ft(t.media,a,s=>s.paused),t.onStart?.(a)}),Ye(e,"pause",a=>t.onPause?.(a)));const n=window.AudioContext,o=window.AudioNode?.prototype;return n&&o&&Ye(o,"connect",a=>{const s=a.context;s instanceof n&&(Ft(t.contexts,s,c=>c.state==="closed"),t.onStart?.(s))}),t}function tn(t){let e=window;for(let n=0;e.parent&&e.parent!==e&&n<8;n++)if(e=e.parent,t(e))return!0;return!1}function rn(){let t=null;const e=()=>t??parent,n=o=>t?o===t:tn(a=>a===o);return{post(o,a){if(t){e().postMessage(o,a);return}let s=parent;for(let c=0;c<8&&(s.postMessage(o,a),!(!s.parent||s.parent===s));c++)s=s.parent},on(o){const a=s=>{const c=s.source;n(c)&&o(s.data,s.origin,s.isTrusted,()=>{t??=c})};return addEventListener("message",a),()=>removeEventListener("message",a)},port:o=>({post(a,s){if(s?.activation){e().postMessage(a,{targetOrigin:o,includeUserActivation:!0});return}if(s?.transfer){e().postMessage(a,o,s.transfer);return}e().postMessage(a,o)},on(a,s){const c=d=>{n(d.source)&&d.origin===o&&a(d.data,d)};return addEventListener("message",c,s),()=>removeEventListener("message",c,s)}})}}function nn(){const t={post:()=>{},on:()=>()=>{}};return{...t,port:()=>t}}var on=500,an=2e4,sn="data-token-reads",ln="data-frame-refused-watch",cn="data-frame-unsupported",un=/(?:^|\s)stylesheet(?:\s|$)/i;function fn(t,e){let n="";if(t instanceof HTMLScriptElement?n=t.src:t instanceof HTMLLinkElement&&un.test(t.rel)&&(n=t.href),!n)return null;try{const o=new URL(n);return o.origin===location.origin&&o.pathname.startsWith(e)?o.origin+o.pathname:null}catch{return null}}function dn(t,e,n){if(!t||e!=="query")return;const o="/_f/"+t+"/";document.documentElement.setAttribute(ln,"");const a=location.href,s=fetch,c=setTimeout,d={method:"HEAD",cache:"no-store",credentials:"same-origin"},L=h=>h.ok||h.status===304;let g=!1,b=!1;const m=()=>removeEventListener("error",v,!0),O=async h=>{const k=await s(h,d);if(L(k))b=!0;else if(k.status===403){const B=await s(a,d);if(L(B)){const _=(await s(h,d)).status;_===403?(b=!0,document.documentElement.setAttribute(cn,""),n()):_<500&&(b=!0)}else B.status>=400&&B.status<500&&(b=!0)}},v=h=>{if(b||g)return;if(document.documentElement.hasAttribute(sn)){b=!0,m();return}const k=fn(h.target,o);k&&(g=!0,c(()=>{O(k).catch(()=>{}).finally(()=>{g=!1,b&&m()})},on))};addEventListener("error",v,!0),addEventListener("load",m,{once:!0}),c(m,an)}var Ze="__frame_scroll",hn=150,pn=310,mn=160,vn=3e4;function _n(){let t=0,e=!1,n=!1,o=!1,a=0,s=null;const c=_=>{try{sessionStorage.setItem(Ze,JSON.stringify({y:_}))}catch{}},d=()=>{if(clearTimeout(t),s===null)return;const _=s;s=null,c(_)},L=()=>{if(e){e=!1;return}n=!0,s=scrollY,clearTimeout(t),t=setTimeout(d,hn)};try{addEventListener("scroll",L,{passive:!0}),addEventListener("pagehide",d)}catch{}const g=()=>{let _;try{_=sessionStorage.getItem(Ze)}catch{return null}if(_===null)return null;let C;try{C=JSON.parse(_)}catch{C=null}const T=C?.y;if(!(typeof T=="number"&&Number.isFinite(T)&&T>=0)){try{sessionStorage.removeItem(Ze)}catch{}return null}return T};let b=!1;const m=_=>{try{const C=scrollY;scrollTo({top:_,left:0,behavior:"instant"}),a=_,o=!0,clearTimeout(t),s=null,c(_);const T=scrollY;T!==C&&(e=!0),T!==_&&!b&&(b=!0,addEventListener("load",()=>{try{if(scrollY===T){const F=g();m(F!==null?F:a)}}catch{}},{once:!0}))}catch{}},O=()=>{try{return!!location.hash}catch{return!0}};let v=!1;const h=()=>{try{if(v||innerWidth>pn||innerHeight>mn)return;v=!0;const _=Date.now(),C=()=>{try{removeEventListener("resize",C)}catch{}if(Date.now()-_>vn||n||O())return;const T=g();m(T!==null?T:a)};addEventListener("resize",C)}catch{}};let k=!1,B=!1;return{restore(){if(k||(k=!0,O()))return;const _=g();_!==null&&(m(_),h())},promoted(){if(B||(B=!0,O()))return;const _=g();_!==null?(m(_),h()):o&&m(a)}}}function yn(t,e,n,o){let a=null;try{a=window.trustedTypes?.createPolicy("frame-runtime",{createScriptURL:L=>L})??null}catch{}const s=window.Worker,c=s?.prototype,d=Object.freeze({Worker:s,workerOn:c?.addEventListener,workerPost:c?.postMessage,workerTerminate:c?.terminate,fetch:window.fetch.bind(window),preventDefault:Event.prototype.preventDefault,now:Date.now,policy:a,origins:e});n(t).then(L=>L?.bootTopLevel?L.bootTopLevel(d,o):o.settle()).catch(()=>o.settle())}var Bn="modulepreload",qn=function(t){return"/"+t},Un={},gn=function(e,n,o){let a=Promise.resolve();function s(c){const d=new Event("vite:preloadError",{cancelable:!0});if(d.payload=c,window.dispatchEvent(d),!d.defaultPrevented)throw c}return a.then(c=>{for(const d of c||[])d.status==="rejected"&&s(d.reason);return e().catch(s)})},wn=window===top,Dt=Object.getOwnPropertyDescriptor(window,"claude"),je=Xr(wn,window.__FRAME_PREAMBLE?.topLevel,Dt?.writable===!1),Qe=typeof je=="object"&&je[0],M=Qe?nn():rn();(function(){const t=Object.defineProperty,e=globalThis,n=["RTCPeerConnection","webkitRTCPeerConnection","RTCDataChannel","RTCIceCandidate","RTCSessionDescription","RTCRtpSender","RTCRtpReceiver"];let o=0;for(let a=0;a<n.length;a++){const s=n[a];try{t(e,s,{value:void 0,writable:!1,configurable:!1})}catch{try{delete e[s]}catch{}try{t(e,s,{value:void 0,writable:!1,configurable:!0})}catch{}}typeof e[s]=="function"&&o++}if(o&&je==="framed")try{M.post({__frame_rtc_lockdown_failed:o},"*")}catch{}})();var xt=1e4,bn=2e3,et=2e3,Ht=Object.freeze([...window.__FRAME_PREAMBLE?.origins??["https://claude.ai","https://preview.claude.ai"]]);function Bt(t){for(const e of Ht)if(e.endsWith(":*"))try{const n=new URL(t);if(`${n.protocol}//${n.hostname}:*`===e)return!0}catch{}else if(t===e)return!0;return!1}var we=Object.freeze({...window.__FRAME_PREAMBLE?.capabilities}),Ie=window.__FRAME_PREAMBLE?.transforms,tt=window.__FRAME_PREAMBLE?.comments,rt=window.__FRAME_PREAMBLE?.translate,be=window.__FRAME_PREAMBLE?.ldx,En=window.__FRAME_PREAMBLE?.cred;function qt(t){return gn(()=>import("/_runtime/"+t),void 0)}var Ee=new Set,Sn=setTimeout,An=800+800*Math.random();function ie(t){return qt(t).catch(()=>new Promise(e=>Sn(e,An)).then(()=>qt(t+"?r=1")).then(e=>(e!==void 0&&Ee.add(t),e)))}function Ut(t,e,n){return{contract:t.contract,changes:new Set(t.changes??[]),flags:new Set(t.flags??[]),capabilities:t.capabilities??{},capBudgets:t.capBudgets??{},brokerGen:t.brokerGen,transforms:new Map,shellOrigin:e,shell:n,mount:lt,hooks:Fe,pipe:()=>({wrap:(o,a)=>(...s)=>{try{return a(...s)}catch(c){return Promise.reject(c)}}})}}var fe=null,K=null;function Gt(t,e,n){try{Object.defineProperty(t,e,{value:n,writable:!1,configurable:!1,enumerable:!0})}catch{try{Object.defineProperty(t,e,{value:n,writable:!1,configurable:!0,enumerable:!0})}catch{}}}var nt=!1,Fe={editBefore:null,edit:null};function Rn(t,e,n=!1){const o=[];let a;if(n)try{Fe.editBefore?.(t)}catch{}for(const s of t.elements){const c=document.querySelector(`[data-id="${s.target}"]`);if(!c){a=s.target;break}if([...Object.keys(s.attrsSet??{}),...s.attrsRemoved??[]].some(d=>!sr(d)||ir(c,d))){a=s.target;break}if(s.text!==void 0&&(!fr(c)||mr(c))){a=s.target;break}for(const[d,L]of Object.entries(s.attrsSet??{}))if(!Kt(c,d)){try{c.setAttribute(d,L)}catch{}zt(c,d,L)}for(const d of s.attrsRemoved??[])Kt(c,d)||(c.removeAttribute(d),zt(c,d,null));typeof s.text=="string"&&hr(c,s.text),o.push(s.target)}if(n)try{Fe.edit?.(t.seq,o,a)}catch{}if(a!==void 0){M.post({__frame_patch_miss:{seq:t.seq}},e);return}try{document.dispatchEvent(new CustomEvent("claude:edit",{detail:{seq:t.seq,targets:o}}))}catch{}}function zt(t,e,n){if(!(t instanceof HTMLInputElement))return;const o=e.toLowerCase();o==="checked"?t.checked=n!==null:o==="value"&&t.type!=="file"&&(t.value=n??"")}function Kt(t,e){const n=e.toLowerCase(),o=t;return n==="data-id"||(n==="value"||n==="checked")&&(o.__artifactSecret===!0||/^(password|hidden|file)$/.test(o.type??"")||/(^|\s)(cc-|one-time-code|current-password|new-password)/i.test(`${t.getAttribute("autocomplete")??""} ${o.autocomplete??""}`))}function $t(t){const e=document.documentElement;t==="light"||t==="dark"?(e.dataset.theme=t,e.style.colorScheme=t,nt=!0):nt&&(delete e.dataset.theme,e.style.colorScheme="",nt=!1)}var le=new Map,ot=null;function at(){let t;const e={u:new Promise(n=>{t=n}),r:n=>{e.done=!0,t(n)},done:!1,nulled:!1};return e}function De(t,e){t.nulled=!0,t.ver=e,t.r(null)}function st(t,e){for(const[n,o]of le)o.done||(e&&o.asked?e(n,o):De(o,t))}var kn=Object.freeze(Object.assign(Object.create(null),{call:Function.prototype.call,apply:Function.prototype.apply,bind:Function.prototype.bind})),it=!1,lt=(t,e)=>{let n=le.get(t);if(n?.nulled&&it)n=at(),le.set(t,n);else if(!n||n.done){n?.nulled&&K&&M.post({__frame_cap_telemetry:{kind:"cap-load-error",cap:t,phase:"install"}},K);return}const o=typeof e=="function"?Object.setPrototypeOf(e,kn):Object.assign(Object.create(null),e);typeof o.then=="function"&&delete o.then,n.want=void 0,n.r(Object.freeze(o))};function Wt(){const t=Dt?.value??{};Gt(window,"claude",t);for(const e of Object.keys(we)){if(t[e]!==void 0){Gt(t,e,t[e]);continue}le.set(e,at())}if(t.use===void 0){const e=n=>{if(typeof n!="string"||!Object.hasOwn(we,n))return Promise.resolve(null);let o=le.get(n);return o?(ot&&(o.nulled||o.want!==void 0)&&(o=ot(n,o)),o.asked=!0,o.u):Promise.resolve(t[n]??null)};try{Object.defineProperty(t,"use",{value:e,writable:!0,configurable:!0,enumerable:!1})}catch{}}return t}if(je==="framed"){const t=Ie&&se.test(Ie)?ie(Ie).catch(()=>{}):Promise.resolve(void 0),e=l=>{if(l.type==="auxclick"&&l.button!==1)return;const p=l.target,w=p&&p.closest?p.closest("a[href],area[href]"):null;if(!w)return;const D=w.getAttribute("href");if(!D)return;let j;try{j=new URL(D,document.baseURI)}catch{return}if((j.protocol==="http:"||j.protocol==="https:")&&j.origin!==location.origin){l.preventDefault();const x=(w.getAttribute("target")??"").toLowerCase(),P=l.type==="auxclick"||l.metaKey||l.ctrlKey||l.shiftKey||l.altKey||!["","_self","_top","_parent"].includes(x);M.post({__frame_nav:!0,url:j.href,newTab:P},"*")}};addEventListener("click",e,!0),addEventListener("auxclick",e,!0);const n={},o=l=>{l.isTrusted&&(n.pointer=!0)},a=l=>{l.isTrusted&&(n.click=!0)};addEventListener("pointermove",o,{capture:!0,passive:!0}),addEventListener("click",a,{capture:!0,passive:!0});const s={cb:null};addEventListener("keydown",l=>s.cb?.(l),!0);const c={cb:null};addEventListener("keydown",l=>c.cb?.(l));const d=en();t.then(l=>l?.installEscapeForward?.(s,p=>{K&&M.post(p,K)})),t.then(l=>{try{l?.installFocusKeep?.()}catch{}}),t.then(l=>{if(!l?.wireNav)return;const p=M.port("*");l.wireNav(p),removeEventListener("click",e,!0),removeEventListener("auxclick",e,!0),removeEventListener("pointermove",o,!0),removeEventListener("click",a,!0),l.wireEngagement?.(n,p,d)});let L=null;try{L=_n()}catch{}const g=document.readyState==="loading"?new Promise(l=>document.addEventListener("DOMContentLoaded",()=>l(),{once:!0})):Promise.resolve();let b=null,m=null;try{m=Pr(window.name),b=Mt(null,m)}catch{}const O=Wt();let v=null;try{v=Jr(O,b,{post:(l,p)=>M.post(l,p),dcl:g},m)}catch{}t.then(l=>{try{v&&l?.installHotExtras?.(v)}catch{}});let h=null;const k=()=>Array.isArray(h?.flags)&&h.flags.includes("frame_ldx_runtime")&&!!be&&se.test(be)&&document.querySelector("script#an-form")!==null;try{v?.hydration(k,Nr)}catch{}let B=null,_=0;const C=M.on((l,p,w,D)=>{Bt(p)&&gr(l)&&(D(),h=l.__frame_init,K=p,C(),clearTimeout(_),B?.())});M.post({__frame_connect:!0},"*");try{v?.afterConnect()}catch{}const T=setTimeout,F=clearTimeout;let W=()=>NaN,Q=()=>[];try{W=performance.now.bind(performance),Q=performance.getEntriesByType.bind(performance)}catch{}let V=0;const Se=()=>{try{M.post({__frame_alive:!0},"*")}catch{}V=T(Se,bn)},Ae=()=>F(V);Se(),addEventListener("load",Ae,{once:!0});const Re=new Promise(l=>{B=l,_=setTimeout(()=>{C(),l()},xt)}),q=new WeakSet;addEventListener("error",l=>{l.target&&q.add(l.target)},!0);try{dn(Pt(),En,()=>{t.then(l=>{try{l?.drawRefusedNotice?.()}catch{}})})}catch{}const ke=()=>{let l=[];try{l=[...document.querySelectorAll("link[rel~=stylesheet]:not([rel~=alternate])")].filter(w=>!w.sheet&&!w.disabled&&!q.has(w)&&w.getAttribute("href")&&URL.canParse(w.href)&&(!w.media||matchMedia(w.media).matches))}catch{}let p=l.length;return p===0?Promise.resolve():new Promise(w=>{try{const D=et-W(),j=T(w,D>0?D<et?D:et:0),x=()=>{--p===0&&(F(j),w())};for(const P of l)P.addEventListener("load",x,{once:!0}),P.addEventListener("error",x,{once:!0})}catch{w()}})};g.then(()=>{try{L?.restore()}catch{}}),Promise.all([Re,g,t]).then(([,,l])=>{if(h?.hostOverlays!==!0||!K)return;let p=!1;try{p=l?.declaresCover?.()===!0}catch{}M.post({__frame_layout:{cover:p}},K)});const Te={cb:null};M.on((l,p)=>{if(Bt(p)&&wr(l)){try{L?.promoted()}catch{}Te.cb?.()}}),Re.then(async()=>{if(!h||!K){st();try{v?.onNoInit()}catch{}return}if($t(h.theme),h.hostVisible===!1&&t.then(i=>i?.applyHostVisible?.(!1,d)),h.hostKeys!==void 0){const i=K,E=h.hostKeys;t.then(y=>y?.installHostKeyForward?.(c,E,N=>M.post(N,i)))}try{v?.onInit(h.hot,K)}catch{}const l=K,p=M.port(l),w=(i,E)=>M.post({__frame_cap_telemetry:{kind:"cap-load-error",cap:i,phase:E}},l),D=i=>M.post({__frame_cap_recovered:{cap:i}},l);let j=h.brokerGen;const x=()=>v?.boot.ver??"",P=x(),ce=(i,E)=>{const y=x();F(E.t),E.want=y,E.t=T(()=>{E.done||De(E,y)},xt),M.post({__frame_cap_want:!0,cap:i,ver:y},l)},xe=(i,E)=>{const y=le.get(i.cap),N=we[i.cap];if(!E||!y||y.done||y.want!==i.ver||!se.test(N))return;if(F(y.t),y.want=void 0,j=i.brokerGen??j,i.ver!==x()){ce(i.cap,y);return}if(!i.grant||i.cap==="network"){De(y,i.ver);return}const Y=fe,$=fe={...Y,capabilities:{...Y.capabilities,[i.cap]:i.grant},capBudgets:{...Y.capBudgets,[i.cap]:{...Y.capBudgets[i.cap],...i.budgets}}};ie(N).then(Pe=>{Ee.has(N)&&D(i.cap),$.brokerGen=j,it=!0;try{Pe?.install?.($)}catch{w(i.cap,"install")}finally{it=!1}},()=>w(i.cap)).then(()=>{y.done||De(y,i.ver)})};let re=!1,Le=!1;M.on((i,E,y)=>{if(E!==l)return;try{if(v?.onShell(i))return}catch{}if(Er(i)&&$t(i.__frame_theme.theme),zr(i)&&xe(i,y),y&&Kr(i)&&(j=i.brokerGen??j),br(i)){const $=i.__frame_host_visible.visible;t.then(Pe=>Pe?.applyHostVisible?.($,d))}yr(i)&&Rn(i.__frame_patch,l,y);const N=i?.__fc_mode;N&&typeof N=="object"&&!re&&tt&&se.test(tt)&&(re=!0,ie(tt).then($=>$.install?.(l,N.on===!0,p)).catch(()=>{}));const Y=i?.__ft_cmd;Y&&typeof Y=="object"&&!Le&&rt&&se.test(rt)&&(Le=!0,ie(rt).then($=>$.install?.(l,Y,p)).catch(()=>{}))});const ne=Object.keys(h.capabilities??{}).filter(i=>Object.hasOwn(we,i)).map(i=>[i,we[i]]).filter(i=>typeof i[1]=="string"&&se.test(i[1])),de=await Promise.allSettled(ne.map(([,i])=>ie(i))),oe=await t,H=l;if(oe?.buildBoot||w("_transforms"),oe?.buildBoot)try{fe=oe.buildBoot(h,oe.TRANSFORMS??{},{shellOrigin:H,mount:lt,hooks:Fe,shell:p},i=>M.post({__frame_cap_telemetry:i},H))}catch{w("_transforms","install"),fe=Ut(h,H,p)}else fe=Ut(h,H,p);oe?.buildBoot&&Ee.has(Ie??"")&&D("_transforms");const he=fe;he.brokerGen=j,de.forEach((i,E)=>{const[y,N]=ne[E];if(i.status!=="fulfilled"){w(y);return}Ee.has(N)&&D(y);try{i.value?.install?.(he)}catch{w(y,"install")}});const X=h.capWants===!0;X&&(ot=(i,E)=>{const y=x();if(!y)return E;if(!E.nulled)return E.want!==y&&ce(i,E),E;if(y===E.ver)return E;const N=at();return le.set(i,N),ce(i,N),N}),st(P,X&&x()!==P?ce:void 0),await g,await ke(),Ae();const Oe=rr(Q,W);M.post(Oe?{__frame_ready:!0,nav:Oe}:{__frame_ready:!0},K),t.then(i=>{i?.installSizeReporter?.(H,Te,p),i?.installPaintReporter?.(p)});let Me=!1;try{Me=k()}catch{}be&&Me?ie(be).then(i=>i?.boot?.({shellOrigin:l,build:he.flags.has(Zr),hot:v?.hot??null,carried:v?.carried(),presented:()=>v?.presented()??!0})).catch(()=>!1).then(i=>{v?.hydrated(),i!==!0?w("_ldx"):Ee.has(be)&&D("_ldx")}):v?.hydrated()})}else Qe&&(Wt(),yn(Qe,Ht,ie,{settle:st,mount:lt}))})();</script><!-- /frame-runtime -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restoran — Restaurant Management System</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+  --amber: #FFA500;
+  --amber-light: #FFD166;
+  --amber-dim: rgba(255,165,0,0.12);
+  --amber-border: rgba(255,165,0,0.3);
+  --green: #2ECC71;
+  --green-dim: rgba(46,204,113,0.12);
+  --dark: #0D0F14;
+  --dark-2: #141720;
+  --dark-3: #1C1F29;
+  --dark-4: #252834;
+  --muted: #6B7280;
+  --text: #E8EAF0;
+  --text-dim: #9CA3AF;
+  --red: #EF4444;
+  --blue: #3B82F6;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--dark);color:var(--text);font-family:'Cairo',sans-serif;}
+
+/* ── NAVBAR ── */
+#nav{
+  position:fixed;top:0;left:0;right:0;height:56px;z-index:100;
+  background:rgba(13,15,20,0.95);
+  border-bottom:1px solid var(--amber-border);
+  backdrop-filter:blur(12px);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 32px;gap:24px;
+}
+.nav-brand{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:700;color:var(--amber);}
+.nav-brand span{font-size:22px;}
+.nav-progress{flex:1;max-width:320px;display:flex;flex-direction:column;gap:5px;}
+.progress-label{font-size:11px;color:var(--text-dim);display:flex;justify-content:space-between;}
+.progress-track{height:3px;background:var(--dark-4);border-radius:99px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--amber);border-radius:99px;transition:width 0.5s ease;}
+.nav-actions{display:flex;align-items:center;gap:10px;}
+.nav-btn{
+  display:flex;align-items:center;gap:6px;
+  padding:7px 14px;border-radius:6px;
+  font-family:'Cairo',sans-serif;font-size:13px;font-weight:600;
+  cursor:pointer;border:1px solid;transition:all 0.2s;
+}
+.btn-ghost{background:transparent;border-color:var(--amber-border);color:var(--text-dim);}
+.btn-ghost:hover{border-color:var(--amber);color:var(--amber);background:var(--amber-dim);}
+.btn-primary{background:var(--amber);border-color:var(--amber);color:#0D0F14;}
+.btn-primary:hover{background:var(--amber-light);}
+.btn-dl{background:var(--green-dim);border-color:rgba(46,204,113,0.4);color:var(--green);}
+.btn-dl:hover{background:rgba(46,204,113,0.2);}
+.slide-counter{font-size:12px;color:var(--text-dim);font-variant-numeric:tabular-nums;white-space:nowrap;}
+
+/* ── SLIDES ── */
+#deck{position:fixed;inset:56px 0 0 0;overflow:hidden;}
+.slide{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.6s ease;
+  overflow-y:auto;
+  padding:48px 80px 80px;
+}
+.slide.active{opacity:1;pointer-events:all;}
+
+/* ── DOTS ── */
+#dots{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
+  display:flex;gap:8px;z-index:100;
+}
+.dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--dark-4);border:1px solid var(--amber-border);
+  cursor:pointer;transition:all 0.3s;
+}
+.dot.active{background:var(--amber);width:24px;border-radius:99px;}
+
+/* ── TYPOGRAPHY ── */
+.eyebrow{font-size:11px;letter-spacing:0.12em;color:var(--amber);font-weight:600;text-transform:uppercase;margin-bottom:12px;}
+.slide-heading{font-size:42px;font-weight:900;line-height:1.15;margin-bottom:8px;color:var(--text);}
+.slide-heading em{font-style:normal;color:var(--amber);}
+.slide-sub{font-size:17px;color:var(--text-dim);line-height:1.7;max-width:640px;margin-bottom:40px;}
+
+/* ── SLIDE 1: HERO ── */
+.hero-layout{display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center;min-height:calc(100vh - 200px);}
+.hero-stats{display:flex;flex-direction:column;gap:16px;margin-top:40px;}
+.hero-stat{
+  display:flex;align-items:center;gap:16px;
+  padding:18px 24px;
+  background:var(--dark-3);border:1px solid var(--amber-border);border-radius:10px;
+}
+.hero-stat-num{font-size:36px;font-weight:900;color:var(--amber);font-variant-numeric:tabular-nums;line-height:1;min-width:56px;}
+.hero-stat-label{font-size:14px;color:var(--text-dim);}
+.hero-stat-title{font-size:16px;font-weight:600;color:var(--text);}
+.hero-visual{
+  background:var(--dark-3);border:1px solid var(--amber-border);border-radius:14px;
+  padding:28px;display:flex;flex-direction:column;gap:14px;
+}
+.hv-title{font-size:12px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-bottom:4px;}
+.hv-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05);}
+.hv-row:last-child{border-bottom:none;}
+.hv-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.hv-name{font-size:14px;font-weight:600;flex:1;}
+.hv-count{font-size:12px;font-family:'JetBrains Mono',monospace;color:var(--amber);background:var(--amber-dim);padding:3px 10px;border-radius:99px;}
+
+/* ── SLIDE 2: FEATURES ── */
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.feat-card{
+  background:var(--dark-3);border:1px solid rgba(255,255,255,0.07);border-radius:12px;
+  padding:28px 24px;display:flex;flex-direction:column;gap:14px;
+  transition:border-color 0.3s;
+}
+.feat-card:hover{border-color:var(--amber-border);}
+.feat-icon{font-size:28px;width:48px;height:48px;background:var(--amber-dim);border-radius:10px;display:flex;align-items:center;justify-content:center;}
+.feat-title{font-size:17px;font-weight:700;color:var(--text);}
+.feat-desc{font-size:14px;color:var(--text-dim);line-height:1.7;}
+.feat-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;}
+.tag{font-size:11px;padding:3px 9px;border-radius:99px;background:var(--dark-4);color:var(--text-dim);border:1px solid rgba(255,255,255,0.08);}
+
+/* ── SLIDE 3: ARCHITECTURE ── */
+.arch-layout{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+.arch-section{display:flex;flex-direction:column;gap:16px;}
+.arch-title{font-size:13px;font-weight:600;color:var(--amber);margin-bottom:4px;}
+.entity-card{
+  background:var(--dark-3);border-radius:8px;padding:14px 18px;
+  border-left:3px solid var(--amber);display:flex;flex-direction:column;gap:4px;
+}
+.entity-name{font-size:14px;font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--amber);}
+.entity-fields{font-size:12px;color:var(--text-dim);}
+.rel-badge{font-size:11px;color:var(--green);background:var(--green-dim);padding:2px 8px;border-radius:99px;width:fit-content;}
+.tech-stack{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px;}
+.tech-pill{
+  padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;
+  background:var(--dark-3);border:1px solid rgba(255,255,255,0.1);
+  display:flex;align-items:center;gap:8px;
+}
+.tech-dot{width:6px;height:6px;border-radius:50%;}
+
+/* ── SLIDE 4: APIs ── */
+.api-layout{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.api-group{background:var(--dark-3);border-radius:10px;padding:20px;border:1px solid rgba(255,255,255,0.07);}
+.api-group-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+.api-group-name{font-size:14px;font-weight:700;}
+.api-count-badge{font-size:12px;background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-border);padding:3px 10px;border-radius:99px;}
+.api-route{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);
+  font-size:12px;
+}
+.api-route:last-child{border-bottom:none;}
+.method{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;flex-shrink:0;}
+.m-get{background:rgba(59,130,246,0.15);color:#60A5FA;}
+.m-post{background:rgba(34,197,94,0.15);color:#4ADE80;}
+.m-put{background:rgba(251,191,36,0.15);color:#FCD34D;}
+.m-del{background:rgba(239,68,68,0.15);color:#F87171;}
+.route-path{font-family:'JetBrains Mono',monospace;color:var(--text-dim);font-size:11px;}
+
+/* ── SLIDE 5: SECURITY ── */
+.security-layout{display:grid;grid-template-columns:1fr 360px;gap:40px;align-items:start;}
+.flow-steps{display:flex;flex-direction:column;gap:0;}
+.flow-step{display:flex;gap:20px;padding:20px 0;}
+.flow-line{display:flex;flex-direction:column;align-items:center;gap:0;}
+.step-circle{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--amber);color:#0D0F14;
+  font-weight:900;font-size:14px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.step-connector{width:2px;flex:1;min-height:24px;background:var(--amber-border);margin:4px 0;}
+.step-body{padding-bottom:8px;}
+.step-title{font-size:15px;font-weight:700;margin-bottom:6px;}
+.step-code{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--amber);background:var(--dark-4);padding:8px 12px;border-radius:6px;margin-top:6px;}
+.roles-panel{display:flex;flex-direction:column;gap:16px;}
+.role-card{background:var(--dark-3);border-radius:10px;padding:20px;border:1px solid rgba(255,255,255,0.07);}
+.role-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.role-badge{font-size:12px;font-weight:700;padding:4px 12px;border-radius:99px;}
+.badge-admin{background:rgba(239,68,68,0.15);color:#F87171;border:1px solid rgba(239,68,68,0.3);}
+.badge-user{background:var(--green-dim);color:var(--green);border:1px solid rgba(46,204,113,0.3);}
+.role-perm{font-size:13px;color:var(--text-dim);display:flex;align-items:center;gap:8px;padding:5px 0;}
+.perm-check{width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;}
+.check-green{background:var(--green-dim);color:var(--green);}
+.check-red{background:rgba(239,68,68,0.12);color:#F87171;}
+
+/* ── SLIDE 6: OUTRO ── */
+.outro-layout{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;}
+.summary-stats{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.sum-card{
+  background:var(--dark-3);border-radius:10px;padding:22px;
+  border:1px solid rgba(255,255,255,0.07);
+  display:flex;flex-direction:column;gap:4px;
+}
+.sum-num{font-size:40px;font-weight:900;color:var(--amber);line-height:1;}
+.sum-label{font-size:13px;color:var(--text-dim);}
+.achievement-list{display:flex;flex-direction:column;gap:12px;margin-top:16px;}
+.achievement{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:14px 16px;
+  background:var(--dark-3);border-radius:8px;
+  border-left:3px solid var(--green);
+  font-size:14px;color:var(--text-dim);line-height:1.5;
+}
+.achievement-icon{font-size:18px;flex-shrink:0;}
+.contact-panel{background:var(--dark-3);border-radius:12px;padding:28px;border:1px solid var(--amber-border);}
+.contact-header{display:flex;align-items:center;gap:14px;margin-bottom:24px;}
+.contact-avatar{
+  width:56px;height:56px;border-radius:50%;
+  background:var(--amber-dim);border:2px solid var(--amber-border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;font-weight:900;color:var(--amber);
+}
+.contact-name{font-size:18px;font-weight:700;}
+.contact-role{font-size:13px;color:var(--text-dim);}
+.contact-links{display:flex;flex-direction:column;gap:12px;}
+.contact-link{
+  display:flex;align-items:center;gap:12px;
+  padding:11px 14px;border-radius:8px;
+  background:var(--dark-4);font-size:13px;
+  color:var(--text-dim);text-decoration:none;
+  transition:all 0.2s;border:1px solid transparent;
+}
+.contact-link:hover{border-color:var(--amber-border);color:var(--amber);}
+.link-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+
+/* ── KEYBOARD HINT ── */
+.kbd-hint{
+  position:fixed;bottom:24px;right:32px;
+  font-size:11px;color:var(--muted);
+  display:flex;align-items:center;gap:6px;
+}
+kbd{background:var(--dark-3);border:1px solid var(--dark-4);border-radius:4px;padding:2px 6px;font-family:'JetBrains Mono',monospace;font-size:11px;}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="nav">
+  <div class="nav-brand"><span>🍽️</span> Restoran</div>
+  <div class="nav-progress">
+    <div class="progress-label">
+      <span id="slide-name">الختام والتواصل</span>
+      <span id="slide-num">6 / 6</span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width: 100%;"></div></div>
+  </div>
+  <div class="nav-actions">
+    <span class="slide-counter" id="slide-counter"></span>
+    <button class="nav-btn btn-ghost" onclick="prev()">→ السابق</button>
+    <button class="nav-btn btn-ghost" onclick="next()">← التالي</button>
+    <button class="nav-btn btn-dl" onclick="dlFile()">⬇ تحميل</button>
+  </div>
+</nav>
+
+<!-- SLIDES -->
+<div id="deck">
+
+<!-- ══ SLIDE 1: المشروع ══ -->
+<section class="slide" data-title="مقدمة المشروع">
+  <div class="hero-layout">
+    <div>
+      <div class="eyebrow">Restaurant Management System</div>
+      <h1 class="slide-heading">نظام إدارة<br><em>مطعمك</em> كاملاً</h1>
+      <p class="slide-sub">تطبيق Java Backend متكامل يغطي كل دورة حياة الطلب — من تسجيل العميل ولحظة الطلب وحتى الموافقة والتسليم.</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">38</div>
+          <div><div class="hero-stat-title">API Endpoint</div><div class="hero-stat-label">موزعة على 7 Controllers</div></div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">9</div>
+          <div><div class="hero-stat-title">Database Entity</div><div class="hero-stat-label">مع علاقات مترابطة</div></div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">2</div>
+          <div><div class="hero-stat-title">نظام صلاحيات</div><div class="hero-stat-label">USER + ADMIN Role-based Access</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hv-title">Controllers Overview</div>
+      <div class="hv-row"><div class="hv-dot" style="background:#3B82F6"></div><div class="hv-name">Auth Controller</div><div class="hv-count">2</div></div>
+      <div class="hv-row"><div class="hv-dot" style="background:#10B981"></div><div class="hv-name">Product Controller</div><div class="hv-count">10</div></div>
+      <div class="hv-row"><div class="hv-dot" style="background:#F59E0B"></div><div class="hv-name">Orders Controller</div><div class="hv-count">11</div></div>
+      <div class="hv-row"><div class="hv-dot" style="background:#8B5CF6"></div><div class="hv-name">Category Controller</div><div class="hv-count">7</div></div>
+      <div class="hv-row"><div class="hv-dot" style="background:#EF4444"></div><div class="hv-name">Chef Controller</div><div class="hv-count">2</div></div>
+      <div class="hv-row"><div class="hv-dot" style="background:#06B6D4"></div><div class="hv-name">Contact Info Controller</div><div class="hv-count">4</div></div>
+      <div class="hv-row"><div class="hv-dot" style="background:#EC4899"></div><div class="hv-name">User Controller</div><div class="hv-count">2</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SLIDE 2: الفيتشرز ══ -->
+<section class="slide" data-title="المميزات الرئيسية">
+  <div class="eyebrow">Features</div>
+  <h1 class="slide-heading">إيه اللي <em>بيعمله</em> السيستم؟</h1>
+  <p class="slide-sub">ستة محاور وظيفية متكاملة يشتغلوا مع بعض.</p>
+  <div class="features-grid">
+    <div class="feat-card">
+      <div class="feat-icon">🛒</div>
+      <div class="feat-title">إدارة الطلبات</div>
+      <div class="feat-desc">من إنشاء الطلب وإضافة الأصناف، للحالات المختلفة: PENDING، APPROVED، REJECTED، وكمان APPROVAL_REQUIRED لأوامر التأكيد.</div>
+      <div class="feat-tags"><span class="tag">ORDER DTO</span><span class="tag">OrderItem</span><span class="tag">5 Statuses</span></div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🍽️</div>
+      <div class="feat-title">قائمة الطعام والمنتجات</div>
+      <div class="feat-desc">إضافة وتعديل وحذف المنتجات بشكل فردي أو bulk. البحث بالكلمات مع Pagination. ربط كل منتج بـ Category محددة.</div>
+      <div class="feat-tags"><span class="tag">Pagination</span><span class="tag">Search</span><span class="tag">Bulk Ops</span></div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">📂</div>
+      <div class="feat-title">فئات المنتجات</div>
+      <div class="feat-desc">تصنيف الأكل: Foods، Fast Food، Cold Drinks، Hot Drinks، Sweets، وأي فئة جديدة. كل فئة عندها Logo وFlag مميز.</div>
+      <div class="feat-tags"><span class="tag">Logo</span><span class="tag">Flag</span><span class="tag">Bulk Save</span></div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">👨‍🍳</div>
+      <div class="feat-title">إدارة الشيفات</div>
+      <div class="feat-desc">سجل الطهاة مع تخصص كل شيف وصورته وروابط السوشيال ميديا. صفحة Team كاملة تظهر للعملاء.</div>
+      <div class="feat-tags"><span class="tag">Specialization</span><span class="tag">Social Links</span></div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">📞</div>
+      <div class="feat-title">نظام التواصل</div>
+      <div class="feat-desc">العميل يبعت رسالة (Name، Email، Subject، Message)، والأدمن يرد عليها من الداشبورد. سجل كامل لكل المراسلات.</div>
+      <div class="feat-tags"><span class="tag">Reply System</span><span class="tag">Email</span></div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">📅</div>
+      <div class="feat-title">سجل الطلبات والفلترة</div>
+      <div class="feat-desc">العميل يشوف تاريخ طلباته مع Sorting (Newest/Oldest) وفلترة بالتاريخ From Date → To Date مع Pagination كاملة.</div>
+      <div class="feat-tags"><span class="tag">Date Filter</span><span class="tag">Sorting</span><span class="tag">History</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SLIDE 3: المعمارية ══ -->
+<section class="slide" data-title="المعمارية والتقنيات">
+  <div class="eyebrow">Architecture &amp; Tech Stack</div>
+  <h1 class="slide-heading">كيف <em>بُني</em> السيستم؟</h1>
+  <p class="slide-sub">معمارية Layered Architecture على Spring Boot مع 9 Entities وعلاقات JPA.</p>
+  <div class="arch-layout">
+    <div class="arch-section">
+      <div class="arch-title">Entities — قاعدة البيانات</div>
+      <div class="entity-card">
+        <div class="entity-name">User</div>
+        <div class="entity-fields">userName · password · createdDate · updatedBy</div>
+        <div class="rel-badge">→ Roles · UserDetails · ContactInfo · Orders</div>
+      </div>
+      <div class="entity-card">
+        <div class="entity-name">Product</div>
+        <div class="entity-fields">name · imagePath · description · price</div>
+        <div class="rel-badge">→ Category · OrderItem</div>
+      </div>
+      <div class="entity-card">
+        <div class="entity-name">Order</div>
+        <div class="entity-fields">totalPrice · totalNumber · status · message</div>
+        <div class="rel-badge">→ OrderItem → Product</div>
+      </div>
+      <div class="entity-card">
+        <div class="entity-name">Category · Chef · ContactInfo</div>
+        <div class="entity-fields">+ Role · UserDetails · OrderItem</div>
+        <div class="rel-badge">9 Entities إجمالي</div>
+      </div>
+    </div>
+    <div class="arch-section">
+      <div class="arch-title">Tech Stack</div>
+      <div class="tech-stack">
+        <div class="tech-pill"><div class="tech-dot" style="background:#F59E0B"></div>Spring Boot 3</div>
+        <div class="tech-pill"><div class="tech-dot" style="background:#3B82F6"></div>Java 17+</div>
+        <div class="tech-pill"><div class="tech-dot" style="background:#10B981"></div>Spring Security</div>
+        <div class="tech-pill"><div class="tech-dot" style="background:#8B5CF6"></div>JWT Auth</div>
+        <div class="tech-pill"><div class="tech-dot" style="background:#EF4444"></div>Hibernate JPA</div>
+        <div class="tech-pill"><div class="tech-dot" style="background:#06B6D4"></div>MySQL</div>
+        <div class="tech-pill"><div class="tech-dot" style="background:#F97316"></div>Maven</div>
+        <div class="tech-pill"><div class="tech-dot" style="background:#EC4899"></div>Swagger OpenAPI</div>
+        <div class="tech-pill"><div class="tech-dot" style="background:#6B7280"></div>Angular Frontend</div>
+      </div>
+      <div class="arch-title" style="margin-top:24px;">Layer Architecture</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3);border-radius:8px;padding:12px 16px;font-size:13px;text-align:center;font-weight:600;color:#60A5FA;">Controller Layer — REST Endpoints</div>
+        <div style="text-align:center;color:var(--muted);font-size:12px;">↓</div>
+        <div style="background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.3);border-radius:8px;padding:12px 16px;font-size:13px;text-align:center;font-weight:600;color:#FCD34D;">Service Layer — Business Logic</div>
+        <div style="text-align:center;color:var(--muted);font-size:12px;">↓</div>
+        <div style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:8px;padding:12px 16px;font-size:13px;text-align:center;font-weight:600;color:#F87171;">Repository Layer — JPA / Hibernate</div>
+        <div style="text-align:center;color:var(--muted);font-size:12px;">↓</div>
+        <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:8px;padding:12px 16px;font-size:13px;text-align:center;font-weight:600;color:#34D399;">Database — MySQL</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SLIDE 4: APIs ══ -->
+<section class="slide" data-title="الـ APIs والـ Endpoints">
+  <div class="eyebrow">REST API Documentation</div>
+  <h1 class="slide-heading"><em>38 Endpoint</em> موثقة بـ Swagger</h1>
+  <p class="slide-sub">كل Controller مع أهم الـ Routes اللي بيديها.</p>
+  <div class="api-layout">
+    <div class="api-group">
+      <div class="api-group-header">
+        <div class="api-group-name">🔑 Auth Controller</div>
+        <div class="api-count-badge">2 APIs</div>
+      </div>
+      <div class="api-route"><span class="method m-post">POST</span><span class="route-path">/api/auth/login</span></div>
+      <div class="api-route"><span class="method m-post">POST</span><span class="route-path">/api/auth/signUp</span></div>
+    </div>
+    <div class="api-group">
+      <div class="api-group-header">
+        <div class="api-group-name">📦 Product Controller</div>
+        <div class="api-count-badge">10 APIs</div>
+      </div>
+      <div class="api-route"><span class="method m-get">GET</span><span class="route-path">/api/products/getAllProducts</span></div>
+      <div class="api-route"><span class="method m-get">GET</span><span class="route-path">/api/products/searchProducts</span></div>
+      <div class="api-route"><span class="method m-post">POST</span><span class="route-path">/api/products/saveProduct</span></div>
+      <div class="api-route"><span class="method m-put">PUT</span><span class="route-path">/api/products/updateProduct</span></div>
+      <div class="api-route"><span class="method m-del">DEL</span><span class="route-path">/api/products/deleteProduct</span></div>
+    </div>
+    <div class="api-group">
+      <div class="api-group-header">
+        <div class="api-group-name">🛒 Orders Controller</div>
+        <div class="api-count-badge">11 APIs</div>
+      </div>
+      <div class="api-route"><span class="method m-post">POST</span><span class="route-path">/api/orders/submit</span></div>
+      <div class="api-route"><span class="method m-put">PUT</span><span class="route-path">/api/orders/approveOrder/{id}</span></div>
+      <div class="api-route"><span class="method m-put">PUT</span><span class="route-path">/api/orders/rejectedOrder/{id}</span></div>
+      <div class="api-route"><span class="method m-get">GET</span><span class="route-path">/api/orders/getMyOrders</span></div>
+      <div class="api-route"><span class="method m-get">GET</span><span class="route-path">/api/orders/filterMyOrders…</span></div>
+    </div>
+    <div class="api-group">
+      <div class="api-group-header">
+        <div class="api-group-name">📂 Category Controller</div>
+        <div class="api-count-badge">7 APIs</div>
+      </div>
+      <div class="api-route"><span class="method m-get">GET</span><span class="route-path">/api/categories/getAll</span></div>
+      <div class="api-route"><span class="method m-post">POST</span><span class="route-path">/api/categories/saveCategory</span></div>
+      <div class="api-route"><span class="method m-post">POST</span><span class="route-path">/api/categories/saveListOf…</span></div>
+      <div class="api-route"><span class="method m-put">PUT</span><span class="route-path">/api/categories/updateCategory</span></div>
+      <div class="api-route"><span class="method m-del">DEL</span><span class="route-path">/api/categories/deleteCategory</span></div>
+    </div>
+    <div class="api-group">
+      <div class="api-group-header">
+        <div class="api-group-name">👨‍🍳 Chef Controller</div>
+        <div class="api-count-badge">2 APIs</div>
+      </div>
+      <div class="api-route"><span class="method m-get">GET</span><span class="route-path">/api/chef/getAll</span></div>
+      <div class="api-route"><span class="method m-post">POST</span><span class="route-path">/api/chef/saveChef</span></div>
+    </div>
+    <div class="api-group">
+      <div class="api-group-header">
+        <div class="api-group-name">📞 Contact + User</div>
+        <div class="api-count-badge">6 APIs</div>
+      </div>
+      <div class="api-route"><span class="method m-post">POST</span><span class="route-path">/api/contactInfo/save</span></div>
+      <div class="api-route"><span class="method m-put">PUT</span><span class="route-path">/api/contactInfo/reply</span></div>
+      <div class="api-route"><span class="method m-get">GET</span><span class="route-path">/api/contactInfo/getAll</span></div>
+      <div class="api-route"><span class="method m-post">POST</span><span class="route-path">/api/users/addUserDetail</span></div>
+      <div class="api-route"><span class="method m-get">GET</span><span class="route-path">/api/users/isUserHasDetails</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SLIDE 5: SECURITY ══ -->
+<section class="slide" data-title="نظام الأمان">
+  <div class="eyebrow">Security</div>
+  <h1 class="slide-heading">JWT + <em>Role-based</em> Access Control</h1>
+  <p class="slide-sub">كل طلب بيمر على Security Filter قبل ما يوصل للـ Controller.</p>
+  <div class="security-layout">
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="flow-line">
+          <div class="step-circle">1</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-body">
+          <div class="step-title">العميل يبعت بيانات الدخول</div>
+          <div style="font-size:13px;color:var(--text-dim);">Username وPassword لـ /api/auth/login</div>
+          <div class="step-code">POST /api/auth/login<br>{ "username": "...", "password": "..." }</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-line">
+          <div class="step-circle">2</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-body">
+          <div class="step-title">السيرفر يتحقق ويولد Token</div>
+          <div style="font-size:13px;color:var(--text-dim);">Spring Security تتحقق من الداتا بيز وتولد JWT Token موقع</div>
+          <div class="step-code">Response: { "token": "eyJhbGc..." }</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-line">
+          <div class="step-circle">3</div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="step-body">
+          <div class="step-title">كل طلب بعد كده يشيل الـ Token</div>
+          <div style="font-size:13px;color:var(--text-dim);">في Authorization Header مع كل Request</div>
+          <div class="step-code">Authorization: Bearer eyJhbGc...</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-line">
+          <div class="step-circle">4</div>
+        </div>
+        <div class="step-body">
+          <div class="step-title">السيرفر يتحقق من الـ Token والـ Role</div>
+          <div style="font-size:13px;color:var(--text-dim);">JwtFilter يفحص التوقيع والصلاحيات قبل ما يعدّي الطلب</div>
+          <div class="step-code">Role: USER → محدود / Role: ADMIN → كامل</div>
+        </div>
+      </div>
+    </div>
+    <div class="roles-panel">
+      <div class="role-card">
+        <div class="role-header"><div class="role-badge badge-admin">ADMIN</div></div>
+        <div class="role-perm"><div class="perm-check check-green">✓</div> إدارة المنتجات والفئات</div>
+        <div class="role-perm"><div class="perm-check check-green">✓</div> الموافقة ورفض الطلبات</div>
+        <div class="role-perm"><div class="perm-check check-green">✓</div> إضافة وتعديل الشيفات</div>
+        <div class="role-perm"><div class="perm-check check-green">✓</div> الرد على رسائل التواصل</div>
+        <div class="role-perm"><div class="perm-check check-green">✓</div> عرض كل الطلبات والإحصائيات</div>
+      </div>
+      <div class="role-card">
+        <div class="role-header"><div class="role-badge badge-user">USER</div></div>
+        <div class="role-perm"><div class="perm-check check-green">✓</div> تصفح المنتجات والقائمة</div>
+        <div class="role-perm"><div class="perm-check check-green">✓</div> إنشاء طلبات وإدارة السلة</div>
+        <div class="role-perm"><div class="perm-check check-green">✓</div> عرض سجل طلباته الخاصة</div>
+        <div class="role-perm"><div class="perm-check check-green">✓</div> إرسال رسائل للتواصل</div>
+        <div class="role-perm"><div class="perm-check check-red">✗</div> لا يقدر يوافق أو يرفض</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SLIDE 6: OUTRO ══ -->
+<section class="slide active" data-title="الختام والتواصل">
+  <div class="eyebrow">Summary</div>
+  <h1 class="slide-heading">مشروع <em>جاهز للإنتاج</em></h1>
+  <p class="slide-sub">Java Backend احترافي يغطي كل سيناريوهات المطعم الحقيقي.</p>
+  <div class="outro-layout">
+    <div>
+      <div class="summary-stats">
+        <div class="sum-card"><div class="sum-num">38</div><div class="sum-label">API Endpoints</div></div>
+        <div class="sum-card"><div class="sum-num">9</div><div class="sum-label">Entities</div></div>
+        <div class="sum-card"><div class="sum-num">7</div><div class="sum-label">Controllers</div></div>
+        <div class="sum-card"><div class="sum-num">5</div><div class="sum-label">Order Statuses</div></div>
+      </div>
+      <div class="achievement-list">
+        <div class="achievement"><div class="achievement-icon">🔐</div><div>نظام أمان كامل: JWT + Spring Security + Role-based Access</div></div>
+        <div class="achievement"><div class="achievement-icon">📄</div><div>توثيق تلقائي بـ Swagger / OpenAPI 3.1</div></div>
+        <div class="achievement"><div class="achievement-icon">📦</div><div>Bulk Operations: حفظ وتعديل وحذف قوائم كاملة دفعة واحدة</div></div>
+        <div class="achievement"><div class="achievement-icon">🔍</div><div>بحث وفلترة وترتيب مع Pagination على كل المجموعات</div></div>
+        <div class="achievement"><div class="achievement-icon">🌐</div><div>رسائل خطأ ثنائية اللغة (EN + AR) في كل Response</div></div>
+      </div>
+    </div>
+    <div class="contact-panel">
+      <div class="contact-header">
+        <div class="contact-avatar">AM</div>
+        <div><div class="contact-name">Ahmed Mohamed</div><div class="contact-role">Java Backend Developer · Mentor at EraaSoft</div></div>
+      </div>
+      <div class="contact-links">
+        <a class="contact-link" href="https://www.linkedin.com/in/ahmedmohammed-jv/" target="_blank">
+          <div class="link-icon" style="background:rgba(59,130,246,0.15);">💼</div>
+          <div><div style="font-size:12px;color:var(--text-dim);">LinkedIn</div><div style="color:var(--text);font-size:13px;">linkedin.com/in/ahmedmohammed-jv</div></div>
+        </a>
+        <a class="contact-link" href="https://ahmedmohamed852.github.io/Portfolio/" target="_blank">
+          <div class="link-icon" style="background:rgba(16,185,129,0.15);">🌐</div>
+          <div><div style="font-size:12px;color:var(--text-dim);">Portfolio</div><div style="color:var(--text);font-size:13px;">ahmedmohamed852.github.io</div></div>
+        </a>
+        <a class="contact-link" href="mailto:ahmed.mohammed.swe1@gmail.com">
+          <div class="link-icon" style="background:rgba(239,68,68,0.15);">📧</div>
+          <div><div style="font-size:12px;color:var(--text-dim);">Email</div><div style="color:var(--text);font-size:13px;">ahmed.mohammed.swe1@gmail.com</div></div>
+        </a>
+        <div class="contact-link" style="cursor:default;">
+          <div class="link-icon" style="background:var(--amber-dim);">🎓</div>
+          <div><div style="font-size:12px;color:var(--text-dim);">تحت إشراف</div><div style="color:var(--text);font-size:13px;">Eng. Islam Khidr — EraaSoft</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /deck -->
+
+<!-- DOTS -->
+<div id="dots">
+  <div class="dot" onclick="go(0)"></div>
+  <div class="dot" onclick="go(1)"></div>
+  <div class="dot" onclick="go(2)"></div>
+  <div class="dot" onclick="go(3)"></div>
+  <div class="dot" onclick="go(4)"></div>
+  <div class="dot active" onclick="go(5)"></div>
+</div>
+
+<div class="kbd-hint"><kbd>→</kbd><kbd>←</kbd> للتنقل</div>
+
+<script>
+const slides=document.querySelectorAll('.slide');
+const dots=document.querySelectorAll('.dot');
+const fill=document.getElementById('progress-fill');
+const slideNum=document.getElementById('slide-num');
+const slideName=document.getElementById('slide-name');
+let cur=0;
+const total=slides.length;
+
+function go(n){
+  slides[cur].classList.remove('active');
+  dots[cur].classList.remove('active');
+  cur=(n+total)%total;
+  slides[cur].classList.add('active');
+  dots[cur].classList.add('active');
+  fill.style.width=((cur+1)/total*100)+'%';
+  slideNum.textContent=(cur+1)+' / '+total;
+  slideName.textContent=slides[cur].dataset.title||'';
+  slides[cur].scrollTop=0;
+}
+function next(){go(cur+1);}
+function prev(){go(cur-1);}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowLeft'||e.key==='ArrowRight'){
+    e.key==='ArrowLeft'?next():prev();
+  }
+});
+
+async function dlFile(){
+  try{
+    const dl=await claude.use('downloads');
+    if(dl){
+      const html='<!DOCTYPE html>'+document.documentElement.outerHTML;
+      await dl.save({filename:'Restoran_Presentation.html',data:html});
+    }
+  } catch(e){
+    const b=document.createElement('a');
+    b.href='data:text/html;charset=utf-8,'+encodeURIComponent('<!DOCTYPE html>'+document.documentElement.outerHTML);
+    b.download='Restoran_Presentation.html';b.click();
+  }
+}
+</script>
+
+
+</body></html>
